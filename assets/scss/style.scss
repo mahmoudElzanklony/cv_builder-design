@@ -11,6 +11,15 @@
     color:white;
   }
 }
+.sky{
+  color:$sky;
+}
+.btn-sky{
+  background-color: $sky;
+  &:hover{
+    background-color: $sky;
+  }
+}
 nav{
   .navbar-collapse{
     justify-content: space-between;
@@ -1026,4 +1035,7 @@ table{
 .modal-body{
   max-height: 500px;
   overflow: auto;
+}
+.tags-input span{
+  margin-bottom: 5px;
 }

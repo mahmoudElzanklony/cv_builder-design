@@ -1,7 +1,7 @@
 <template>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+    <div class="container" v-if="Object.keys($attrs).length > 0  &&  Object.keys($attrs.words).length > 0">
       <nuxt-link class="navbar-brand cursor-pointer position-relative"
                  to="/" tag="img" style="top: -6px;" src="/images/logo.png"></nuxt-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,25 +10,25 @@
       <div class="collapse navbar-collapse mrl-reverse-15" id="navbarSupportedContent">
         <ul class="navbar-nav mb-2 mb-lg-0 align-items-md-center position-relative">
           <li class="nav-item link mrl-1">
-            <nuxt-link to="/" class="nav-link line-hover">{{ words.home }}</nuxt-link>
+            <nuxt-link to="/" class="nav-link line-hover">{{ $attrs.words.navbar.home }}</nuxt-link>
           </li>
           <li class="nav-item link mrl-1">
-            <nuxt-link to="/about-us" class="nav-link line-hover" href="/about-us">{{ words.about }}</nuxt-link>
+            <nuxt-link to="/about-us" class="nav-link line-hover" href="/about-us">{{ $attrs.words.navbar.about }}</nuxt-link>
           </li>
 
           <li class="nav-item link mrl-1"
               v-if="false && $auth.loggedIn && $auth.$state.user.hasOwnProperty('role') && $auth.$state.user.role.name == 'admin'">
-            <nuxt-link to="/dashboard" class="nav-link line-hover">{{ words.dashboard }}</nuxt-link>
+            <nuxt-link to="/dashboard" class="nav-link line-hover">{{ $attrs.words.navbar.dashboard }}</nuxt-link>
           </li>
 
         </ul>
 
         <ul class="navbar-nav mb-2 mb-lg-0 align-items-md-center">
           <li class="nav-item mrl-1" v-if="showRegisterLink && false">
-            <nuxt-link to="/auth/register" class="nav-link btn-bk-primary">{{ words.register }}</nuxt-link>
+            <nuxt-link to="/auth/register" class="nav-link btn-bk-primary">{{ $attrs.words.navbar.register }}</nuxt-link>
           </li>
           <li class="nav-item mrl-1" v-else-if="false" @click="logoutAction">
-            <nuxt-link to="/auth/register" class="nav-link btn-bk-primary">{{ words.logout }}</nuxt-link>
+            <nuxt-link to="/auth/register" class="nav-link btn-bk-primary">{{ $attrs.words.navbar.logout }}</nuxt-link>
           </li>
           <li class="nav-item mrl-1">
             <button class="nav-link btn btn-outline-primary" @click="changeLang">
@@ -43,31 +43,31 @@
                   <li>
                     <nuxt-link to="/profile/ahmed">
                       <span class="gray"><i class="bi bi-person-circle"></i></span>
-                      <span class="gray">{{ words.profile }}</span>
+                      <span class="gray">{{ $attrs.words.navbar.profile }}</span>
                     </nuxt-link>
                   </li>
                   <li>
                     <nuxt-link to="/notifications">
                       <span><i class="bi bi-bell"></i></span>
-                      <span class="gray">{{ words.notifications }}</span>
+                      <span class="gray">{{ $attrs.words.navbar.notifications }}</span>
                     </nuxt-link>
                   </li>
                   <li>
                     <nuxt-link to="/chat">
                       <span><i class="bi bi-chat-dots"></i></span>
-                      <span class="gray">{{ words.chat }}</span>
+                      <span class="gray">{{ $attrs.words.navbar.chat }}</span>
                     </nuxt-link>
                   </li>
                   <li>
                     <nuxt-link to="/nearest-jobs">
                       <span><i class="bi bi-geo-alt"></i></span>
-                      <span class="gray">{{ words.nearest_jobs }}</span>
+                      <span class="gray">{{ $attrs.words.navbar.nearest_jobs }}</span>
                     </nuxt-link>
                   </li>
                   <li style="border-top: 1px solid #dddddd">
                     <nuxt-link to="/logout">
                       <span><i class="bi bi-box-arrow-in-left"></i></span>
-                      <span class="gray">{{ words.logout }}</span>
+                      <span class="gray">{{ $attrs.words.navbar.logout }}</span>
                     </nuxt-link>
                   </li>
                 </ul>
@@ -84,7 +84,6 @@
 </template>
 
 <script>
-import WordsLang from "../mixins/WordsLang";
 import {mapActions,mapGetters} from 'vuex';
 export default {
   name: "NavbarComponent",
@@ -105,7 +104,6 @@ export default {
       return !this.$store.state.auth.loggedIn
     }
   },
-  mixins:[WordsLang],
   methods:{
     ...mapActions({
       'logoutAction':'auth/login/logoutAction',

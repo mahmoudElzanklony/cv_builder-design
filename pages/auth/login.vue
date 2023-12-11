@@ -1,12 +1,12 @@
 <template>
   <section class="auth current_page">
-     <div class="auth-content">
+     <div class="auth-content" v-if="Object.keys($parent.$attrs).length > 0  &&  Object.keys($parent.$attrs.words).length > 0">
        <div class="container-fluid h-100">
          <div class="row h-100">
            <div class="col-md-5 mb-2 mt-4 h-100 d-flex align-items-center">
               <div class="form-data w-100">
                 <div class="social_media_apps_auth">
-                  <p class="text-center mb-2 mt-3">{{ words.register_with }}</p>
+                  <p class="text-center mb-2 mt-3">{{ $parent.$attrs.words.login.register_with }}</p>
                   <div class="text-center mb-2">
                     <a href="#" class="facebook mrl-1">
                       <span><i class="bi bi-facebook"></i></span>
@@ -17,30 +17,30 @@
                   </div>
                   <p>
                     <span></span>
-                    <span>{{ words.or }}</span>
+                    <span>{{ $parent.$attrs.words.login.or }}</span>
                     <span></span>
                   </p>
                 </div>
                 <form class="p-3" method="post" @submit.prevent="login">
                   <div class="form-group mb-2 input-icon flex-wrap">
-                    <label>{{ words.email }}</label>
+                    <label>{{ $parent.$attrs.words.login.email }}</label>
                     <input class="form-control" name="email" required>
                     <span><i class="bi bi-envelope"></i></span>
                   </div>
                   <div class="form-group mb-3 input-icon flex-wrap">
                     <label class="d-flex justify-content-between w-100">
-                      <span>{{ words.password }}</span>
-                      <nuxt-link to="/auth/reset">{{ words.forget_password }}</nuxt-link>
+                      <span>{{ $parent.$attrs.words.login.password }}</span>
+                      <nuxt-link to="/auth/reset">{{ $parent.$attrs.words.login.forget_password }}</nuxt-link>
                     </label>
                     <input class="form-control" name="password" type="password" required>
                     <span><i class="bi bi-key"></i></span>
                   </div>
                   <div class="form-group mb-4">
-                    <input class="form-control btn btn-primary" type="submit" :value="words.login">
+                    <input class="form-control btn btn-primary" type="submit" :value="$parent.$attrs.words.login.login">
                   </div>
                   <p class="mb-2">
-                    <span>{{ words.you_have_not_already_account }}</span>
-                    <a href="/auth/register">{{ words.register }}</a>
+                    <span>{{ $parent.$attrs.words.login.you_have_not_already_account }}</span>
+                    <a href="/auth/register">{{ $parent.$attrs.words.login.register }}</a>
                   </p>
                 </form>
               </div>
@@ -49,8 +49,8 @@
              <div class="info text-center-mobile flex align-items-center justify-content-between">
                <img src="/images/auth/bk.png">
                <div class="text-center">
-                 <p class="mb-2 mt-3 white">{{ words.welcome_friend }}</p>
-                 <p class="mb-0 white">{{ words.couple_clicks }}</p>
+                 <p class="mb-2 mt-3 white">{{ $parent.$attrs.words.login.welcome_friend }}</p>
+                 <p class="mb-0 white">{{ $parent.$attrs.words.login.couple_clicks }}</p>
                </div>
              </div>
            </div>
@@ -61,11 +61,9 @@
 </template>
 
 <script>
-import WordsLang from "../../mixins/WordsLang";
 import {mapActions} from 'vuex';
 export default {
   name: "login",
-  mixins:[WordsLang],
   methods:{
     ...mapActions({
       'login':'auth/login/loginAction'

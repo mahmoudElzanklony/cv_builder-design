@@ -5,22 +5,16 @@ export default {
           words:[],
       }
     },
-    created() {
+    async created() {
       if (process.client) {
         let com = this;
         let lang = '';
-        let file = '';
         if(localStorage.getItem('lang') != undefined){
           lang = localStorage.getItem('lang');
         }else{
           lang = 'ar';
         }
-        if(this.file_name == undefined){
-          file=this.$route.name.replaceAll('-','_');
-        }else{
-          file = this.file_name;
-        }
-        let words = import('~/lang/'+lang+'/'+file).then((e)=>{
+        let words = await import('~/lang/'+lang+'/words').then((e)=>{
           com.words = e.default;
         });
       }
