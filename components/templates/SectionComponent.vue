@@ -19,10 +19,13 @@
           <div class="form-group mb-2">
             <label class="gray">{{ i['label'] }}</label>
             <input v-if="!(i['type'] == 'selections' || i['type'] == 'textarea')" class="form-control"
-                   :type="i['type']" :name="data['name'][data['id']][i['id']]" :placeholder="i['placeholder']">
+                   @keyup="dynamicContentWrite(i)"
+                   :type="i['type']" :name="'attr['+i['id']+'][]'" :placeholder="i['placeholder']">
 
             <tags-inputs v-else-if="i['type'] == 'selections' " :table="i['selections']['model'].split('\\').slice(-1)[0]" :data="[]"></tags-inputs>
-            <textarea v-else-if="i['type'] == 'textarea'" class="form-control"  :name="data['name'][data['id']][i['id']]" :placeholder="i['placeholder']"></textarea>
+            <textarea v-else-if="i['type'] == 'textarea'" class="form-control"
+                      @keyup="dynamicContentWrite(i)"
+                      :name="'attr['+i['id']+'][]'" :placeholder="i['placeholder']"></textarea>
 
           </div>
         </div>
@@ -66,6 +69,16 @@ export default {
         }
       })
 
+    },
+    dynamicContentWrite(attribute,normal = true){
+      var val = event.target.value;
+      var section = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+      if(normal){
+         var section_index = $(section).index();
+         var input_number = $(event.target.parentElement.parentElement).index();
+         $('.dynamic-content > div').eq(section_index).find('.body > p').eq(input_number)
+           .html('<span class="gray">'+attribute['before_answer']+'</span>'+' '+'<span class="'+(attribute['before_answer'].length > 0 ? 'fw-bold':'')+'" >'+event.target.value+'</span>');
+      }
     }
 
   },
@@ -79,7 +92,7 @@ export default {
   margin-bottom: 10px;
   .header{
     img{
-      height: 35px;
+      height: 30px;
     }
   }
 }

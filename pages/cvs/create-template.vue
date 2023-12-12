@@ -21,8 +21,19 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-12"></div>
-        <div class="col-lg-4 col-md-6 col-12"></div>
+        <div class="col-lg-5 col-md-6 col-12">
+          <div class="dynamic-content">
+            <div v-for="(i,index) in selected_sessions_from_popup" :key="index" :class="'sec_id_'+i['id']" >
+              <div class="header">
+                <p class="gray fw-bold">{{ i['name'] }}</p>
+              </div>
+              <div class="body">
+                <p v-for="(n,key) in i['attributes'].length" :key="key" class="mb-0"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-l3-4 col-md-6 col-12"></div>
       </div>
       <SectionsPopUpComponent :words="$parent.$attrs.words"></SectionsPopUpComponent>
 
@@ -42,7 +53,7 @@ export default {
     ...mapActions({
       'first_section_action':'cvs/sections/firstSectionAction',
       'all_sections_action':'cvs/sections/allSectionsAction'
-    })
+    }),
   },
   computed:{
     ...mapGetters({
@@ -63,5 +74,17 @@ export default {
   background-color: white;
   padding: 15px;
   border-radius: 10px;
+}
+.dynamic-content{
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 600px;
+  background-color: white;
+  p{
+    span{
+      font-size: $small;
+    }
+  }
 }
 </style>

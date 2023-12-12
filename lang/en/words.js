@@ -83,7 +83,7 @@ export default {
   },
   /*===============================end of auth pages==========================================*/
   cvs:{
-    main_title:"Make new cv ",
+    main_title:"Make new personal cv ",
     make_new_template:"Make new template cv",
     select_from_templates:"Select from available templates",
     add_section:"Add section",

@@ -22,7 +22,16 @@ export const mutations = {
     state.first_section = payload;
   },
   pushInfoSelectedSessionsFromPopup(state,payload){
-     state.selected_sessions_from_popup.push(payload);
+     // check if section is added before or not
+    let updatedPayload = { ...payload };
+    console.log(updatedPayload);
+    let index = state.selected_sessions_from_popup.findIndex((item)=>{
+      return item.id ==  updatedPayload.id;
+    });
+    if(index >= 0){
+      updatedPayload['name'] = '';
+    }
+    state.selected_sessions_from_popup.push(updatedPayload);
   },
   removeSessionFromSelectedSessions(state,payload){
     let index = state.selected_sessions_from_popup.findIndex((item)=>{

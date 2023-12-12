@@ -41,6 +41,7 @@ export default {
   background-color: $main_color_white_bk;
   padding: 10px;
   border-radius: 10px;
+  min-height: 285px;
   img{
     height: 150px;
     display: block;

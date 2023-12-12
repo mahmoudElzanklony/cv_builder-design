@@ -44,7 +44,7 @@ export default {
     }),
     selectSection(i){
       this.$store.commit('cvs/sections/pushInfoSelectedSessionsFromPopup',i)
-      $('.modal-footer> button').click()
+      $('.modal-footer> button').click();
     }
   },
   computed:{
@@ -63,6 +63,7 @@ export default {
 @import "~style/variables";
 .box{
   background-color: $white_sky;
+  border: 1px solid #ddd;
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
