@@ -14,6 +14,12 @@ $(document).ready(function (){
     document.getElementById($(this).attr('to')).scrollIntoView();
   });
 
+
+  $('#__nuxt').on('change','input[type="date"]',function (){
+    console.log($(this).val())
+    $(this).attr('data-date',new Date($(this).val()).toLocaleDateString().replaceAll('/','-') );
+  })
+
   // delete
   $('#__nuxt').on('click','.delete',function (){
     var target = $(event.target);
@@ -63,6 +69,20 @@ $(document).ready(function (){
         icon:'error',
         title:msg,
       })
+    }
+  });
+
+
+  // control toggle up and down arrow
+  $('#__nuxt').on('click','.toggle_up_down',function (){
+    let parent = $(event.target).parents().eq($(event.target).attr('parents'));
+    if(event.target.hasAttribute('find')){
+       parent.find($(event.target).attr('find')).slideToggle()
+    }
+    if($(this).hasClass('bi-chevron-down')){
+      $(this).removeClass('bi-chevron-down').addClass('bi-chevron-up');
+    }else{
+      $(this).removeClass('bi-chevron-up').addClass('bi-chevron-down');
     }
   });
 

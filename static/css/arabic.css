@@ -6,6 +6,10 @@
   left: 10px;
 }
 
+input[type=date]:before {
+  right: 8px;
+}
+
 .line-hover::before {
   right: 0px;
 }
@@ -153,6 +157,10 @@
 }
 .up {
   right: 20px;
+}
+
+.ck.ck-content.ck-editor__editable {
+  text-align: right;
 }
 
 /*# sourceMappingURL=arabic.css.map */

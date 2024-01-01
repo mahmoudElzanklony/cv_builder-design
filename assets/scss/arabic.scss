@@ -8,6 +8,10 @@
     left: 10px;
   }
 }
+input[type='date']:before{
+  right: 8px;
+}
+
 .line-hover{
   &::before{
     right: 0px;

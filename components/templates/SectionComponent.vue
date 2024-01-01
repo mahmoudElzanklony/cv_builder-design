@@ -17,12 +17,17 @@
       <div class="attributes">
         <div class="attribute" v-for="(i,key) in data['attributes']" :key="key">
           <div class="form-group mb-2">
-            <label class="gray">{{ i['label'] }}</label>
-            <input v-if="!(i['type'] == 'selections' || i['type'] == 'textarea')" class="form-control"
+            <label>{{ i['label'] }}</label>
+            <input v-if="!(i['type'] == 'selections' || i['type'] == 'textarea')"
+                   class="form-control"
                    @keyup="dynamicContentWrite(i)"
+                   @change="dynamicContentWrite(i)"
                    :type="i['type']" :name="'attr['+i['id']+'][]'" :placeholder="i['placeholder']">
 
-            <tags-inputs v-else-if="i['type'] == 'selections' " :table="i['selections']['model'].split('\\').slice(-1)[0]" :data="[]"></tags-inputs>
+            <tags-inputs v-else-if="i['type'] == 'selections' "
+                         @get_all_tags="handle_tags"
+                         :dynamicwriting="true"
+                         :table="i['selections']['model'].split('\\').slice(-1)[0]" :data="[]"></tags-inputs>
             <textarea v-else-if="i['type'] == 'textarea'" class="form-control"
                       @keyup="dynamicContentWrite(i)"
                       :name="'attr['+i['id']+'][]'" :placeholder="i['placeholder']"></textarea>
@@ -40,6 +45,11 @@ import TagsInputs from "../TagsInputs";
 export default {
   name: "SectionComponent",
   props:['data','from_db','words'],
+  data(){
+    return {
+      elements:[],
+    }
+  },
   methods:{
     toggleSlide(){
       var target = $(event.target);
@@ -71,14 +81,32 @@ export default {
 
     },
     dynamicContentWrite(attribute,normal = true){
-      var val = event.target.value;
-      var section = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+      var section = $(event.target).parentsUntil('.section').last().parent().parent()
       if(normal){
-         var section_index = $(section).index();
-         var input_number = $(event.target.parentElement.parentElement).index();
-         $('.dynamic-content > div').eq(section_index).find('.body > p').eq(input_number)
-           .html('<span class="gray">'+attribute['before_answer']+'</span>'+' '+'<span class="'+(attribute['before_answer'].length > 0 ? 'fw-bold':'')+'" >'+event.target.value+'</span>');
+        var section_index = $(section).index();
+        var input_number = $(event.target.parentElement.parentElement).index();
+        var html_content = '<p><span class="gray">'+attribute['before_answer']+'</span>'+' '+'<span class="'+(attribute['before_answer'].length > 0 ? 'fw-bold':'')+'" >'+event.target.value+'</span></p>';
+        this.auto_writing(section_index,input_number,attribute,html_content)
       }
+    },
+    auto_writing(section_index,input_number,attribute,html_content){
+      var item = $('.dynamic-content > div').eq(section_index).find('.body > *').eq(input_number)
+      var currentStyle = item.attr('style');
+      console.log(currentStyle)
+      item.html(html_content);
+      item.attr('style', currentStyle);
+
+    },
+    handle_tags(data){
+      console.log(data);
+      console.log(this.data?.attributes[data?.input_number]);
+      var attribute = this.data?.attributes[data?.input_number];
+      var html_content = '<p class="'+(attribute['before_answer'].length > 0 ? 'fw-bold gray':'')+'" >'+attribute['before_answer']+'</p><ul>';
+      for(let item of data.data){
+        html_content+= '<li>'+item.value+'</li>'
+      }
+      html_content += '</ul>';
+      this.auto_writing(data.section_number,data.input_number,this.data?.attributes[data?.input_number],html_content);
     }
 
   },

@@ -89,11 +89,47 @@ export default {
     add_section:"Add section",
     edit_template:"Edit template style",
     select_best_section:"Select best section",
+    title_section:'Main Title',
+    content_section:'Content',
+    font_style:'Font style',
+    font_size:'Font size',
+    select_font_family:'Select font family',
+    select_font_size:'Select font size',
+    font_color:'Font color',
+    custom_color:'Custom',
+    background_color:'Background color',
+    px:'px',
+    alignment:'Alignment',
+    alignments:[
+      {
+        name:'Left',
+        value:'left'
+      },
+      {
+        name:'Center',
+        value:'center'
+      },
+      {
+        name:'Right',
+        value:'right'
+      },
+    ],
+    margin:'Margin',
+    padding:'Padding',
+    top:'Top',
+    bottom:'Bottom',
+    right:'Right',
+    left:'Left',
+    border_radius:'Border radius',
+
 
   },
   general:{
     close:'Close',
     are_you_sure_from_delete:'Are you sure from delete process',
     confirm:'Yes confirm',
+    select_best_choice:'Select best choice',
+    back:'Back',
+    back_behind:'Go to previous page',
   }
 }

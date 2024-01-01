@@ -28,13 +28,21 @@ export const actions = {
     var target = event.target;
     // Clear the redirect path
     this.$auth.$storage.setUniversal('redirect', null)
-   // commit('loader/updateLoaderMutation',true,{root:true});
+    // commit('loader/updateLoaderMutation',true,{root:true});
     try {
-       await this.$auth.loginWith('local', {
+      var dataresponse = await this.$auth.loginWith('local', {
         data: new FormData(target)
       })
-      console.log(this.state.auth.user)
-      await router.push('/');
+      if(dataresponse.data.hasOwnProperty('errors')){
+        return Toast.fire({
+          icon:'error',
+          title:dataresponse.data.errors
+        });
+      }
+      if(this.state.auth.user){
+        return window.location = '/';
+      }
+      //window.location = '/';
       //this.$auth.setUser(response.data.user)
     }catch {
       Toast.fire({
@@ -62,7 +70,6 @@ export const actions = {
       commit('loader/updateLoaderMutation',false,{root:true});
     });*/
   },
-
   async deleteUserData(){
     console.log('delete user data');
     localStorage.removeItem('user_info');

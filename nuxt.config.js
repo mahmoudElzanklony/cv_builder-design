@@ -23,8 +23,8 @@ export default {
     ],
     script:[
       {src:'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.min.js'},
-      {src:'https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js'},
-      {src:'https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.41.0/apexcharts.min.js'},
+     // {src:'https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js'},
+     // {src:'https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.41.0/apexcharts.min.js'},
       {src:'https://www.google.com/recaptcha/api.js'},
     ],
   },
@@ -131,7 +131,8 @@ export default {
           property: 'token',
           global: true,
           required: true,
-          type: 'Bearer'
+          type: 'Bearer',
+          maxAge: 60 * 60 * 60,
         },
         user: {
           property: false,
@@ -141,7 +142,11 @@ export default {
           login: { url: '/login', method: 'post', propertyName: 'token' },
           logout: { url: '/logout', method: 'post' },
           user: { url: '/user', method: 'get', propertyName: 'user' }
-        }
+        },
+        refreshToken: {
+          property: 'token',
+          maxAge: 2016000 * 60,
+        },
       }
     }
   }

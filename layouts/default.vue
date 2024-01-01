@@ -1,10 +1,10 @@
 <template>
   <div>
-      <navbar-component  :words="words"></navbar-component>
-      <nuxt  :words="words"/>
+      <navbar-component  :words="words_data"></navbar-component>
+      <nuxt  :words="words_data"/>
       <span class="up"><i class="bi bi-arrow-up"></i></span>
       <loader v-if="loader_status" :color="'#0a58ca'" size="60px"></loader>
-      <footer-component :words="words"></footer-component>
+      <footer-component :words="words_data"></footer-component>
 
 
   </div>
@@ -23,7 +23,8 @@ export default {
   computed:{
     ...mapGetters({
       'loader_status':'loader/getLoaderGetter',
-      'auth_check_getter':'auth/login/get_auth_user_validation'
+      'auth_check_getter':'auth/login/get_auth_user_validation',
+      'words_data':'words_data_lang/getData'
     })
   },
   methods:{

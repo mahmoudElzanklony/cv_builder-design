@@ -90,10 +90,45 @@ export default {
     add_section:"اضافه قسم اخر",
     edit_template:"تعديل تنسيقات الواجهه",
     select_best_section:"اختر القسم المناسب لك",
+    title_section:'العنوان الرئيسي',
+    content_section:'المحتوي',
+    font_style:'نوع الخط',
+    font_size:'حجم الخط',
+    select_font_family:'اختر نوع الخط',
+    select_font_size:'اختر حجم الخط',
+    font_color:'لون الخط',
+    custom_color:'لون معين',
+    background_color:'لون الخلفية',
+    px:'بكسل',
+    alignment:'المحاذاه',
+    alignments:[
+      {
+        name:'يسار',
+        value:'left'
+      },
+      {
+        name:'في المنتصف',
+        value:'center'
+      },
+      {
+        name:'يمين',
+        value:'right'
+      },
+    ],
+    margin:'المسافات الخارجيه',
+    padding:'المسافات الداخلية',
+    top:'اعلي',
+    bottom:'اسفل',
+    right:'يمين',
+    left:'يسار',
+    border_radius:'الانحناءات',
   },
   general:{
     close:'اغلاق',
     are_you_sure_from_delete:'هل انت متأكد من المسح',
     confirm:'نعم متأكد',
+    select_best_choice:'اختر ما يناسبك',
+    back:'الرجوع للخلف',
+    back_behind:'الرجوع للخلف',
   }
 }

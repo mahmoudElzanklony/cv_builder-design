@@ -13,6 +13,9 @@
             <nuxt-link to="/" class="nav-link line-hover">{{ $attrs.words.navbar.home }}</nuxt-link>
           </li>
           <li class="nav-item link mrl-1">
+            <nuxt-link to="/cvs/create-template" class="nav-link line-hover">create template</nuxt-link>
+          </li>
+          <li class="nav-item link mrl-1">
             <nuxt-link to="/about-us" class="nav-link line-hover" href="/about-us">{{ $attrs.words.navbar.about }}</nuxt-link>
           </li>
 

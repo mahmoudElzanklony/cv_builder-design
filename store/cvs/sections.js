@@ -28,9 +28,9 @@ export const mutations = {
     let index = state.selected_sessions_from_popup.findIndex((item)=>{
       return item.id ==  updatedPayload.id;
     });
-    if(index >= 0){
+    /*if(index >= 0){
       updatedPayload['name'] = '';
-    }
+    }*/
     state.selected_sessions_from_popup.push(updatedPayload);
   },
   removeSessionFromSelectedSessions(state,payload){
