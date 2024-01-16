@@ -6,7 +6,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css");
 @import "variables";
 @import "tooplit";
-
+*{
+  word-break: break-all;
+}
 
 // edit bootstrap-----------------------
 .btn-outline-primary{
@@ -38,7 +40,7 @@ nav{
 label{
   font-size: $button;
   font-weight: bold;
-  color: $dark_gray !important;
+  color: $dark_gray ;
 }
 input,textarea{
   font-size: $small !important;
@@ -131,6 +133,22 @@ label{
     bottom: 7px;
   }
 }
+.control_val_btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:white;
+  width: 35px;
+  height: 35px;
+  border-radius: 4px;
+}
+.control_val_btn.plus{
+  background-color: $green;
+}
+.control_val_btn.minus{
+  background-color: $red;
+}
+
 
 .line-hover{
   &:hover{
@@ -1129,6 +1147,11 @@ input[type='date']:before {
 input[type='date']::-webkit-datetime-edit, input[type='date']::-webkit-inner-spin-button, input[type='date']::-webkit-clear-button {
   visibility: hidden;
 }
-
+.dynamic-content{
+  svg{
+    width: 15px;
+    color: initial;
+  }
+}
 
 //---------------------------------- end of input type date

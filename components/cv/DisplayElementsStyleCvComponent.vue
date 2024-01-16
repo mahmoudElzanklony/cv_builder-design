@@ -1,8 +1,8 @@
 <template>
-  <div name="alignment" class="mb-3">
-    <label class="blue">{{ words.cvs.alignment }}</label>
-    <div class="row justify-content-between">
-      <div class="col" v-for="i in words.cvs.alignments">
+  <div name="display" class="mb-3">
+    <label class="blue">{{ words.cvs.display }}</label>
+    <div class="row">
+      <div class="col-4 mb-1" v-for="i in words.cvs.flex_alignment">
         <input class="color_radio box_radio w-100" type="radio"
                :name="input_name"
                @change="$emit('callAlignmentStyle')"
@@ -11,14 +11,12 @@
     </div>
   </div>
 </template>
-
 <script>
   export default {
-    name:'AlignmentStyleCvComponent',
+    name:'DisplayElementsStyleCvComponent',
     props:['words','input_name']
   }
 </script>
-
 
 <style scoped lang="scss">
 

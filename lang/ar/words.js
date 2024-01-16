@@ -84,11 +84,15 @@ export default {
   },
   /*===============================end of auth pages==========================================*/
   cvs:{
+    icons:"الايقونات",
     main_title:"قم بأنشاء سيرة ذاتية خاصة بك",
     make_new_template:"انشاء واحدة جديدة",
     select_from_templates:"أخر من السير الذاتية الحالية",
+    section:"القسم",
     add_section:"اضافه قسم اخر",
     edit_template:"تعديل تنسيقات الواجهه",
+    line_height:"ارتفاع الخط",
+    word_spacing:"المسافه بين كل كلمة",
     select_best_section:"اختر القسم المناسب لك",
     title_section:'العنوان الرئيسي',
     content_section:'المحتوي',
@@ -100,7 +104,11 @@ export default {
     custom_color:'لون معين',
     background_color:'لون الخلفية',
     px:'بكسل',
+    px_used:'الوحدة المستخدمة في القياس هي البكسل',
     alignment:'المحاذاه',
+    display:'طريقة العرض',
+    appearance:'طريقه الظهور',
+    width_per_percentage:'المساحة (%)',
     alignments:[
       {
         name:'يسار',
@@ -113,6 +121,38 @@ export default {
       {
         name:'يمين',
         value:'right'
+      },
+    ],
+    flex_alignment:[
+      {
+        name:'بدايه',
+        value:'start'
+      },
+      {
+        name:'في المنتصف',
+        value:'center'
+      },
+      {
+        name:'نهايه',
+        value:'end'
+      },
+      {
+        name:'مسافات في المنتصف',
+        value:'space-between'
+      },
+      {
+        name:'مسافات من الامام و الخلف',
+        value:'space-around'
+      },
+    ],
+    appearances:[
+      {
+        name:'صف',
+        value:'row'
+      },
+      {
+        name:'عمود',
+        value:'column'
       },
     ],
     margin:'المسافات الخارجيه',
@@ -130,5 +170,7 @@ export default {
     select_best_choice:'اختر ما يناسبك',
     back:'الرجوع للخلف',
     back_behind:'الرجوع للخلف',
+    remove:'الغاء',
+    general:'عام',
   }
 }

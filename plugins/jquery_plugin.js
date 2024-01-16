@@ -73,6 +73,21 @@ $(document).ready(function (){
   });
 
 
+  // increase or decrease value of input using + , -
+  $('#__nuxt').on('click','.control_val_btn i',function (){
+     var input = $(event.target).parent().parent().find('input');
+     if($(event.target).parent().hasClass('plus')){
+       input.val(parseInt(input.val())+5)
+     }else{
+       if($(event.target).parent().hasClass('plus')){
+         input.val(parseInt(input.val())-5)
+       }
+       input.change()
+     }
+  });
+
+
+
   // control toggle up and down arrow
   $('#__nuxt').on('click','.toggle_up_down',function (){
     let parent = $(event.target).parents().eq($(event.target).attr('parents'));
@@ -84,6 +99,46 @@ $(document).ready(function (){
     }else{
       $(this).removeClass('bi-chevron-up').addClass('bi-chevron-down');
     }
+  });
+
+
+  // dont-exceed-width
+  $('#__nuxt').on('change','.dont-exceed-width',function (){
+    var value = event.target.value;
+    if(value > 100){
+      event.target.value = 100;
+      Toast.fire({
+        'icon':'error',
+        title:localStorage.getItem('lang') == 'ar' ?'لا تستطيع ان تتجاوز مساحه ال 100%':'You cant exceed width 100%',
+      })
+    }else if(value < 0){
+      event.target.value = 0;
+      Toast.fire({
+        'icon':'error',
+        title:localStorage.getItem('lang') == 'ar' ?'لا تستطيع ان تقل المساحه عن 0%':'You cant decrease width than 0%',
+      })
+    }
+  });
+  // increase , decrease
+  $('#__nuxt').on('click','.btn-control',function (){
+    var selected = $(this).parent().parent().find('.increaseable');
+    if(selected.val() === ""){
+      selected.val(0)
+    }
+    if(selected.val() < 100 && $(this)[0].className.indexOf('increase') >= 0){
+      if(100 - selected.val() >= 5){
+        selected.val(parseInt(selected.val()) + 5);
+      }else{
+        selected.val(100);
+      }
+    }else if(selected.val() >= 0 && $(this)[0].className.indexOf('decrease') >= 0){
+      if(selected.val() > 5){
+        selected.val(selected.val() - 5);
+      }else{
+        selected.val(0);
+      }
+    }
+
   });
 
 

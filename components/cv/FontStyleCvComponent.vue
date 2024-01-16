@@ -1,7 +1,7 @@
 
 <template>
   <div name="font_style" class="mb-3">
-    <label class="gray">{{ words.cvs.font_style }}</label>
+    <label class="blue">{{ words.cvs.font_style }}</label>
     <div class="row justify-content-between">
       <div class="col-6">
         <div class="position-relative input-icon">

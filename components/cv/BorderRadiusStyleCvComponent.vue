@@ -1,6 +1,6 @@
 <template>
   <div name="border_radius" class="mb-3">
-    <label class="gray">{{ words.cvs.border_radius }}</label>
+    <label class="blue">{{ words.cvs.border_radius }}</label>
     <div class="position-relative input-icon">
       <span><i class="bi bi-caret-down-fill"></i></span>
       <select class="form-control"

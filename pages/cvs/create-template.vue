@@ -31,64 +31,147 @@
                   </div>
                   <span class="gray"><i class="bi bi-chevron-up cursor-pointer toggle_up_down" parents="3" find=".properties-data"></i></span>
                 </div>
-                <div class="properties-data">
+              </div>
+                <div class="properties-data section">
+                  <p class="black mb-2 d-flex align-items-center justify-content-between">
+                    <span class="fw-bold">{{ $parent.$attrs.words.cvs.section }}</span>
+                    <span class="gray"><i class="bi bi-chevron-down cursor-pointer toggle_up_down" parents="2" find=".properties"></i></span>
+                  </p>
+                  <div class="properties hidden">
+                    <AppearanceElementsStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :input_name="'appearance_style_content[general]['+i['id']+']'"
+                      @callAppearanceStyle="applyStyle('.dynamic-content > div',index,'.body',i,-1,'flex_direction_body','flex-direction','general')">
+                    </AppearanceElementsStyleCvComponent>
+
+                    <DisplayElementsStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :input_name="'display_style_content[general]['+i['id']+']'"
+                      @callAlignmentStyle="applyStyle('.dynamic-content > div',index,'.body',i,-1,'justify_content_body','justify-content','general')"
+                    >
+                    </DisplayElementsStyleCvComponent>
+
+                    <WidthElementsStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :data_content="i['attributes']"
+                      :input_name="'width_style_content[general]['+i['id']+']'"
+                      @callWidthStyle="((item)=>{applyStyle('.dynamic-content > div',index,'.body > div',i,item.key ,'width_attribute','width','attribute',item.value > 100 ? 100:item.value)})"
+                    ></WidthElementsStyleCvComponent>
+
+                    <LineHeightStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :input_name="'line_height_header[general]['+i['id']+']'"
+                      @callLineHeightStyle="applyStyle('.dynamic-content > div',index,'p,span,li',i,-1 ,'line_height','line-height','general')"
+                    ></LineHeightStyleCvComponent>
+
+                    <WordSpacingStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :input_name="'word_spacing_header[general]['+i['id']+']'"
+                      @callWordSpacingStyle="applyStyle('.dynamic-content > div',index,'p,span,li',i,-1 ,'word_spacing','word-spacing','general')"
+                    >
+                    </WordSpacingStyleCvComponent>
+
+                    <FontColorCvComponent
+                      :words="$parent.$attrs.words"
+                      :colors="colors"
+                      :font_color_name="'font_color_header[general]['+i['id']+']'"
+                      @callFontColorStyle="applyStyle('.dynamic-content > div',index,'p,span,li',i,-1 ,'font_color_header','color','general')"
+                    ></FontColorCvComponent>
+
+                  </div>
+
+                </div>
+                <div class="properties-data icons">
+                  <p class="black mb-2 d-flex align-items-center justify-content-between">
+                    <span class="fw-bold">{{ $parent.$attrs.words.cvs.icons }}</span>
+                    <span class="gray"><i class="bi bi-chevron-down cursor-pointer toggle_up_down" parents="2" find=".properties"></i></span>
+                  </p>
+                  <div class="properties hidden">
+                    <WidthElementsStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :data_content="[i]"
+                      :hide_name="true"
+                      :input_name="'width_style_content[general]['+i['id']+']'"
+                      @callWidthStyle="((item)=>{applyStyle('.dynamic-content > div',index,'svg',i,item.key ,'width_icon','width','attribute',item.value > 100 ? 100:item.value)})"
+                    ></WidthElementsStyleCvComponent>
+
+                    <FontColorCvComponent
+                      :words="$parent.$attrs.words"
+                      :colors="colors"
+                      :font_color_name="'font_color_header[general]['+i['id']+']'"
+                      @callFontColorStyle="applyStyle('.dynamic-content > div',index,'svg',i,-1 ,'color_icon','color','general')"
+                    ></FontColorCvComponent>
+
+                    <MarginStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :input_name="'margin_header[general]['+i['id']+']'"
+                      @callMarginStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'svg',i,-1 ,'margin_icon','margin-'+direction,'general')}"
+                    ></MarginStyleCvComponent>
+
+                  </div>
+
+                </div>
+
+                <div class="properties-data main-title">
                   <p class="black mb-2 d-flex align-items-center justify-content-between">
                     <span class="fw-bold">{{ $parent.$attrs.words.cvs.title_section }}</span>
                     <span class="gray"><i class="bi bi-chevron-down cursor-pointer toggle_up_down" parents="2" find=".properties"></i></span>
                   </p>
                   <div class="properties hidden">
 
+
                     <FontStyleCvComponent
                       :words="$parent.$attrs.words"
                       :fonts="fonts"
                       :font_style_name="'font_style_header[section]['+i['id']+']'"
-                      @callFontStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0,'font_style_header','font-family','section')"
+                      @callFontStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0,'font_style_header','font-family','header')"
                       :font_size_name="'font_size_header[section]['+i['id']+']'"
-                      @callFontSizeStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0,'font_size_header','font-size','section')"
+                      @callFontSizeStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0,'font_size_header','font-size','header')"
                     ></FontStyleCvComponent>
 
                     <FontColorCvComponent
                       :words="$parent.$attrs.words"
                       :colors="colors"
                       :font_color_name="'font_color_header[section]['+i['id']+']'"
-                      @callFontColorStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'font_color_header','color','section')"
+                      @callFontColorStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'font_color_header','color','header')"
                     ></FontColorCvComponent>
 
                     <BackgroundColorCvComponent
                       :words="$parent.$attrs.words"
                       :colors="colors"
                       :background_color_name="'background_color_header[section]['+i['id']+']'"
-                      @callBackgroundColorStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'background_color_header','background-color','section')"
+                      @callBackgroundColorStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'background_color_header','background-color','header')"
                     ></BackgroundColorCvComponent>
 
                     <AlignmentStyleCvComponent
                       :words="$parent.$attrs.words"
                       :input_name="'alignment_header[section]['+i['id']+']'"
-                      @callAlignmentStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'alignment_header','text-align','section')"
+                      @callAlignmentStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'alignment_header','text-align','header')"
                     ></AlignmentStyleCvComponent>
 
                     <MarginStyleCvComponent
                       :words="$parent.$attrs.words"
                       :input_name="'margin_header[section]['+i['id']+']'"
-                      @callMarginStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'margin_header','margin-'+direction,'section')}"
+                      @callMarginStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'margin_header','margin-'+direction,'header')}"
                     ></MarginStyleCvComponent>
 
                     <PaddingStyleCvComponent
                       :words="$parent.$attrs.words"
                       :input_name="'padding_header[section]['+i['id']+']'"
-                      @callPaddingStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'padding_header','padding-'+direction,'section')}"
+                      @callPaddingStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'padding_header','padding-'+direction,'header')}"
                     ></PaddingStyleCvComponent>
 
                     <BorderRadiusStyleCvComponent
                       :words="$parent.$attrs.words"
                       :input_name="'padding_header[section]['+i['id']+']'"
-                      @ApplyBorderRadiusStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'border_radius','border-radius','section')"
+                      @ApplyBorderRadiusStyle="applyStyle('.dynamic-content > div',index,'.header > p',i,0 ,'border_radius','border-radius','header')"
                     ></BorderRadiusStyleCvComponent>
 
                   </div>
+
                 </div>
-              </div>
-              <div class="content">
+
+                <div class="content">
                 <div class="properties-data">
                   <p class="black mb-0 d-flex align-items-center justify-content-between">
                     <span class="fw-bold">{{ $parent.$attrs.words.cvs.content_section }}</span>
@@ -105,23 +188,23 @@
                           :words="$parent.$attrs.words"
                           :fonts="fonts"
                           :font_style_name="'font_style_attribute[attribute]['+attribute['id']+']'"
-                          @callFontStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *',i,-1,'font_style_attribute','font-family','attribute',attribute)"
+                          @callFontStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *:not(svg)',i,-1,'font_style_attribute','font-family','attribute',attribute)"
                           :font_size_name="'font_size_attribute[attribute]['+attribute['id']+']'"
-                          @callFontSizeStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *',i,-1,'font_size_attribute','font-size','attribute',attribute)"
+                          @callFontSizeStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *:not(svg)',i,-1,'font_size_attribute','font-size','attribute',attribute)"
                         ></FontStyleCvComponent>
 
                         <FontColorCvComponent
                           :words="$parent.$attrs.words"
                           :colors="colors"
                           :font_color_name="'font_color_attribute[attribute]['+attribute['id']+']'"
-                          @callFontColorStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *',i,-1 ,'font_color_attribute','color','attribute',attribute)"
+                          @callFontColorStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *:not(svg)',i,-1 ,'font_color_attribute','color','attribute',attribute)"
                         ></FontColorCvComponent>
 
                         <BackgroundColorCvComponent
                           :words="$parent.$attrs.words"
                           :colors="colors"
                           :background_color_name="'font_color_attribute[attribute]['+attribute['id']+']'"
-                          @callBackgroundColorStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *',i,-1 ,'background_color_header','background-color','attribute',attribute)"
+                          @callBackgroundColorStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *:not(svg)',i,-1 ,'background_color_header','background-color','attribute',attribute)"
                         ></BackgroundColorCvComponent>
 
                         <AlignmentStyleCvComponent
@@ -145,7 +228,7 @@
                         <BorderRadiusStyleCvComponent
                           :words="$parent.$attrs.words"
                           :input_name="'border_radius_attribute[attribute]['+attribute['id']+']'"
-                          @ApplyBorderRadiusStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *',i,-1,'border_radius','border-radius','attribute',attribute)"
+                          @ApplyBorderRadiusStyle="applyStyle('.dynamic-content > div',index,'.body > div:nth-of-type('+(attr_key+1)+') > *:not(svg)',i,-1,'border_radius','border-radius','attribute',attribute)"
                         ></BorderRadiusStyleCvComponent>
                       </div>
                     </div>
@@ -174,7 +257,7 @@
         </div>
         <div class="col-l3-4 col-md-6 col-12"></div>
       </div>
-      <SectionsPopUpComponent :words="$parent.$attrs.words"></SectionsPopUpComponent>
+      <SectionsPopUpComponent :styles="styles" :words="$parent.$attrs.words"></SectionsPopUpComponent>
 
     </div>
   </div>
@@ -193,9 +276,19 @@ import AlignmentStyleCvComponent from "../../components/cv/AlignmentStyleCvCompo
 import MarginStyleCvComponent from "../../components/cv/MarginStyleCvComponent.vue";
 import PaddingStyleCvComponent from "../../components/cv/PaddingStyleCvComponent.vue";
 import BorderRadiusStyleCvComponent from "../../components/cv/BorderRadiusStyleCvComponent.vue";
+import DisplayElementsStyleCvComponent from "../../components/cv/DisplayElementsStyleCvComponent.vue";
+import AppearanceElementsStyleCvComponent from "../../components/cv/AppearenceElementsStyleCvComponent.vue";
+import WidthElementsStyleCvComponent from "../../components/cv/WidthElementsStyleCvComponent.vue";
+import LineHeightStyleCvComponent from "../../components/cv/LineHeightStyleCvComponent.vue";
+import WordSpacingStyleCvComponent from "../../components/cv/WordSpacingStyleCvComponent.vue";
 export default {
   name: "create-template",
   components: {
+    WordSpacingStyleCvComponent,
+    LineHeightStyleCvComponent,
+    WidthElementsStyleCvComponent,
+    AppearanceElementsStyleCvComponent,
+    DisplayElementsStyleCvComponent,
     BorderRadiusStyleCvComponent,
     PaddingStyleCvComponent,
     MarginStyleCvComponent,
@@ -237,9 +330,17 @@ export default {
       'selected_sessions_from_popup':'cvs/sections/getSelectedSessionsFromPopUp',
     })
   },
-  created() {
+  mounted() {
     //this.first_section_action();
-    console.log(this.$auth)
+
+    setTimeout(()=>{
+      console.log(this.selected_sessions_from_popup)
+      for(let item of this.selected_sessions_from_popup){
+        console.log('inside loopppppp')
+        var obj = {id:item.id};
+        this.styles.push(obj)
+      }
+    },2000)
   },
 }
 </script>
@@ -270,6 +371,11 @@ export default {
   padding: 10px;
   min-height: 600px;
   background-color: white;
+  .body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
   p{
     span{
       font-size: $small;

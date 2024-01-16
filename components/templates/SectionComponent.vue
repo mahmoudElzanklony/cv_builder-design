@@ -83,9 +83,10 @@ export default {
     dynamicContentWrite(attribute,normal = true){
       var section = $(event.target).parentsUntil('.section').last().parent().parent()
       if(normal){
+
         var section_index = $(section).index();
         var input_number = $(event.target.parentElement.parentElement).index();
-        var html_content = '<p><span class="gray">'+attribute['before_answer']+'</span>'+' '+'<span class="'+(attribute['before_answer'].length > 0 ? 'fw-bold':'')+'" >'+event.target.value+'</span></p>';
+        var html_content = '<div>'+(attribute['image'] != null && attribute['image']['name'].length > 0 ? attribute['image']['name']:'')+(attribute['before_answer'].length > 0 ? '<p class="mb-0  d-inline-block">'+attribute['before_answer']+'</p><br>':'')+' '+'<span class="'+(attribute['before_answer'].length > 0 ? 'fw-bold':'')+'" >'+event.target.value+'</span></div>';
         this.auto_writing(section_index,input_number,attribute,html_content)
       }
     },
@@ -101,7 +102,7 @@ export default {
       console.log(data);
       console.log(this.data?.attributes[data?.input_number]);
       var attribute = this.data?.attributes[data?.input_number];
-      var html_content = '<p class="'+(attribute['before_answer'].length > 0 ? 'fw-bold gray':'')+'" >'+attribute['before_answer']+'</p><ul>';
+      var html_content = '<p class="mb-0 '+(attribute['before_answer'].length > 0 ? 'fw-bold ':'')+'" >'+attribute['before_answer']+'</p><ul>';
       for(let item of data.data){
         html_content+= '<li>'+item.value+'</li>'
       }

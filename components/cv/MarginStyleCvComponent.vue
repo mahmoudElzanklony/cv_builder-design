@@ -1,19 +1,15 @@
 <template>
   <div name="margin" class="mb-3">
-    <label class="gray">{{ words.cvs.margin }}</label>
+    <label class="blue">{{ words.cvs.margin }}</label>
     <div class="row justify-content-between">
-      <div class="col-6 mb-2" v-for="direction in ['top','bottom','left','right']">
+      <div class="col-3 mb-2" v-for="direction in ['top','bottom','left','right']">
         <label class="gray">{{ words.cvs[direction] }}</label>
-        <div class="position-relative input-icon">
-          <span><i class="bi bi-caret-down-fill"></i></span>
-          <select class="form-control"
-                  :name="input_name+'['+direction+']'"
-                  @change="$emit('callMarginStyle',direction)"
-                  >
-            <option value="">{{ words.general.select_best_choice }}</option>
-            <option value="0%">0%</option>
-            <option v-for="i in 20" :value="(i * 10 / 2)+'%'">{{ i * 10 / 2 }}%</option>
-          </select>
+        <div class="d-flex align-items-center justify-content-between">
+          <span v-if="false" class="control_val_btn plus"><i class="bi bi-plus-lg"></i></span>
+          <input
+            @change="$emit('callMarginStyle',direction)"
+            class="form-control" :name="input_name" type="number" min="0" reset_val="px">
+          <span v-if="false" class="control_val_btn minus"><i class="bi bi-dash"></i></span>
         </div>
       </div>
     </div>

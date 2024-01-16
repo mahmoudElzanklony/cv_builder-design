@@ -1,0 +1,16 @@
+row and column word reverse at design template
+
+percentage (%) use name not label
+
+percentage converted to attributes area percentage (%)
+
+cant enter more than 100% on percentage %
+
+main title replaced 
+
+add section before main title
+
+add enter at textarea inputs reflect to template
+
+icons at template
+

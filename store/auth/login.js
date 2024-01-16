@@ -29,46 +29,33 @@ export const actions = {
     // Clear the redirect path
     this.$auth.$storage.setUniversal('redirect', null)
     // commit('loader/updateLoaderMutation',true,{root:true});
-    try {
-      var dataresponse = await this.$auth.loginWith('local', {
+
+
+      await this.$auth.loginWith('local', {
         data: new FormData(target)
-      })
-      if(dataresponse.data.hasOwnProperty('errors')){
-        return Toast.fire({
+      }).then((e)=>{
+        if(e.data.status === 200 || e.data.hasOwnProperty('id')) {
+           router.push('/');
+        }else{
+          console.log('error');
+          Toast.fire({
+            icon:'error',
+            title:e.data.errors
+          });
+          return false;
+        }
+      }).catch((e)=>{
+        Toast.fire({
           icon:'error',
-          title:dataresponse.data.errors
+          title:e.response.data.errors
         });
-      }
-      if(this.state.auth.user){
-        return window.location = '/';
-      }
-      //window.location = '/';
-      //this.$auth.setUser(response.data.user)
-    }catch {
-      Toast.fire({
-        icon:'error',
-        title:'error in auth process'
-      });
-      await router.push('/auth/login');
-      return false;
-    }
-    /*return this.$axios.post('login',new FormData(target)).then((e)=>{
-      console.log(e.data);
-      formValidation(e.data,target,'/',true);
-      if(e.data.status == 200){
-        window.location = '/';
-      }
-      if(e.data.status == 200){
-        commit('InitializeData',e.data.data);
-        localStorage.setItem('user_info',JSON.stringify(e.data.data));
-        localStorage.setItem('token',e.data.data.token);
-        sessionStorage.setItem('authenticated',true);
-        document.cookie = "token="+e.data.data.token+"; expires=Thu, 01 Jan 3970 00:00:00 UTC; path=/;";
-        document.cookie = "user_info="+JSON.stringify(e.data.data)+"; expires=Thu, 01 Jan 3970 00:00:00 UTC; path=/;";
-      }
-    }).finally(() => {
-      commit('loader/updateLoaderMutation',false,{root:true});
-    });*/
+        return false;
+
+      })
+
+
+
+
   },
   async deleteUserData(){
     console.log('delete user data');

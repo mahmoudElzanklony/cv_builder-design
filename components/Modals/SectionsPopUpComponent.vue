@@ -36,7 +36,7 @@ import {mapActions, mapGetters} from "vuex";
 import ImageComponent from "../ImageComponent";
 export default {
   name: "SectionsPopUpComponent",
-  props:['words'],
+  props:['words','styles'],
   components: {ImageComponent},
   methods:{
     ...mapActions({
@@ -45,6 +45,9 @@ export default {
     selectSection(i){
       this.$store.commit('cvs/sections/pushInfoSelectedSessionsFromPopup',i)
       $('.modal-footer> button').click();
+      var obj = {id:i['id']};
+      this.styles.push(obj)
+      console.log(this.styles);
     }
   },
   computed:{

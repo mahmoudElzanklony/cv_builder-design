@@ -83,11 +83,15 @@ export default {
   },
   /*===============================end of auth pages==========================================*/
   cvs:{
+    icons:"Icons",
     main_title:"Make new personal cv ",
     make_new_template:"Make new template cv",
     select_from_templates:"Select from available templates",
     add_section:"Add section",
+    section:"Section",
     edit_template:"Edit template style",
+    line_height:"Line height",
+    word_spacing:"Word spacing",
     select_best_section:"Select best section",
     title_section:'Main Title',
     content_section:'Content',
@@ -99,7 +103,11 @@ export default {
     custom_color:'Custom',
     background_color:'Background color',
     px:'px',
+    px_used:'The unit used for measurement is pixels',
     alignment:'Alignment',
+    display:'Display',
+    appearance:'Appearence',
+    width_per_percentage:'Percentage (%)',
     alignments:[
       {
         name:'Left',
@@ -112,6 +120,38 @@ export default {
       {
         name:'Right',
         value:'right'
+      },
+    ],
+    flex_alignment:[
+      {
+        name:'start',
+        value:'start'
+      },
+      {
+        name:'center',
+        value:'center'
+      },
+      {
+        name:'end',
+        value:'end'
+      },
+      {
+        name:'space between',
+        value:'space-between'
+      },
+      {
+        name:'space around',
+        value:'space-around'
+      },
+    ],
+    appearances:[
+      {
+        name:'Row',
+        value:'row'
+      },
+      {
+        name:'Column',
+        value:'column'
       },
     ],
     margin:'Margin',
@@ -131,5 +171,8 @@ export default {
     select_best_choice:'Select best choice',
     back:'Back',
     back_behind:'Go to previous page',
+    remove:'Remove',
+    general:'General',
+
   }
 }
