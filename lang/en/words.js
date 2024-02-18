@@ -99,7 +99,8 @@ export default {
     font_size:'Font size',
     select_font_family:'Select font family',
     select_font_size:'Select font size',
-    font_color:'Font color',
+    font_color:'Content color',
+    label_color:'Label color',
     custom_color:'Custom',
     background_color:'Background color',
     px:'px',
@@ -107,7 +108,11 @@ export default {
     alignment:'Alignment',
     display:'Display',
     appearance:'Appearence',
-    width_per_percentage:'Percentage (%)',
+    width_per_percentage:'Width per Percentage (%)',
+    resize:'Resize',
+    reset:'Reset',
+    increase:'Increase',
+    decrease:'Decrease',
     alignments:[
       {
         name:'Left',
@@ -146,12 +151,40 @@ export default {
     ],
     appearances:[
       {
-        name:'Row',
+        name:'Column',
         value:'row'
       },
       {
-        name:'Column',
+        name:'Row',
         value:'column'
+      },
+    ],
+    layout_options:'Layout options',
+    layout_inputs_validation:'please ensure that inputs of layout options are completed',
+    price:'Price',
+    price_profit:'Please note that the service administration fee is',
+    owner:'Cv template owner',
+    layout_inputs:[
+      {
+        name:'Name',
+        input:'name',
+        type:'text',
+        icon:'bi bi-info',
+      },
+      {
+        name:'Category',
+        input:'category_id',
+        type:'selection',
+        icon:'bi bi-info',
+        getterPath:'categories/getData',
+        ActionPath:'categories/allData',
+      },
+      {
+        name:'Visibility',
+        input:'visibility',
+        type:'checkbox',
+        icon:'',
+        note:'Please note that when you activate the visibility, this will make it available to any other user to use the same interface with the data and design you chose.',
       },
     ],
     margin:'Margin',
@@ -160,10 +193,125 @@ export default {
     bottom:'Bottom',
     right:'Right',
     left:'Left',
-    border_radius:'Border radius',
-
-
+    border_radius:'Corner Curve',
+    preview:'Preview',
+    auto_width:'Auto width',
+    background_image:'Background image',
+    backaground:{
+      size_name:'Background size',
+      size_options:[
+        {
+          name:'contain',
+          value:'contain'
+        },
+        {
+          name:'cover',
+          value:'cover'
+        },
+      ],
+      repeat_name:'Background repeat',
+      repeat_options:[
+        {
+          name:'repeat',
+          value:'repeat'
+        },
+        {
+          name:'no repeat',
+          value:'no-repeat'
+        },
+      ],
+      position_name:'Background Position',
+      position_options:[
+        {
+          name:'top',
+          value:'top'
+        },
+        {
+          name:'center',
+          value:'center'
+        },
+        {
+          name:'bottom',
+          value:'bottom'
+        },
+      ],
+    },
+    template_style:'Layout style'
   },
+  templates:{
+    main_title:'Select best design of cv you want',
+    categories:'Categories',
+    free:'Free',
+    paid:'Paid',
+    different_design:'Different design',
+    box:{
+      price:'Price',
+      name:'Name',
+      date:'Published Date',
+      sections:'Numbers of sections used',
+      usage:'Number of clients use this template',
+      user:'Client',
+      section:'Section',
+      use_this_template:'Use this template',
+      edit_my_template:'Edit my template',
+
+    }
+  },
+  filters:{
+    min_input:'Value can\'t be less than ',
+    max_input:'Value can\'t be more than ',
+  },
+  checkout:{
+    important_text:'Please note that after the purchase you will be able to use this design and modify it as you wish, with the possibility of printing as well' ,
+    wanted_money:'The amount required to be paid',
+    card_visa_number:'Card numbers',
+    csv_number:'CSV number',
+    placeholder:'Card owner',
+    expire_date:'Card expiration date',
+    complete_payment:'complete payment',
+  },
+  profile:{
+    page_name:'Edit my info',
+    upload_personal_image:'upload personal photo',
+    personal_info:'Personal info',
+    report_about_buying:'Report about my orders',
+    charge_wallet:'Wallet charge',
+    tickets:'Ticke',
+    columns:[
+      {
+        name:'username',
+        value:'Username',
+        type:'text',
+        icon:'bi bi-person'
+      },
+      {
+        name:'email',
+        value:'Email',
+        type:'email',
+        icon:'bi bi-envelope'
+      },
+      {
+        name:'password',
+        value:'Password',
+        type:'password',
+        icon:'bi bi-eye-slash',
+        placeholder:'Leave password in case you dont to change it',
+      },
+      {
+        name:'phone',
+        value:'Phone',
+        type:'number',
+        icon:'bi bi-phone'
+      },
+      {
+        name:'country_id',
+        value:'Country',
+        type:'select',
+        icon:'bi bi-arrow-down'
+      },
+    ],
+  },
+
   general:{
     close:'Close',
     are_you_sure_from_delete:'Are you sure from delete process',
@@ -173,6 +321,9 @@ export default {
     back_behind:'Go to previous page',
     remove:'Remove',
     general:'General',
+    save:'Save',
+    search_submit:'Search',
+    search:'Search by name about what you want',
 
   }
 }

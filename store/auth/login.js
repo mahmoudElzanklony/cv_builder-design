@@ -57,6 +57,7 @@ export const actions = {
 
 
   },
+
   async deleteUserData(){
     console.log('delete user data');
     localStorage.removeItem('user_info');

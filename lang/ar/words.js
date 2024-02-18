@@ -100,7 +100,8 @@ export default {
     font_size:'حجم الخط',
     select_font_family:'اختر نوع الخط',
     select_font_size:'اختر حجم الخط',
-    font_color:'لون الخط',
+    font_color:'لون المحتوي',
+    label_color:'لون التسمية',
     custom_color:'لون معين',
     background_color:'لون الخلفية',
     px:'بكسل',
@@ -109,6 +110,10 @@ export default {
     display:'طريقة العرض',
     appearance:'طريقه الظهور',
     width_per_percentage:'المساحة (%)',
+    resize:'تغيير الحجم',
+    reset:'اعادة ضبط',
+    increase:'زيادة',
+    decrease:'نقصان',
     alignments:[
       {
         name:'يسار',
@@ -147,11 +152,11 @@ export default {
     ],
     appearances:[
       {
-        name:'صف',
+        name:'عمود',
         value:'row'
       },
       {
-        name:'عمود',
+        name:'صف',
         value:'column'
       },
     ],
@@ -162,7 +167,159 @@ export default {
     right:'يمين',
     left:'يسار',
     border_radius:'الانحناءات',
+    layout_options:'خصائص الواجهة',
+    layout_inputs_validation:'يرجي مراجعه خصائص الواجهه و التأكد من اكمال جميع البيانات',
+    price:'السعر',
+    price_profit:'يرجي العلم انه سيتم خصم نسبه ربح الموقع و تقدر ',
+    owner:'مالك التصميم',
+    layout_inputs:[
+      {
+        name:'الاسم',
+        input:'name',
+        type:'text',
+        icon:'bi bi-info',
+      },
+      {
+        name:'القسم التابع له',
+        input:'category_id',
+        type:'selection',
+        icon:'bi bi-arrow-down',
+        getterPath:'categories/getData',
+        ActionPath:'categories/allData',
+      },
+      {
+        name:'الرؤية',
+        input:'visibility',
+        type:'checkbox',
+        icon:'',
+        note:'يرجي العلم عند تفعيل الرؤيه ف ان هذا سيجعلها متاحه لاي مستخدم اخر لاستخدام نفس الواجهه بالبيانات و التصميم الذي اخترته',
+      },
+    ],
+    auto_width:'الحجم الملائم',
+    preview:'معاينة',
+    template_style:'تصميم الواجهه',
+    background_image:'صورة الخلفية',
+    backaground:{
+      size_name:'حجم الخلفية',
+      size_options:[
+        {
+          name:'احتواء',
+          value:'contain'
+        },
+        {
+          name:'ملئ الشاشة',
+          value:'cover'
+        },
+      ],
+      repeat_name:'تكرار الصورة',
+      repeat_options:[
+        {
+          name:'تكرار',
+          value:'repeat'
+        },
+        {
+          name:'عدم التكرار',
+          value:'no-repeat'
+        },
+      ],
+      position_name:'موقع الخلفية',
+      position_options:[
+        {
+          name:'في الاعلي',
+          value:'top'
+        },
+        {
+          name:'في المنتصف',
+          value:'center'
+        },
+        {
+          name:'في الاسفل',
+          value:'bottom'
+        },
+      ],
+    }
   },
+  templates:{
+    main_title:'اخر التصميم المناسب لك',
+    categories:'الاقسام',
+    free:'مجاني',
+    paid:'مدفوع',
+    box:{
+      price:'السعر',
+      name:'الاسم',
+      date:'تاريخ النشر',
+      sections:'عدد السكاشن المستخدمه',
+      usage:'عدد الاشخاص الذين استخدمو هذا التصميم',
+      user:'عميل',
+      section:'عنصر',
+      use_this_template:'استخدام هذا التصميم',
+      edit_my_template:'تعديل التصميم الخاص بي',
+      different_design:'تصميم مختلف',
+    }
+  },
+  filters:{
+    min_input:'لا يمكن ان تقل القيمة عن ',
+    max_input:'لا يمكن ان تزيد القيمة عن ',
+  },
+  checkout:{
+    important_text:'يرجي العلم ان بعد عملية الشراء ستكون قادر علي استخدام هذا التصميم و التعديل فيه كيفما شئت مع امكانية الطباعة ايضا' ,
+    wanted_money:'المبلغ المطلوب  دفعه',
+    visa:'فيزا / ماستر كارد',
+    mobile:'محفظه الكترونية',
+    bank:'تحويل بنكي',
+    wallet:'الرصيد الحالي',
+    card_visa_number:'ارقام الفيزا',
+    csv_number:'csv رقم',
+    placeholder:'مالك البطاقة',
+    expire_date:'تاريخ انتهاء البطاقة',
+
+    upload_receipt_image:'ارفع صورة التحويل',
+    take_from_wallet:'سحب من المحفظه',
+    current_balance:'الرصيد الحالي',
+    complete_payment:'اتمام عملية الدفع',
+  },
+  profile:{
+    page_name:'تعديل بياناتي الشخصية',
+    upload_personal_image:'ارفع صورة شخصية',
+    personal_info:'بياناتي الشخصية',
+    report_about_buying:'تقرير عن مدفوعاتي',
+    charge_wallet:'شحن المحفظه',
+    tickets:'تزاكر الدعم الفني',
+    columns:[
+      {
+        name:'username',
+        value:'اسم المستخدم',
+        type:'text',
+        icon:'bi bi-person'
+      },
+      {
+        name:'email',
+        value:'البريد الالكتروني',
+        type:'email',
+        icon:'bi bi-envelope'
+      },
+      {
+        name:'password',
+        value:'كلمة السر',
+        type:'password',
+        icon:'bi bi-eye-slash',
+        placeholder:'اترك كلمه السر فارغه في حاله عدم تغييرها',
+      },
+      {
+        name:'phone',
+        value:'رقم الهاتف',
+        type:'number',
+        icon:'bi bi-phone'
+      },
+      {
+        name:'country_id',
+        value:'الدولة',
+        type:'select',
+        icon:'bi bi-arrow-down'
+      },
+    ],
+  },
+
   general:{
     close:'اغلاق',
     are_you_sure_from_delete:'هل انت متأكد من المسح',
@@ -172,5 +329,9 @@ export default {
     back_behind:'الرجوع للخلف',
     remove:'الغاء',
     general:'عام',
-  }
+    save:'حفظ',
+    search_submit:'بحث',
+    search:'ابحث بالاسم عن اي شئ تريدة',
+
+  },
 }

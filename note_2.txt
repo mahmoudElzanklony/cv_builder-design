@@ -1,0 +1,38 @@
+cv layout visiblity when is active ask him free or with fee
+(box from 1 to 10 )
+max 10$
+and 20% will be deducted for skillar
+--and percentage dynamic changed by admin
+
+under visiblity owner of layout
+
+________
+owner of layout only one can sell it 
+and who people who will buy visiblity will be private always
+
+color of section should be applied to all elemenets
+
+
+color should be divided to two items ( label , content )
+
+
+____________________________
+cv flow take columns icons 
+first icon will represet row with change color of button
+and third icon will represet column with change color inside
+
+
+color of icon not affected
+
+________________
+width per percentage in icon replaced to resize ( + , - ) 
+and small button called reset to reset size of normal icon
+
+background for main title take full width in background
+
+border radius changed to corner curve
++ , reset , -
+
+
+think of pages and background color and every page contain 
+of sections 

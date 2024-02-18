@@ -1,5 +1,5 @@
 <template>
-  <div name="width" class="mb-3">
+  <div name="line-height" class="mb-3">
     <label class="blue">{{ words.cvs.line_height }}</label>
     <div class="row justify-content-between align-item-center">
       <div class="col-12 mb-2" >

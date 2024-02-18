@@ -114,6 +114,14 @@ input[type='date']:before{
 
 
 // public class-----------------------
+.radio_btn{
+  &::before{
+    right: 5px;
+  }
+  &:checked::before{
+    right:30px;
+  }
+}
 .navbar-nav{
   >li:not(:last-of-type){
     margin-left: 15px;

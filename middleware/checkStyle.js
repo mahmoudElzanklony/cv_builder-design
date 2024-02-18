@@ -6,15 +6,15 @@ export default function ({ app , req}) {
   const language = process.client == true ?
     localStorage.getItem('lang'):cookie.parse(req.headers.cookie || '').lang;
 
-  if (language === 'en') {
+  if (language === 'ar') {
     app.head.link.push({
       rel: 'stylesheet',
-      href: '/css/english.css' // Replace with the actual path to your 'en.css' file
+      href: '/css/arabic.css' // Replace with the actual path to your 'en.css' file
     });
   } else {
     app.head.link.push({
       rel: 'stylesheet',
-      href: '/css/arabic.css' // Replace with the actual path to your 'ar.css' file
+      href: '/css/english.css' // Replace with the actual path to your 'ar.css' file
     });
   }
 }

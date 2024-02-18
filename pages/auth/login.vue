@@ -74,5 +74,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/assets/scss/variables";
-
+/*.auth-content{
+  html:lang(ar) &{
+    background-color: red;
+  }
+}*/
 </style>

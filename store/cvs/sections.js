@@ -21,6 +21,9 @@ export const mutations = {
   setFirstSection(state,payload){
     state.first_section = payload;
   },
+  emptySessionsFromPopUp(state){
+    state.selected_sessions_from_popup = []
+  },
   pushInfoSelectedSessionsFromPopup(state,payload){
      // check if section is added before or not
     let updatedPayload = { ...payload };

@@ -4,7 +4,7 @@
     <div class="row justify-content-between">
       <div class="col-3 mb-2" v-for="direction in ['top','bottom','left','right']">
         <label class="gray">{{ words.cvs[direction] }}</label>
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between" :name="'margin-'+direction">
           <span v-if="false" class="control_val_btn plus"><i class="bi bi-plus-lg"></i></span>
           <input
             @change="$emit('callMarginStyle',direction)"

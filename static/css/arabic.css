@@ -79,6 +79,13 @@ input[type=date]:before {
   padding-left: 15px;
 }
 
+.radio_btn::before {
+  right: 5px;
+}
+.radio_btn:checked::before {
+  right: 30px;
+}
+
 .navbar-nav > li:not(:last-of-type) {
   margin-left: 15px;
 }

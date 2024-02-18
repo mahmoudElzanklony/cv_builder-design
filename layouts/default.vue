@@ -12,14 +12,11 @@
 
 <script>
 
-import WordsLang from "../mixins/WordsLang";
 import NavbarComponent from "../components/NavbarComponent";
 import FooterComponent from "../components/FooterComponent";
-import text_editor from "../mixins/text_editor";
 import {mapGetters,mapActions} from 'vuex';
 export default {
   name: "default",
-  mixins:[text_editor,WordsLang],
   computed:{
     ...mapGetters({
       'loader_status':'loader/getLoaderGetter',
@@ -41,4 +38,18 @@ export default {
   components: {NavbarComponent,FooterComponent}
 }
 </script>
+
+<style>
+@media print {
+  body{
+    background-image:unset;
+  }
+  .current_page{
+    margin-top: 0px !important;
+  }
+  .navbar,footer,.up{
+    display: none;
+  }
+}
+</style>
 

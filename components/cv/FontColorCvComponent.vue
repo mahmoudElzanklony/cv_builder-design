@@ -1,12 +1,13 @@
 <template>
-  <div name="font_color" class="mb-3">
+  <div :name="label?? 'color'" class="mb-3">
 
     <div class="row justify-content-between">
       <div class="col-9">
-        <label class="blue">{{ words.cvs.font_color }}</label>
+        <label class="blue">{{ words.cvs[label?.replace('-','_')] ?? words.cvs.font_color }}</label>
         <div class="d-flex justify-content-between flex-wrap" >
           <!--                          @change="removeActiveInput('.custom_color','custom')"-->
           <input v-for="(color,key) in colors" :key="key"
+                 property="color"
                  :name="font_color_name"
                  @change="$emit('callFontColorStyle')"
                  class="color_radio" type="radio"
@@ -29,7 +30,7 @@
 <script>
 export default {
   name:'FontColorCvComponent',
-  props:['words','colors','font_color_name']
+  props:['words','colors','font_color_name','label']
 }
 
 </script>

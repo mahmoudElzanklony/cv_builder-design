@@ -23,6 +23,13 @@ h1 {
   right: 10px;
 }
 
+.radio_btn::before {
+  left: 5px;
+}
+.radio_btn:checked::before {
+  left: 30px;
+}
+
 .line-hover::before {
   left: 0px;
 }

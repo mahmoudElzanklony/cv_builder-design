@@ -1,5 +1,5 @@
 <template>
-  <div name="alignment" class="mb-3">
+  <div name="text-align" class="mb-3">
     <label class="blue">{{ words.cvs.alignment }}</label>
     <div class="row justify-content-between">
       <div class="col" v-for="i in words.cvs.alignments">

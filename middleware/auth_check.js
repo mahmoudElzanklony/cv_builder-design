@@ -1,7 +1,13 @@
 import cookie from "cookie";
 
 export default function ({ store, redirect, route , req , $auth}) {
+  var auth = ['login','register','forget'];
+  if($auth.loggedIn != true){
+    if(!(route.path.indexOf('login') >= 0 || route.path.indexOf('register') >= 0)){
+      return redirect('/auth/login')
+    }
 
+  }
 
   if(route.path.indexOf('dashboard') >= 0){
     if($auth.loggedIn != true){

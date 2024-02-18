@@ -1,9 +1,9 @@
 
 <template>
-  <div name="font_style" class="mb-3">
+  <div  class="mb-3">
     <label class="blue">{{ words.cvs.font_style }}</label>
     <div class="row justify-content-between">
-      <div class="col-6">
+      <div class="col-6" name="font-style">
         <div class="position-relative input-icon">
           <span><i class="bi bi-caret-down-fill"></i></span>
           <select class="form-control"
@@ -15,7 +15,7 @@
           </select>
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-6" name="font-family">
         <div class="position-relative input-icon">
           <span><i class="bi bi-caret-down-fill"></i></span>
           <select class="form-control"

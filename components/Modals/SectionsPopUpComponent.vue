@@ -10,10 +10,13 @@
           </div>
           <div class="modal-body">
             <div class="row">
-              <div class="col-lg-3 col-md-4 col-sm-6 col-12" v-for="(i,index) in sections" :key="index">
-                <div class="box d-flex align-items-center justify-content-center flex-wrap" @click="selectSection(i)">
-                   <image-component v-if="i['image'] != null" :src="i['image']['name']"></image-component>
-                   <p class="text-center w-100 fw-bold">{{ i['name'] }}</p>
+              <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-2" v-for="(i,index) in sections" :key="index">
+                <div class="box" @click="selectSection(i)">
+                   <div class="d-flex align-items-center mb-1">
+                     <image-component class="d-inline-block position-relative top-3" v-if="i['image'] != null" :src="i['image']['name']"></image-component>
+                     <span class="mx-2 text-center fw-bold">{{ i['name'] }}</span>
+                   </div>
+                   <p>{{ i['info'] }}</p>
                 </div>
               </div>
             </div>
@@ -47,7 +50,6 @@ export default {
       $('.modal-footer> button').click();
       var obj = {id:i['id']};
       this.styles.push(obj)
-      console.log(this.styles);
     }
   },
   computed:{
@@ -65,13 +67,15 @@ export default {
 <style lang="scss" scoped>
 @import "~style/variables";
 .box{
-  background-color: $white_sky;
+  background-color: #eeeeee5c;
   border: 1px solid #ddd;
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
+  height: 140px;
   img{
-    height:90px;
+    height:30px;
+    margin: unset;
   }
 }
 </style>

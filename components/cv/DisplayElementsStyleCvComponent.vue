@@ -1,5 +1,5 @@
 <template>
-  <div name="display" class="mb-3">
+  <div name="justify-content" class="mb-3">
     <label class="blue">{{ words.cvs.display }}</label>
     <div class="row">
       <div class="col-4 mb-1" v-for="i in words.cvs.flex_alignment">

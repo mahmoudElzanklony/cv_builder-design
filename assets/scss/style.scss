@@ -7,7 +7,7 @@
 @import "variables";
 @import "tooplit";
 *{
-  word-break: break-all;
+  word-break: auto-phrase;
 }
 
 // edit bootstrap-----------------------
@@ -130,7 +130,7 @@ label{
 .input-icon.flex-wrap{
   >span:first-of-type{
     top: unset;
-    bottom: 7px;
+    bottom: 4px;
   }
 }
 .control_val_btn{
@@ -451,12 +451,40 @@ label{
   }
 
 }
+.radio_btn{
+  position: relative;
+  width: 50px;
+  height: 25px;
+  border-radius: 20px;
+  appearance: none;
+  background-color: #dddddd;
+  cursor: pointer;
+  &::before{
+    content: '';
+    position: absolute;
+    top:4px;
+    width: 15px;
+    height: 15px;
+    background-color: $gray;
+    border-radius: 50%;
+    transition: 0.5s all;
+  }
+  &:checked{
+    background-color: $green;
+  }
+  &:checked::before{
+    background-color: white;
+  }
+}
 .color_radio{
   position: relative;
   width: 40px;
   height: 40px;
   border-radius: 3px;
   appearance: none;
+  &.checked{
+    border: 2px dashed $blue;
+  }
   &:checked{
     border: 2px dashed $blue;
   }
@@ -465,6 +493,7 @@ label{
   @extend .color_radio;
   height: 30px;
   border: 1px solid #dddddd;
+  z-index: 999;
   &::after{
     content: attr(data-name);
     display: flex;
@@ -728,6 +757,34 @@ ul.search-drop-down{
 // end of notifications -------------------------------------
 
 // end of create cv template --------------------------
+.simulation{
+  counter-reset: section;
+  p{
+    margin-bottom: 0px;
+  }
+  svg{
+    width: 15px;
+    color: initial;
+  }
+
+  .page{
+     margin-bottom: 15px;
+     border: 1px solid #dddddd;
+     background-color: white;
+
+     height: 940px;
+     .body{
+       >p{
+         width: 100%;
+       }
+       display: flex;
+       flex-wrap: wrap;
+       flex-direction: row;
+     }
+    position: relative;
+
+  }
+}
 .dynamic-content{
   >div{
     margin-bottom: 5px;
@@ -740,100 +797,18 @@ ul.search-drop-down{
 
 
 // start of profile page ----------------------------------
+// start of profile page ----------------------------------
 .profile{
+   overflow: hidden;
   .inner_profile{
-    background-color: $main_color_more_white_bk;
-    border-radius: 8px;
-    border: 1px solid #dddddd;
-
-    .quick_statistics{
-      .statistics{
-        border: 1px solid #dddddd;
-        padding: 10px;
-        border-radius: 5px;
-        div{
-          p{
-            text-align: center;
-            margin-bottom: 5px;
-          }
-        }
-        img{
-          height: 70px;
-        }
-      }
-    }
-    .video{
-      background-image: url("/images/video.jpg");
-      height: 300px;
-      background-size: cover;
-      position: relative;
-      border-radius: 8px;
-      div{
-        position: relative;
-        height: 100%;
-        background-color: #0a58ca70;
-        border-radius: 8px;
-        span{
-          color:white;
-          cursor: pointer;
-        }
-        >ul:first-of-type{
-          position: absolute;
-          top: 10px;
-        }
-        >span:last-of-type{
-          font-size: 60px;
-        }
-      }
-    }
-  }
-  .nearest_jobs{
-    border: 1px solid #dddddd;
-    border-radius: 8px;
-    padding: 10px;
-  }
-}
-.personal_info_profile{
-  .info{
-    .bk{
-      background-image: url("/images/users/bk.jpg");
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-      position: relative;
-      margin-bottom: 60px;
-      div{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: absolute;
-        width: 95%;
-        bottom: -35px;
-        margin-left: 2.5%;
-        margin-right: 2.5%;
-        img{
-          width: 90px;
-          height: 90px;
-          border:1px solid #dddddd;
-          border-radius: 50%;
-        }
-        button{
-          position: relative;
-          top: 35px;
-        }
-      }
-    }
-    .row{
-      div{
-        p{
-          span:first-of-type{
-            color:$gray;
-            position: relative;
-            top:2px;
-          }
-        }
+    background-color: white;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    ul{
+      li{
+        font-size: $normal;
       }
     }
   }
@@ -841,24 +816,6 @@ ul.search-drop-down{
 
 
 
-@media (min-width: 767px) {
-  .profile{
-    .inner_profile{
-      .info{
-        .row{
-          div{
-            p.end{
-              justify-content: flex-start;
-              flex-direction: row-reverse;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-// end of profile page ----------------------------------
 // start of auth page ----------------------------------
 
 .auth{
@@ -1152,6 +1109,9 @@ input[type='date']::-webkit-datetime-edit, input[type='date']::-webkit-inner-spi
     width: 15px;
     color: initial;
   }
+}
+.tooltip .tooltip-inner{
+  word-break: break-word;
 }
 
 //---------------------------------- end of input type date

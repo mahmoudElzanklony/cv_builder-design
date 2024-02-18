@@ -7,6 +7,31 @@ window.$ = $;
 $(document).ready(function (){
 
 
+  // show password
+  $('#__nuxt').on('click','.showPass',function (){
+    if($(this).find('i').hasClass('bi-eye-slash')){
+      $(this).find('i').removeClass('bi-eye-slash').addClass('bi-eye');
+      $(this).prev().attr('type','text');
+    }else{
+      $(this).find('i').removeClass('bi-eye').addClass('bi-eye-slash');
+      $(this).prev().attr('type','password');
+    }
+  });
+
+
+  // eye password
+  $('#__nuxt').on('click','.eye-password',function (){
+    if($(this)[0].className === 'bi bi-eye eye-password') {
+      $(this)[0].className = 'bi bi-eye-slash';
+      $(this).parent().parent().find('input').attr('type','password')
+    }else{
+      $(this)[0].className = 'bi bi-eye';
+      $(this).parent().parent().find('input').attr('type','text')
+
+    }
+    $(this)[0].classList.add('eye-password')
+  });
+
   // click on dots box
   $('#__nuxt').on('click','.fixed-dots ul li',function (){
     $(this).parent().find('.active').removeClass();
@@ -91,6 +116,7 @@ $(document).ready(function (){
   // control toggle up and down arrow
   $('#__nuxt').on('click','.toggle_up_down',function (){
     let parent = $(event.target).parents().eq($(event.target).attr('parents'));
+    console.log(parent);
     if(event.target.hasAttribute('find')){
        parent.find($(event.target).attr('find')).slideToggle()
     }
@@ -100,6 +126,45 @@ $(document).ready(function (){
       $(this).removeClass('bi-chevron-up').addClass('bi-chevron-down');
     }
   });
+
+
+  // visa map
+  $('#__nuxt').on('keyup','.map_visa_data',function (){
+    var value = event.target.value;
+    var visa_number =  document.querySelector('.visa-monitor .visa-monitor-body div p');
+    if(value.length > 0) {
+      var result = value.match(/.{1,4}/g);
+      console.log(result);
+      for(var x = result.length; x < 4; x++){
+        result.push('0000');
+      }
+    }else{
+      var result = ['0000','0000','0000','0000'];
+    }
+    console.log(result);
+    var output = '';
+    for(let i of result){
+      for(let ch = i.length; ch < 4; ch++){
+        i+='0';
+      }
+      if(value.length <= 14){
+        output += '<span class="big mrl-1 white transition-1">'+i+'</span>';
+      }
+    }
+    $('.visa-monitor .visa-monitor-body p').html(output);
+  });
+
+
+  // textarea enter
+  $('#__nuxt').on('keydown','textarea',function (){
+
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent the default behavior
+      event.target.value += '\n'; // Add a line break to the textarea's value
+      event.target.style.height = (event.target.scrollHeight) + 'px'; // Adjust the height
+    }
+  })
+
 
 
   // dont-exceed-width
@@ -152,6 +217,13 @@ $(document).ready(function (){
       }
   });
 
+
+  // control of check radio
+  $('#__nuxt').on('click','input[type="radio"]',function (){
+    $(this).parent().siblings().find('input').removeClass('checked')
+    $(this).siblings().removeClass('checked')
+  });
+
   $('#__nuxt').on('click','.modal ul.list-types li',function (){
     console.log($(this));
     console.log($(this).index());
@@ -186,6 +258,24 @@ $(document).ready(function (){
     }else{
       $(event.target).addClass('active').siblings().removeClass('active')
     }
+  });
+
+
+  // cv template hover for image cv
+  $('#__nuxt').on('mouseenter', '.cv-image img', function(event) {
+    $(this).animate({
+      top: 300 - event.target.clientHeight
+    },  {
+      duration: 1000,
+      easing: "linear"
+    });
+  }).on('mouseleave', '.cv-image img', function() {
+    $(this).animate({
+      top: 0
+    },  {
+      duration: 500,
+      easing: "linear"
+    });
   });
 
 

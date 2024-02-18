@@ -23,9 +23,11 @@ export default {
     ],
     script:[
       {src:'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.min.js'},
+      {src:'https://html2canvas.hertzen.com/dist/html2canvas.min.js'},
      // {src:'https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js'},
      // {src:'https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.41.0/apexcharts.min.js'},
-      {src:'https://www.google.com/recaptcha/api.js'},
+      {src:'https://www.google.com/recaptcha/api.js', async: true, defer: true,},
+
     ],
   },
 
@@ -50,6 +52,8 @@ export default {
    // {src:'~/plugins/text_editor',mode:'client'},
     {src:'~/plugins/tooltip_plugin',mode:'client'},
     {src:'~/plugins/axios'},
+    {src:'~/plugins/route'},
+
     {src:'~/plugins/loader',mode:'client'},
     {src:'~/plugins/AutoCompleteTags',mode:'client'},
   ],

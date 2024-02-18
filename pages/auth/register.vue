@@ -1,6 +1,6 @@
 <template>
   <section class="auth current_page">
-    <div class="auth-content">
+    <div class="auth-content" v-if="Object.keys($parent.$attrs).length > 0  &&  Object.keys($parent.$attrs.words).length > 0">
       <div class="container-fluid">
         <div class="row h-100">
 
@@ -10,7 +10,7 @@
                     method="post"
                     @submit.prevent="register">
                 <div class="social_media_apps_auth">
-                  <p class="text-center mb-2 mt-3">{{ words.register_with }}</p>
+                  <p class="text-center mb-2 mt-3">{{ $parent.$attrs.words.register.register_with }}</p>
                   <div class="text-center mb-2">
                     <a href="#" class="facebook mrl-1">
                       <span><i class="bi bi-facebook"></i></span>
@@ -21,60 +21,61 @@
                   </div>
                   <p>
                     <span></span>
-                    <span>{{ words.or }}</span>
+                    <span>{{ $parent.$attrs.words.register.or }}</span>
                     <span></span>
                   </p>
                 </div>
                 <div class="form-group mb-2 input-icon flex-wrap">
-                  <label>{{ words.username }}</label>
+                  <label>{{ $parent.$attrs.words.register.username }}</label>
                   <input class="form-control" name="username" >
                   <span><i class="bi bi-person"></i></span>
+                  <p class="alert alert-danger"></p>
                 </div>
                 <div class="form-group mb-2 input-icon flex-wrap">
-                  <label>{{ words.email }}</label>
+                  <label>{{ $parent.$attrs.words.register.email }}</label>
                   <input class="form-control" name="email" >
                   <span><i class="bi bi-envelope"></i></span>
+                  <p class="alert alert-danger"></p>
                 </div>
                 <div class="form-group mb-3 input-icon flex-wrap">
-                  <label>{{ words.password }}</label>
+                  <label>{{ $parent.$attrs.words.register.password }}</label>
                   <input class="form-control" name="password" type="password" >
-                  <span><i class="bi bi-key"></i></span>
+                  <p class="alert alert-danger"></p>
+                  <span><i class="bi bi-eye-slash eye-password"></i></span>
                 </div>
                 <div class="form-group mb-3 input-icon flex-wrap">
-                  <label>{{ words.password_confirmation }}</label>
-                  <input class="form-control" name="password_confirmation" type="password" >
-                  <span><i class="bi bi-key"></i></span>
-                </div>
-                <div class="form-group mb-3 input-icon flex-wrap">
-                  <label>{{ words.phone }}</label>
+                  <label>{{ $parent.$attrs.words.register.phone }}</label>
                   <input class="form-control" name="phone" type="number" >
+                  <p class="alert alert-danger"></p>
                   <span><i class="bi bi-phone"></i></span>
                 </div>
                 <div class="form-group mb-3 input-icon flex-wrap">
-                  <label>{{ words.country }}</label>
+                  <label>{{ $parent.$attrs.words.register.country }}</label>
                   <select class="form-control" name="country_id"
                           required>
-                    <option value="">{{ words.select_best_choice }}</option>
+                    <option value="">{{ $parent.$attrs.words.register.select_best_choice }}</option>
                     <option  v-for="(i,index) in getCountriesGetter" :key="index" :value="i['id']">{{ i['name'] }}</option>
                   </select>
+                  <p class="alert alert-danger"></p>
                   <span><i class="bi bi-arrow-down-short"></i></span>
                 </div>
-                <div class="form-group mb-3 input-icon flex-wrap">
-                  <label>{{ words.user_type }}</label>
+                <div class="form-group mb-3 input-icon flex-wrap" v-if="false">
+                  <label>{{ $parent.$attrs.words.register.user_type }}</label>
                   <select class="form-control" name="type" required>
-                    <option value="">{{ words.select_best_choice }}</option>
-                    <option value="client">{{ words.client }}</option>
-                    <option value="company">{{ words.company }}</option>
+                    <option value="">{{ $parent.$attrs.words.register.select_best_choice }}</option>
+                    <option value="client">{{ $parent.$attrs.words.register.client }}</option>
+                    <option value="company">{{ $parent.$attrs.words.register.company }}</option>
                   </select>
+                  <p class="alert alert-danger"></p>
                   <span><i class="bi bi-arrow-down-short"></i></span>
                 </div>
                 <div class="form-group mb-3 input-icon flex-wrap">
                   <input class="mrl-half" type="checkbox">
                   <p class="mb-0">
-                    <span>{{ words.agree_conditions }}</span>
-                    <nuxt-link to="#">{{ words.privacy_policy }}</nuxt-link>
+                    <span>{{ $parent.$attrs.words.register.agree_conditions }}</span>
+                    <nuxt-link to="#">{{ $parent.$attrs.words.register.privacy_policy }}</nuxt-link>
                     <span>&</span>
-                    <nuxt-link to="#">{{ words.terms_of_conditions }}</nuxt-link>
+                    <nuxt-link to="#">{{ $parent.$attrs.words.register.terms_of_conditions }}</nuxt-link>
                   </p>
                 </div>
                 <div class="g-recaptcha mb-2"
@@ -85,13 +86,13 @@
                   <input class="form-control btn btn-primary"
                          disabled
                          type="submit"
-                         :value="words.register">
+                         :value="$parent.$attrs.words.register.register">
                 </div>
                 <p v-if="message">{{ message }}</p>
 
                 <p class="mb-2">
-                  <span>{{ words.you_have_already_account }}</span>
-                  <a href="/auth/login">{{ words.login }}</a>
+                  <span>{{ $parent.$attrs.words.register.you_have_already_account }}</span>
+                  <a href="/auth/login">{{ $parent.$attrs.words.register.login }}</a>
                 </p>
               </form>
             </div>
@@ -100,8 +101,8 @@
             <div class="info text-center-mobile flex align-items-center justify-content-between">
               <img src="/images/auth/bk.png">
               <div class="text-center">
-                <p class="mb-2 mt-3 white">{{ words.welcome_friend }}</p>
-                <p class="mb-0 white">{{ words.couple_clicks }}</p>
+                <p class="mb-2 mt-3 white">{{ $parent.$attrs.words.register.welcome_friend }}</p>
+                <p class="mb-0 white">{{ $parent.$attrs.words.register.couple_clicks }}</p>
               </div>
             </div>
           </div>
@@ -116,11 +117,9 @@
 </script>
 
 <script>
-import WordsLang from "../../mixins/WordsLang";
 import {mapGetters,mapActions} from 'vuex';
 export default {
   name: "register",
-  mixins:[WordsLang],
   async fetch({ store }) {
     await store.dispatch('places/countries/getCountriesAction');
   },
@@ -168,8 +167,15 @@ export default {
 
 <style lang="scss" scoped>
 @import "~/assets/scss/variables";
+.eye-password{
+  color:$red;
+  cursor: pointer;
+}
 .auth{
   height: 900px;
+  .alert-danger{
+    display: none;
+  }
   input[type="checkbox"]{
     width: 18px;
     height: 18px;
