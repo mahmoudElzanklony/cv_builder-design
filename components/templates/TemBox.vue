@@ -1,6 +1,7 @@
 <template>
   <div :class="'cv-template '">
      <div class="cv-image position-relative">
+       <span class="del" v-if="delete_control === true" @click="$emit('deleteItem',data?.id)"><i class="bi bi-x-lg red cursor-pointer"></i></span>
        <ImageComponent :src="data['image']['name']"></ImageComponent>
      </div>
     <div class="cv_content d-flex align-items-center justify-content-between">
@@ -49,7 +50,7 @@
   export default {
     name:'TemBox',
     components: {ImageComponent},
-    props:['data'],
+    props:['data','delete_control'],
     methods:{
       async validatePaymentCv(url){
         console.log(this.$auth.user);
@@ -114,6 +115,18 @@
       border-radius: 50%;
       border: 1px solid #dddddd;
     }
+  }
+}
+.del{
+  z-index: 9999999;
+  background: $red;
+  position: absolute;
+  top: 2px;
+  margin: 8px;
+  padding: 5px;
+  border-radius: 5px;
+  i{
+    color:white;
   }
 }
 </style>

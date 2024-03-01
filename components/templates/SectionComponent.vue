@@ -120,11 +120,19 @@ export default {
         }else{
           user_value_input = event.target.value;
           user_value_input = user_value_input.replace(/(?:\r\n|\r|\n)/g, '<br>')
+          try{
+            var old_style = $('.dynamic-content > div').eq(section_index).find('.body > div > div').eq(input_number).attr('style')
+
+          }catch (e){
+            var old_style = $('.dynamic-content > div').eq(section_index).find('.body > div').eq(input_number).attr('style')
+
+          }
 
           var has_file = false;
-          var html_content = '<div>'+(attribute['image'] != null && attribute['image']['name'].length > 0 ? attribute['image']['name']:'')+(attribute['before_answer'].length > 0 ? '<p class="mb-0 fw-bold d-inline-block">'+attribute['before_answer']+'</p><br>':'')+' '+'<span class="'+(attribute['before_answer'].length > 0 ? '':'')+'" >'+user_value_input+'</span>'+'</div>';
+          var html_content = '<div style="'+old_style+'">'+(attribute['image'] != null && attribute['image']['name'].length > 0 ? attribute['image']['name']:'')+(attribute['before_answer'].length > 0 ? '<p class="mb-0 fw-bold d-inline-block">'+attribute['before_answer']+'</p><br>':'')+' '+'<span class="'+(attribute['before_answer'].length > 0 ? '':'')+'" >'+user_value_input+'</span>'+'</div>';
         }
         if(!(user_value_input == null || user_value_input == '')) {
+
           this.auto_writing(section_index, input_number, attribute, html_content, has_file)
         }
       }

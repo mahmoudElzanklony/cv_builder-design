@@ -1,7 +1,7 @@
 import GeneralStoreClass from '../classes/GeneralStoreClass'
 class save_template extends GeneralStoreClass{
   constructor() {
-    super({data_method:'post',data:'/users-cvs/save'});
+    super({data_method:'post',data:'/users-cvs/save',url:'/cvs'});
     // You can add additional state, mutations, actions, and getters specific to this store
   }
 }

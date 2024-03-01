@@ -1,44 +1,48 @@
 <template>
   <div class="dashboard">
-    <h1 class="text-center fw-bold blue mb-3 mt-3">{{ words.users_statistics }}</h1>
+    <div class="content" v-if="Object.keys($parent.$attrs).length > 0  &&  Object.keys($parent.$attrs.words).length > 0">
+
+    <h1 class="text-center fw-bold blue mb-3 mt-3">{{ $parent.$attrs.words.admin.users.users_statistics }}</h1>
     <div class="container">
       <form method="post" @submit.prevent="search">
-        <div class="row" v-if="words.filters">
-          <div class="col-lg-3 col-md-6 mb-2" v-for="i in words.filters">
+        <div class="row" v-if="$parent.$attrs.words.admin.users.filters">
+          <div class="col-lg-3 col-md-6 mb-2" v-for="i in $parent.$attrs.words.admin.users.filters">
             <div>
               <label>{{ i['name'] }}</label>
               <input class="form-control mb-2" :name="i['input']" :type="i['type']" >
             </div>
           </div>
           <div class="col-lg-3 col-md-6 mb-2">
-             <input type="submit" class="btn btn-primary w-100 position-relative top-3 mt-4" :value="words.search">
+             <input type="submit" class="btn btn-primary w-100 position-relative top-3 mt-4" :value="$parent.$attrs.words.admin.users.search">
           </div>
 
         </div>
       </form>
-      <div class="users_data mt-4" v-if="words.table">
+      <div class="users_data mt-4" v-if="$parent.$attrs.words.admin.users.table">
         <div class="container">
           <div class="infinite_scroll" action_path="dashboard/users/allDataAction">
              <table class="table table-hover table-bordered table-striped">
                <thead>
                   <tr>
-                    <td v-for="(name,index) in Object.values(words.table)" :key="index">{{ name }}</td>
-                    <td>{{ words.control }}</td>
+                    <td v-for="(name,index) in Object.values($parent.$attrs.words.admin.users.table)" :key="index">{{ name }}</td>
+                    <td>{{ $parent.$attrs.words.admin.users.control }}</td>
                   </tr>
                </thead>
                <tbody>
                   <tr v-for="(i,index) in users_data" :key="index" :class="'tr_'+index">
-                    <td>{{ i['username'] }}</td>
-                    <td>{{ i['email'] }}</td>
-                    <td>{{ i['country']['name'] }}</td>
-                    <td>{{ i['phone'] }}</td>
+                    <td>{{ i?.username }}</td>
+                    <td>{{ i?.email }}</td>
+                    <td>{{ i?.country?.name }}</td>
+                    <td>{{ i?.phone }}</td>
+                    <td>{{ i?.owner_cvs }}</td>
+                    <td>{{ i?.fork_cvs }}</td>
                     <td>
                       <button class="btn btn-outline-primary btn-sm"
                               data-bs-toggle="modal" data-bs-target="#update_personal_data"
-                              @click="update_item(i)">{{ words['edit'] }}</button>
+                              @click="update_item(i)">{{ $parent.$attrs.words.admin.users['edit'] }}</button>
                       <button class="btn btn-outline-danger btn-sm"
                               @click="delete_item('users',i['id'],'User','.tr_'+index)"
-                              >{{ words['delete'] }}</button>
+                              >{{ $parent.$attrs.words.admin.users['delete'] }}</button>
                     </td>
                   </tr>
                </tbody>
@@ -49,11 +53,11 @@
       <update_personal_data :item="item"></update_personal_data>
 
     </div>
+    </div>
   </div>
 </template>
 
 <script>
-import WordsLang from "../../../mixins/WordsLang";
 import update_personal_data from "../../../components/Modals/candidate/update_personal_data";
 import InfiniteScroll from "../../../mixins/InfiniteScroll";
 import UpdateItem from "../../../mixins/UpdateItem";
@@ -62,7 +66,7 @@ import {mapGetters , mapActions} from 'vuex';
 export default {
   name: "index",
   layout:"admin",
-  mixins:[WordsLang,InfiniteScroll,UpdateItem,delete_item],
+  mixins:[InfiniteScroll,UpdateItem,delete_item],
   components:{
     update_personal_data
   },

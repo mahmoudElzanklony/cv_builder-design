@@ -28,7 +28,11 @@ export default {
         allowTaint: true,
         logging: true,
         taintTest: false,
+        useCORS: true
       }).then(canvas => {
+
+        canvas.setAttribute('crossorigin','*')
+        console.log(canvas)
         // Convert canvas to data URL
         const dataUrl = canvas.toDataURL('image/png');
 

@@ -8,13 +8,14 @@ $(document).ready(function (){
 
 
   // show password
-  $('#__nuxt').on('click','.showPass',function (){
-    if($(this).find('i').hasClass('bi-eye-slash')){
-      $(this).find('i').removeClass('bi-eye-slash').addClass('bi-eye');
-      $(this).prev().attr('type','text');
+  $('#__nuxt').on('click','form .showPass',function (){
+    console.log($(this).parent().parent())
+    if($(this).hasClass('bi-eye-slash')){
+      $(this).removeClass('bi-eye-slash').addClass('bi-eye');
+      $(this).parent().parent().find('input').attr('type','text');
     }else{
-      $(this).find('i').removeClass('bi-eye').addClass('bi-eye-slash');
-      $(this).prev().attr('type','password');
+      $(this).removeClass('bi-eye').addClass('bi-eye-slash');
+      $(this).parent().parent().find('input').attr('type','password');
     }
   });
 

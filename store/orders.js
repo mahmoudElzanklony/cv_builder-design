@@ -1,7 +1,10 @@
+import CurrentPageDetectPaginate from "../plugins/CurrentPageDetectPaginate";
 
 export const state = () => ({
   item:{},
   data:[],
+  total:0,
+  status:true,
 })
 
 export const getters = {
@@ -11,6 +14,9 @@ export const getters = {
   getData(state) {
     return state.data
   },
+  getTotal(state){
+    return state.total
+  }
 }
 
 export const mutations = {
@@ -20,9 +26,18 @@ export const mutations = {
   InitializeData(state,payload){
     state.data = payload;
   },
-  UpdateData(state,key,payload){
+  EmptyData(state){
+    state.data = [];
+  },
+  ChangeStatus(state,payload){
+    state.status = payload;
+  },
+  SetTotal(state,payload){
+    state.total = payload;
+  },
+  UpdateData(state,payload){
     if(payload.length > 0) {
-      state[key] = [...state[key], ...payload]
+      state.data = [...state.data, ...payload]
     }
   },
 }
@@ -47,11 +62,36 @@ export const actions = {
 
   async allData({commit,state}){
     commit('loader/updateLoaderMutation', true, {root: true});
-    return this.$axios.get('categories').then((e) => {
+    return this.$axios.get('orders').then((e) => {
       commit('InitializeData', e.data.data);
     }).finally(() => {
       commit('loader/updateLoaderMutation', false, {root: true});
     });
+  },
+
+  async allDataAdminAction({ state,commit},payload = []) {
+    commit('loader/updateLoaderMutation',true,{root:true});
+    if(
+      (Object.keys(payload).length > 0 && payload.hasOwnProperty('empty') ) || (payload instanceof FormData && payload.has('empty'))
+    ){
+      commit('EmptyData');
+      commit('ChangeStatus',true);
+    }
+
+    var page = CurrentPageDetectPaginate(payload);
+    if(state.status) {
+      return this.$axios.post('orders' + page, payload).then((e) => {
+        commit('UpdateData', e.data.data);
+        commit('SetTotal',e.data.meta.total);
+        if(e.data.data.length == 0){
+          commit('ChangeStatus',false);
+        }
+      }).finally(() => {
+        commit('loader/updateLoaderMutation', false, {root: true});
+      });
+    }else{
+      commit('loader/updateLoaderMutation', false, {root: true});
+    }
   },
 
 }

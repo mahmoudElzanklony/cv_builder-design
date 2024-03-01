@@ -19,6 +19,7 @@
                   <span>{{ i?.name }}</span>
                 </div>
               </div>
+
               <div class="price">
                 <p class="fw-bold mb-0">{{ $parent.$attrs.words.templates.box.price }}</p>
                 <div class="filter">
@@ -63,10 +64,11 @@
 import {mapActions , mapGetters} from "vuex";
 import TemBox from "../../components/templates/TemBox.vue";
 import animateData from "../../mixins/Dom/animateData";
+import FilterTemplates from "../../mixins/templates/FilterTemplates";
 export default {
   name: "templates",
   components: {TemBox},
-  mixins:[animateData],
+  mixins:[animateData,FilterTemplates],
   asyncData({store,route}){
     let data = {empty:true}
     if(Object.keys(route.query).length > 0){
@@ -81,22 +83,7 @@ export default {
     })
   },
   methods:{
-    async submitData(){
-      let data = new FormData(event.target)
-      data.append('empty',true)
-      this.current_page = 1;
 
-      if(document.URL.split('user_id=')[1]){
-        data.append('user_id',document.URL.split('user_id=')[1])
-      }
-      data.append('page',this.current_page)
-
-      await this.$store.dispatch('cvs/templates/getTemplatesAction',data);
-      this.current_page++;
-      if(document.querySelector('.infinite_scroll > div:last-child')) {
-        this.lastObserver.observe(document.querySelector('.infinite_scroll > div:last-child'))
-      }
-    }
   },
   computed:{
     ...mapGetters({

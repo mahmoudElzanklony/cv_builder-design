@@ -21,6 +21,7 @@ export default {
     jobs:'الوظائف',
     register:'تسجيل مستخدم جديد',
     profile:'الملف الشخصي',
+    create_template:'أنشاء تصميم',
     companies_rank:'ترتيب  الشركات',
     colleagues:'زملائي',
     nearest_jobs:'اقرب الوظائف',
@@ -255,7 +256,10 @@ export default {
       use_this_template:'استخدام هذا التصميم',
       edit_my_template:'تعديل التصميم الخاص بي',
       different_design:'تصميم مختلف',
-    }
+    },
+    types_data:[{
+      name:''
+    }]
   },
   filters:{
     min_input:'لا يمكن ان تقل القيمة عن ',
@@ -285,6 +289,9 @@ export default {
     report_about_buying:'تقرير عن مدفوعاتي',
     charge_wallet:'شحن المحفظه',
     tickets:'تزاكر الدعم الفني',
+    my_built_cv:'تصاميمي',
+    my_subscription:'اشتركاتي',
+    my_sales:'مبيعاتي',
     columns:[
       {
         name:'username',
@@ -319,6 +326,155 @@ export default {
       },
     ],
   },
+  orders_data:{
+    columns:{
+      username:'اسم العميل',
+      cv_name:'اسم التصميم',
+      price:'السعر الكلي',
+      service:'رسوم الخدمة',
+      my_profit:'الربح الصافي',
+      date:'التاريخ',
+    }
+  },
+  admin:{
+    home:'الرئيسية',
+    admins:'المشرفين',
+    notifications:'الاشعارات',
+    settings:'الاعدادت',
+    companies:'الشركات',
+    employees:'الموظفين',
+    reports:'التقارير',
+    jobs:'الوظائف',
+    countries:'الدول',
+    cities:'المدن',
+
+    links:[
+      {
+        name:'الرئيسية',
+        path:'/',
+        icon:'bi bi-house',
+      },
+      {
+        name:'المستخدمين',
+        path:'/users',
+        icon:'bi bi-people',
+      },
+      {
+        name:'الطلبات',
+        path:'/orders',
+        icon:'bi bi-file-text',
+      },
+      {
+        name:'الاعدادت',
+        path:'/settings',
+        icon:'bi bi-file-text',
+      },
+
+    ],
+    home_data:[
+      {
+        name:'المستخدمين',
+        icon:'bi bi-people',
+        actionPath:'dashboard/users/allDataAction',
+        getterPath:'dashboard/users/getTotal',
+        url:'/dashboard/users',
+      },
+      {
+        name:'الطلبات',
+        icon:'bi bi-file-text',
+        actionPath:'orders/allDataAdminAction',
+        getterPath:'orders/getTotal',
+        url:'/dashboard/orders',
+      },
+      {
+        name:'نسبة تكلفة الخدمة',
+        icon:'bi bi-file-text',
+        actionPath:'percentages/allData',
+        getterPath:'percentages/getItem',
+        url:'/dashboard/settings',
+
+      },
+    ],
+    users:{
+      users_statistics:'احصائيات المستخدمين',
+      update_data:'تحديث البيانات',
+      search:'بحث',
+      delete:'مسح',
+      edit:'تعديل',
+      image:'الصورة الشخصية',
+      password:'كلمة المرور',
+      leave_password:'اترك كلمة المرور فارغة في حالة عدم تغييرها',
+      control:'التحكم',
+
+      filters:[
+        {
+          name:'اسم المستخدم',
+          input:'username',
+          type:'text',
+        },
+        {
+          name:'بداية التاريخ',
+          input:'start_date',
+          type:'date',
+        },
+        {
+          name:'نهاية التاريخ',
+          input:'end_date',
+          type:'date',
+        },
+      ],
+
+      table:{
+        username:'اسم المستخدم',
+        email:'البريد الالكتروني',
+        country_id:'الدولة',
+        phone:'رقم الهاتف',
+        owner_cvs:'تصميماتي',
+        form_cvs:'طلباتي',
+      },
+    },
+
+
+
+
+    orders:{
+      title:'الطلبات',
+      update_data:'تحديث البيانات',
+
+      image:'الصورة الشخصية',
+      password:'كلمة المرور',
+      leave_password:'اترك كلمة المرور فارغة في حالة عدم تغييرها',
+
+
+      filters:[
+        {
+          name:'بداية التاريخ',
+          input:'start_date',
+          type:'date',
+        },
+        {
+          name:'نهاية التاريخ',
+          input:'end_date',
+          type:'date',
+        },
+      ],
+
+      table:{
+        username:'اسم العميل',
+        design_name:'اسم التصميم',
+        total_price:'السعر الكلي',
+        profit_admin:'ضريبة الخدمة',
+        owner_profit:'ربح المالك',
+        date:'التاريخ',
+      },
+    },
+
+    settings_data:{
+      title:'الاعدادت العامة',
+      profit:'نسبة ربح الادارة',
+    }
+
+  },
 
   general:{
     close:'اغلاق',
@@ -332,6 +488,8 @@ export default {
     save:'حفظ',
     search_submit:'بحث',
     search:'ابحث بالاسم عن اي شئ تريدة',
-
+    delete:'مسح',
+    edit:'تعديل',
+    control:'التحكم',
   },
 }

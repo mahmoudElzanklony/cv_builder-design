@@ -1,0 +1,17 @@
+contain changed to original size
+
+consistensy to layout style
+
+
+make pages as layer and show the page that i write on or edit style and hide anothers
+and control at top with next and previous
+
+validation on max characherts at inputs , textarea
+
+remove date , website name from pdf
+
+card expiration month , year
+
+layout options still at using template with disable visiblity , price
+
+templates json 

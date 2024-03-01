@@ -1,6 +1,5 @@
 class GeneralStoreClass{
   constructor(urls , state, mutations, getters , actions ) {
-    console.log(urls)
     this.state = state || {
       data:[],item:{}
     };
@@ -14,14 +13,20 @@ class GeneralStoreClass{
         }else{
           state.item = payload
         }
-        console.log(state)
       }
     };
     this.actions = actions || {
       async allData({commit,state},data){
+          let router = this.$router;
           commit('loader/updateLoaderMutation', true, {root: true});
-          console.log(urls.data_method)
           return this.$axios[urls.data_method](urls['data'],data).then((e) => {
+            if(e.data.data == null && e.data.status === 200){
+              Toast.fire({
+                icon:'success',
+                title:e.data.message
+              });
+              router.push(urls.url);
+            }
             commit('setData', e.data.data);
           }).finally(() => {
             commit('loader/updateLoaderMutation', false, {root: true});

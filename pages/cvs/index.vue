@@ -2,8 +2,7 @@
   <div class="current_page cvs">
     <div class="container" v-if="Object.keys($parent.$attrs).length > 0  &&  Object.keys($parent.$attrs.words).length > 0">
         <h2 class="text-center big mb-4">{{ $parent.$attrs.words.cvs.main_title }}</h2>
-        <button @click="incresement">{{ data }}</button>
-        <input>
+
         <div class="row">
           <div class="col-lg-3 col-md-4 col-6">
             <div class="box">
@@ -38,10 +37,7 @@ export default {
     }
     const data1 = ref({message:'hello'})
     const data2 = reactive({message:'hello'})
-    console.log('---------data 1 >>>> data 2')
-    console.log(data1.value)
-    console.log(data2)
-    console.log(typeof data2)
+
     return {
       data,
       incresement

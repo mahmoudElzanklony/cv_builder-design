@@ -49,7 +49,9 @@ export default {
         rootMargin:"60px"
       })
       // go to last child to be observed
-      this.lastObserver.observe(document.querySelector('.infinite_scroll > div:last-child'))
+      if(document.querySelector('.infinite_scroll > div:last-child')) {
+        this.lastObserver.observe(document.querySelector('.infinite_scroll > div:last-child'))
+      }
     }
   }
 }

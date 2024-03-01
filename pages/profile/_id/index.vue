@@ -34,7 +34,7 @@
                                  :value="val['id']">{{ val['name'] }}</option>
                        </select>
                        <p class="alert alert-danger"></p>
-                       <span :class="i['icon'].indexOf('eye') > 0 ? 'showPass cursor-pointer':''"><i :class="i['icon']"></i></span>
+                       <span><i :class="i['icon'] +(i['icon'].indexOf('eye') > 0 ? ' showPass cursor-pointer ':'')"></i></span>
                      </div>
                    </div>
                    <div class="col-12 mb-2">

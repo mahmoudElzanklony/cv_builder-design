@@ -4,8 +4,8 @@
       <div class="col-lg-2 col-md-4">
           <nav :key="current_page">
             <nuxt-link tag="img" src="/images/logo.png" class="brand cursor-pointer" to="/"></nuxt-link>
-            <ul v-if="words['links']">
-               <li v-for="(i,index) in words.links">
+            <ul v-if="words_data.admin.links">
+               <li v-for="(i,index) in words_data.admin.links" :key="index">
                  <span class="mrl-half"><i :class="i['icon']"></i></span>
                  <nuxt-link :to="'/dashboard'+i['path']">{{ i['name'] }}</nuxt-link>
                </li>
@@ -14,7 +14,7 @@
           </nav>
       </div>
       <div class="col-lg-10 col-md-8">
-        <nuxt />
+        <nuxt :words="words_data"/>
         <loader v-if="loader_status" :color="'#0a58ca'" size="60px"></loader>
       </div>
     </div>
@@ -25,7 +25,7 @@
 
 <script>
 
-import WordsLang from "../mixins/WordsLang";
+
 import {mapGetters} from "vuex";
 export default {
   name: "admin",
@@ -35,10 +35,12 @@ export default {
        current_page:'',
      }
   },
-  mixins:[WordsLang],
+
   computed:{
     ...mapGetters({
       'loader_status':'loader/getLoaderGetter',
+      'auth_check_getter':'auth/login/get_auth_user_validation',
+      'words_data':'words_data_lang/getData'
     })
   },
   mounted() {

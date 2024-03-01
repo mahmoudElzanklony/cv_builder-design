@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="col-auto">
-            <button type="button" class="btn btn-outline-primary small btn-control auto"
+            <button v-if="for_icon !== true" type="button" class="btn btn-outline-primary small btn-control auto"
                     v-tooltip="words.cvs.auto_width"
                     value="auto"
                     @click="$emit('callWidthStyle',{key:key,value:item})"

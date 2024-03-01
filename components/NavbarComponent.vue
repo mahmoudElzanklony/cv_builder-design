@@ -13,7 +13,10 @@
             <nuxt-link to="/" class="nav-link line-hover">{{ $attrs.words.navbar.home }}</nuxt-link>
           </li>
           <li class="nav-item link mrl-1">
-            <nuxt-link to="/cvs/create-template" class="nav-link line-hover">{{ $attrs.words.navbar.create_template }}</nuxt-link>
+            <nuxt-link to="/cvs" class="nav-link line-hover">{{ $attrs.words.navbar.create_template }}</nuxt-link>
+          </li>
+          <li class="nav-item link mrl-1" v-if="$auth.loggedIn">
+            <nuxt-link :to="'/profile/'+$auth.$state.user.id" class="nav-link line-hover">{{ $attrs.words.navbar.profile }}</nuxt-link>
           </li>
           <li class="nav-item link mrl-1">
             <nuxt-link to="/about-us" class="nav-link line-hover" href="/about-us">{{ $attrs.words.navbar.about }}</nuxt-link>

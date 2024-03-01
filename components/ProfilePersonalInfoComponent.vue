@@ -11,15 +11,21 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="'/profile/'+$auth.state.user['id']+'/report'" target="report">
-          <span><i class="bi bi-currency-dollar"></i></span>
-          <span>{{ $parent.$parent.$attrs.words.profile.report_about_buying }}</span>
+        <nuxt-link :to="'/profile/'+$auth.state.user['id']+'/designs'" target="report">
+          <span><i class="bi bi-brush"></i></span>
+          <span>{{ $parent.$parent.$attrs.words.profile.my_built_cv }}</span>
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="'/profile/'+$auth.state.user['id']+'/charge'" target="charge">
-          <span><i class="bi bi-wallet"></i></span>
-          <span>{{ $parent.$parent.$attrs.words.profile.charge_wallet }}</span>
+        <nuxt-link :to="'/profile/'+$auth.state.user['id']+'/subscriptions'" target="charge">
+          <span><i class="bi bi-card-checklist"></i></span>
+          <span>{{ $parent.$parent.$attrs.words.profile.my_subscription }}</span>
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link :to="'/profile/'+$auth.state.user['id']+'/orders'" target="charge">
+          <span><i class="bi bi-currency-dollar"></i></span>
+          <span>{{ $parent.$parent.$attrs.words.profile.my_sales }}</span>
         </nuxt-link>
       </li>
 

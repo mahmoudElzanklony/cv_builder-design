@@ -21,6 +21,7 @@ export default {
     jobs:'Jobs',
     register:'Register',
     profile:'Profile',
+    create_template:'Create Template',
     companies_rank:'Companies rank',
     colleagues:'Colleagues',
     nearest_jobs:'Nearest jobs',
@@ -276,7 +277,10 @@ export default {
     personal_info:'Personal info',
     report_about_buying:'Report about my orders',
     charge_wallet:'Wallet charge',
-    tickets:'Ticke',
+    tickets:'Tickets',
+    my_built_cv:'My Designs',
+    my_subscription:'My subscriptions',
+    my_sales:'My sales',
     columns:[
       {
         name:'username',
@@ -311,7 +315,149 @@ export default {
       },
     ],
   },
+  orders_data:{
+    columns:{
+      username:'Username',
+      cv_name:'Design name',
+      price:'Total price',
+      service:'Service fees',
+      my_profit:'Net profit',
+      date:'Date',
+    }
+  },
+  admin:{
+    home:'Home',
+    admins:'Admins',
+    settings:'Settings',
+    notifications:'Notifications',
+    companies:'Companies',
+    employees:'Employees',
+    reports:'Reports',
+    jobs:'Jobs',
+    countries:'Countries',
+    cities:'Cities',
 
+
+    links:[
+      {
+        name:'Home',
+        path:'/',
+        icon:'bi bi-house',
+      },
+      {
+        name:'Users',
+        path:'/users',
+        icon:'bi bi-people',
+      },
+      {
+        name:'Orders',
+        path:'/orders',
+        icon:'bi bi-file-text',
+      },
+      {
+        name:'Settings',
+        path:'/settings',
+        icon:'bi bi-file-text',
+      },
+
+    ],
+    home_data:[
+      {
+        name:'Users',
+        icon:'bi bi-people',
+        actionPath:'dashboard/users/allDataAction',
+        getterPath:'dashboard/users/getTotal',
+        url:'/dashboard/users',
+      },
+      {
+        name:'Orders',
+        icon:'bi bi-file-text',
+        actionPath:'orders/allDataAdminAction',
+        getterPath:'orders/getTotal',
+        url:'/dashboard/orders',
+      },
+      {
+        name:'Service Fee',
+        icon:'bi bi-file-text',
+        actionPath:'percentages/allData',
+        getterPath:'percentages/getItem',
+        url:'/dashboard/settings',
+
+      },
+    ],
+    users:{
+      users_statistics:'Users statistics',
+      companies_statistics:'Companies statistics',
+      update_data:'Update data',
+      search_user:'You can search here by email or info',
+      delete:'Delete',
+      edit:'Edit',
+      leave_password:'Leave password empty in case you wont to edit it',
+      password:'Password',
+      filters:[
+        {
+          name:'Username',
+          input:'username',
+          type:'text',
+        },
+        {
+          name:'Start date',
+          input:'start_date',
+          type:'date',
+        },
+        {
+          name:'End date',
+          input:'end_date',
+          type:'date',
+        },
+      ],
+
+      control:'Control',
+      table:{
+        username:'Username',
+        email:'Email',
+        country_id:'Country',
+        phone:'Phone',
+        owner_cvs:'Designs',
+        form_cvs:'Orders',
+      },
+    },
+
+    orders:{
+      title:'Orders',
+      update_data:'Update data',
+
+      filters:[
+        {
+          name:'Start date',
+          input:'start_date',
+          type:'date',
+        },
+        {
+          name:'End date',
+          input:'end_date',
+          type:'date',
+        },
+      ],
+
+
+      table:{
+        username:'Client name',
+        design_name:'Design name',
+        total_price:'Total price',
+        profit_admin:'Service profit',
+        owner_profit:'Owner profit',
+        date:'Date',
+      },
+    },
+
+    settings_data:{
+      title:'General info',
+      profit:'Service fees',
+    }
+
+
+  },
   general:{
     close:'Close',
     are_you_sure_from_delete:'Are you sure from delete process',
@@ -324,6 +470,9 @@ export default {
     save:'Save',
     search_submit:'Search',
     search:'Search by name about what you want',
+    control:'Control',
+    delete:'Delete',
+    edit:'Edit',
 
   }
 }

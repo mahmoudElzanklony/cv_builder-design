@@ -47,11 +47,8 @@ export const mutations = {
       return item.id ==  payload.id;
     });
     if(id >= 0){
-      console.log(id);
-      console.log(state.data);
       if(state.data[id]) {
-        console.log(this._vm);
-        //this._vm.$set(state.data,id,payload);
+        this._vm.$set(state.data,id,payload);
       }
     }
   }
@@ -63,7 +60,7 @@ export const actions = {
     if(
       (Object.keys(payload).length > 0 && payload.hasOwnProperty('empty') ) || (payload instanceof FormData && payload.has('empty'))
     ){
-      console.log('empty data.......................')
+      
       commit('EmptyData');
       commit('ChangeStatus',true);
     }

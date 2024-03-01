@@ -34,6 +34,7 @@ export const actions = {
     return this.$axios.post('percentages',payload).then((e) => {
       if(Array.isArray(e.data.data)){
         commit('InitializeData', e.data.data);
+        commit('setItem', e.data.data[0]);
       }else{
         commit('setItem', e.data.data);
       }
