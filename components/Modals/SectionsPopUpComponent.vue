@@ -72,10 +72,15 @@ export default {
   padding: 10px;
   cursor: pointer;
   border-radius: 10px;
-  height: 140px;
+  height: 145px;
   img{
     height:30px;
     margin: unset;
+  }
+}
+@media (min-width: 767px) {
+  .modal-body{
+    max-height: fit-content;
   }
 }
 </style>
