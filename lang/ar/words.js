@@ -491,5 +491,7 @@ export default {
     delete:'مسح',
     edit:'تعديل',
     control:'التحكم',
+    select_month:'اختر الشهر',
+    select_year:'اختر السنة',
   },
 }

@@ -7,7 +7,7 @@
             <!-- ownThisTemplate is true so this is will be for owner only -->
 
             <div class="sections">
-              <div class="layout_info" v-if="ownThisTemplate">
+              <div class="layout_info" >
                 <div class="black mb-0 d-flex align-items-center justify-content-between">
                   <div class="d-flex algin-items-center">
                     <span><img src="/images/icons/template.svg"></span>
@@ -18,8 +18,10 @@
                 <div class="layout_options">
                   <div class="form-group mb-2" v-for="(input_layout,index) in $parent.$attrs.words.cvs.layout_inputs" :key="index">
                     <div class="inner">
-                      <label>{{ input_layout['name'] }}</label>
-                      <span v-if="input_layout['type'] === 'checkbox'" v-tooltip="input_layout['note']"><i class="bi bi-info-circle"></i></span>
+
+                      <label v-if="input_layout['type'] !== 'checkbox' || (input_layout['type'] === 'checkbox' && ownThisTemplate)">{{ input_layout['name'] }}</label>
+
+                      <span v-if="input_layout['type'] === 'checkbox' && ownThisTemplate" v-tooltip="input_layout['note']"><i class="bi bi-info-circle"></i></span>
                       <br v-if="input_layout['type'] === 'checkbox'">
                       <select v-if="input_layout['type'] === 'selection'" class="form-control" :name="input_layout['input']" v-model="layoutData['category_id']">
                         <option value="">{{ $parent.$attrs.words.general.select_best_choice }}</option>
@@ -28,12 +30,12 @@
                                 :value="val['id']">{{ val['name'] }}</option>
                       </select>
 
-                      <input v-else-if="input_layout['type'] === 'checkbox'" class="radio_btn"
+                      <input v-else-if="input_layout['type'] === 'checkbox' && ownThisTemplate" class="radio_btn"
                              :name="input_layout['input']"
                              v-model="visible"
                              :type="input_layout['type']">
 
-                      <input v-else class="form-control"
+                      <input v-else-if="input_layout['type'] !== 'checkbox' || (input_layout['type'] === 'checkbox' && ownThisTemplate)" class="form-control"
                              v-model="layoutData['name']"
                              :name="input_layout['input']" :type="input_layout['type']">
                     </div>
@@ -55,7 +57,7 @@
                 </div>
               </div>
 
-              <div class="owner mb-2" v-if="ownThisTemplate === false">
+              <div class="owner mb-2" v-if="ownThisTemplate === false && false">
                 <a :href="'/cvs/templates?user_id='+(getTemplateInfo != null ? getTemplateInfo?.user_id : $auth.user.id)" target="_blank" class="d-inline-block alert p-1 mt-2 alert-warning mb-0" v-tooltip="$parent.$attrs.words.cvs.owner">
                   <span class="small"><i class="bi bi-person"></i></span>
                   <span class="small">{{ getTemplateInfo?.user?.username }}</span>
@@ -495,6 +497,7 @@ export default {
       'all_sections_action':'cvs/sections/allSectionsAction',
     }),
     print(){
+
       window.print()
     },
     save_template(){
@@ -614,12 +617,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "~style/variables";
+
 @media print {
   body{
     background-image:unset;
+    margin: 0;
   }
 
-  .dynamic-content{
+  .create-template .dynamic-content{
     display: none;
   }
   .create-template form > .row > div:first-of-type{
@@ -689,6 +694,7 @@ export default {
   display: block;
   opacity: 0;
 }
+
 .dynamic-content,.simulation{
   overflow:hidden;
 

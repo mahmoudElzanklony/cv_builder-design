@@ -135,20 +135,18 @@ $(document).ready(function (){
     var visa_number =  document.querySelector('.visa-monitor .visa-monitor-body div p');
     if(value.length > 0) {
       var result = value.match(/.{1,4}/g);
-      console.log(result);
       for(var x = result.length; x < 4; x++){
         result.push('0000');
       }
     }else{
       var result = ['0000','0000','0000','0000'];
     }
-    console.log(result);
     var output = '';
     for(let i of result){
       for(let ch = i.length; ch < 4; ch++){
         i+='0';
       }
-      if(value.length <= 14){
+      if(value.length <= 16){
         output += '<span class="big mrl-1 white transition-1">'+i+'</span>';
       }
     }
@@ -165,6 +163,7 @@ $(document).ready(function (){
       event.target.style.height = (event.target.scrollHeight) + 'px'; // Adjust the height
     }
   })
+
 
 
 

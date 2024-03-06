@@ -5,7 +5,7 @@ export default {
   name:'DynamicPagesCv',
   data(){
     return {
-      page_height:940,
+      page_height:1040 ,//940,
       currentHeight:0,
       cv_pages:[],
     }

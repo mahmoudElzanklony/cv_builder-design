@@ -19,8 +19,9 @@
         </div>
         <div>
           <p>{{ $parent.$parent.$attrs.words.expire_date }}</p>
-          <p v-if="expire != ''">
-            {{ expire.split('-').splice(0,1).toString()+'/'+expire.split('-').pop().toString() }}
+          <p>
+            {{expire['month'] < 10 ? '0'+expire['month']:expire['month']}}-{{expire['year']}}
+<!--            {{ expire.split('-').splice(0,1).toString()+'/'+expire.split('-').pop().toString() }}-->
           </p>
         </div>
       </div>

@@ -27,6 +27,7 @@
 
             <input v-else-if="!(i['type'] === 'selections' || i['type'] === 'textarea')"
                    class="form-control"
+                   maxlength="1500"
                    v-model="inputs_values[i['name']]"
                    :data-date="(i['type'] !== 'file' && attr_answers != undefined &&  attr_answers.length > 0 ) ? attr_answers.find((e)=> e['attribute_id'] === i['id'])?.answer:''"
                    @keyup="dynamicContentWrite(i)"
@@ -42,6 +43,7 @@
             <textarea v-else-if="i['type'] === 'textarea'" class="form-control"
                       @keyup="dynamicContentWrite(i)"
                       v-model="inputs_values[i['name']]"
+                      maxlength="1500"
                       :name="'attr['+sec_num+']['+data['id']+']['+i['id']+']'" :placeholder="i['placeholder']">{{attr_answers != undefined &&  attr_answers.length > 0 && attr_answers.find((e)=> e['attribute_id'] === i['id']) != null ? attr_answers.find((e)=> e['attribute_id'] === i['id'])?.answer : ''  }}</textarea>
 
           </div>

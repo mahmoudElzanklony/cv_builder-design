@@ -23,7 +23,10 @@
                   <label class="d-flex">
                     <span>{{ $parent.$attrs.words.checkout.card_visa_number }}</span>
                   </label>
-                  <input class="form-control map_visa_data" type="number" name="card_number"  pattern="\d{14}" maxlength="14" required>
+                  <input class="form-control map_visa_data" type="number"
+                         maxlength="16"
+                         oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                         name="card_number"  pattern="\d{14}"  required>
                   <span><i class="bi bi-credit-card-2-front"></i></span>
                 </div>
                 <div class="form-group mb-3 input-icon flex-wrap mb-2">
@@ -37,19 +40,37 @@
                   <label class="d-flex">
                     <span>{{ $parent.$attrs.words.checkout.csv_number }}</span>
                   </label>
-                  <input class="form-control" name="csv" type="number" required>
+                  <input class="form-control" name="csv" type="number" required maxlength="3"
+                         oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  >
                   <span><i class="bi bi-123"></i></span>
                 </div>
-                <div class="form-group mb-3 input-icon flex-wrap mb-2">
+                <div class="form-group mb-3">
                   <label class="d-flex">
                     <span>{{ $parent.$attrs.words.checkout.expire_date }}</span>
                   </label>
-                  <input class="form-control" name="date" type="date" v-model="expire" required>
+                  <div class="d-flex justify-content-between">
+                    <div class="form-group mb-3 input-icon flex-wrap mb-2 w-48">
+                      <label class="gray">{{ $parent.$attrs.words.general.select_month }}</label>
+                      <select class="form-control" name="month" v-model="month">
+                        <option v-for="i in 12" :value="i">{{ i < 10 ? '0'+i:i }}</option>
+                      </select>
+                      <span><i class="bi bi-arrow-down"></i></span>
+                    </div>
+                    <div class="form-group mb-3 input-icon flex-wrap mb-2 w-48">
+                      <label class="gray">{{ $parent.$attrs.words.general.select_year }}</label>
+                      <select class="form-control" name="year" v-model="year">
+                        <option v-for="i in 12" :value="2024 + i - 1">{{ 2024 + i - 1 }}</option>
+                      </select>
+                      <span><i class="bi bi-arrow-down"></i></span>
+                    </div>
+                  </div>
+
                 </div>
                 <recaptcha-component></recaptcha-component>
               </div>
               <div class="col-lg-6 col-12 mb-2">
-                <visa-maping-component :placeholder="placeholder" :expire="expire"></visa-maping-component>
+                <visa-maping-component :placeholder="placeholder" :expire="{year:year,month:month}"></visa-maping-component>
               </div>
             </div>
           </div>
@@ -96,7 +117,8 @@ export default {
     return {
       cv_id:'',
       placeholder:'********',
-      expire:'00-00',
+      month:'00',
+      year:'00',
       send_to_people:[
         {
           name:'1',

@@ -40,9 +40,20 @@ export default {
 </script>
 
 <style>
+@page { size: auto;  margin:0cm; }
 @media print {
   body{
     background-image:unset;
+  }
+  #__layout .up{
+    opacity: 0;
+  }
+  .container{
+    max-width: 100%;
+    padding: 0px;
+  }
+  .create-template .simulation .page{
+    border: none;
   }
   .current_page{
     margin-top: 0px !important;

@@ -6,9 +6,12 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css");
 @import "variables";
 @import "tooplit";
+
 *{
   word-break: auto-phrase;
+  text-transform: capitalize;
 }
+
 
 // edit bootstrap-----------------------
 .btn-outline-primary{
@@ -48,7 +51,9 @@ input,textarea{
 // edit bootstrap-----------------------
 
 // public classes----------------------------------
-
+.w-48{
+  width:48% !important;
+}
 .current_page{
   margin-top: 105px !important;
 }
@@ -761,6 +766,7 @@ ul.search-drop-down{
   counter-reset: section;
   p{
     margin-bottom: 0px;
+    text-transform: none !important;
   }
   svg{
     width: 15px;
@@ -772,7 +778,7 @@ ul.search-drop-down{
      border: 1px solid #dddddd;
      background-color: white;
 
-     height: 940px;
+     height: 1040px; //940px;
      .body{
        >p{
          width: 100%;
@@ -782,7 +788,9 @@ ul.search-drop-down{
        flex-direction: row;
      }
     position: relative;
-
+    span{
+      text-transform: none !important;
+    }
   }
 }
 .dynamic-content{

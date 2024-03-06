@@ -6,7 +6,7 @@ const Axios = require('axios')
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'JD skillar',
+    title: 'Skillar Cv builder',
     htmlAttrs: {
       lang: 'en'
     },

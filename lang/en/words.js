@@ -202,7 +202,7 @@ export default {
       size_name:'Background size',
       size_options:[
         {
-          name:'contain',
+          name:'original size',
           value:'contain'
         },
         {
@@ -473,6 +473,7 @@ export default {
     control:'Control',
     delete:'Delete',
     edit:'Edit',
-
+    select_month:'Select Month',
+    select_year:'Select Year',
   }
 }
