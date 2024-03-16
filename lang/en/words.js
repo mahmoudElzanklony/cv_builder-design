@@ -83,6 +83,125 @@ export default {
     company:'Company',
   },
   /*===============================end of auth pages==========================================*/
+
+  /*===============================start of home page==========================================*/
+   home:{
+     header:{
+       main_title:'Welcome bro in your career path ',
+       create:'Create a ',
+       cv:'CV',
+       with_ease:' with ease and be fully aware of',
+       job_descriptions :' job descriptions ',
+       facilitate :'to facilitate you with Skillar',
+       ready_to:'Ready To create Template',
+       ready_class:'bi bi-chevron-right',
+       get_job_desc:'Get Job Descriptions For Free',
+     },
+     info:{
+       boxes:[
+         {
+           name:'Count Users for cv builder',
+           count:1200
+         },
+         {
+           name:'Count data for job descriptions',
+           count:1122
+         },
+         {
+           name:'Count number of templates',
+           count:1500
+         },
+         {
+           name:'Count orders for templates',
+           count:1000
+         },
+       ],
+       content:'This website offers a unique and exceptional service for individuals who are seeking to create a professional and comprehensive resume, along with a service to understand the description of any job or position in the job market. The website aims to assist individuals in enhancing their opportunities to obtain the desired job they aspire to.'
+     },
+     services:{
+       title:'Services',
+       boxes:[
+         {
+           title:'build cv & resume ',
+           content:'The resume creation service is designed to assist individuals in creating a professional and appealing resume. This service allows individuals to organize and design their personal, educational, professional, and skills information in a professional and effective manner. It includes a variety of diverse and cohesive resume templates that facilitate the process of entering and formatting information professionally.',
+           image:'cv.png',
+           link:{
+             name:'Build now',
+             url:'/cvs'
+           },
+         },
+         {
+           title:'know job description ',
+           content:'Job Description Service provides detailed and comprehensive information about the responsibilities, tasks, and qualifications of a specific job in the job market. This service aims to assist individuals in understanding the requirements of a particular role in the field of work and what skills and experiences are necessary to successfully perform that job.',
+           image:'bag.png',
+           link:{
+             name:'search for des',
+             url:'https://jd.skillar.com'
+           },
+         }
+       ]
+     },
+     why_use_skillar:[
+       {
+         name:'Professional Templates',
+         content:'Skrill offers expertly designed templates for a polished and standout resume.'
+       },
+       {
+         name:'Easy-to-Use Interface',
+         content:'The platform is user-friendly, making creating a professional resume simple.'
+       },
+       {
+         name:'Customization Options',
+         content:'Customize your resume\'s layout, fonts, colors, and sections to create a personalized and unique document.'
+       },
+       {
+         name:'Time and Effort Saving',
+         content:'Save time by using pre-designed templates and ready-to-use sections to quickly generate a professional resume.'
+       },
+
+     ],
+     how_to_use_skillar:{
+       title:'how to use cv builder',
+       content:[
+         {
+           name:'Stage 1',
+           content:'Select Template and Customize',
+           url:'/cvs/templates'
+         },
+         {
+           name:'Stage 2',
+           content:'Input Information',
+           url:'cvs/save-template'
+         },
+         {
+           name:'Stage 3',
+           content:'Review and Finalize',
+           url:'cvs/save-template'
+         }
+       ]
+     },
+     job_description:{
+       title:'Job Description',
+       content:'The job description service is a powerful tool aimed at assisting employers and employees in identifying and clarifying the requirements and responsibilities of specific jobs in the job market. This service allows companies, organizations, and individuals to understand the expected role of employees and the skills and experiences required',
+       try_it:'Try it',
+     },
+     how_to_use_job_definition:{
+       title:'how to use job description',
+       content:[
+         {
+           name:'Stage 1',
+           content:'search any position you want',
+           image:'jd2.png',
+         },
+         {
+           name:'Stage 2',
+           content:'Copy and print, export any data you want',
+           image:'jd3.png',
+         }
+       ]
+     }
+   },
+  /*===============================end of home page==========================================*/
   cvs:{
     icons:"Icons",
     main_title:"Make new personal cv ",

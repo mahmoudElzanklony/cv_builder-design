@@ -3,6 +3,7 @@ export const state = () => ({
   first_section:null,
   sections:[],
   selected_sessions_from_popup:[],
+  selected_sessions_from_popup_keys:[],
 })
 
 export const getters = {
@@ -14,6 +15,9 @@ export const getters = {
   },
   getSelectedSessionsFromPopUp(state) {
     return state.selected_sessions_from_popup
+  },
+  getSelectedSessionsFromPopUpKeys(state) {
+    return state.selected_sessions_from_popup_keys
   },
 }
 
@@ -35,13 +39,19 @@ export const mutations = {
       updatedPayload['name'] = '';
     }*/
     state.selected_sessions_from_popup.push(updatedPayload);
+    if(state.selected_sessions_from_popup_keys.length > 0) {
+      state.selected_sessions_from_popup_keys.push(state.selected_sessions_from_popup_keys[state.selected_sessions_from_popup_keys.length - 1] + 1)
+    }else{
+      state.selected_sessions_from_popup_keys = [1]
+    }
   },
   removeSessionFromSelectedSessions(state,payload){
-    let index = state.selected_sessions_from_popup.findIndex((item)=>{
-      return item.id ==  payload.id;
-    });
-    if(index >= 0) {
-      state.selected_sessions_from_popup.splice(index, 1);
+
+    if(payload >= 0) {
+      console.log(payload);
+      state.selected_sessions_from_popup_keys.splice(payload,1);
+      state.selected_sessions_from_popup.splice(payload, 1);
+
     }
 
   },

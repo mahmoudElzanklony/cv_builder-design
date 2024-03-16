@@ -11,6 +11,7 @@ export const getters = {
 
 export const mutations = {
   InitializeData(state,payload){
+
     state.data = payload;
   },
 }

@@ -4,7 +4,7 @@ consistensy to layout style
 
 
 make pages as layer and show the page that i write on or edit style and hide anothers
-and control at top with next and previous
+and control at top with next and previous (( top make pages 1 , 2 , 3 and so on ))
 
 validation on max characherts at inputs , textarea
 
@@ -14,4 +14,9 @@ card expiration month , year
 
 layout options still at using template with disable visiblity , price
 
-templates json 
+templates json  >>>>>>>>>>>> next version
+
+_______________________
+description at professional experience
+
+تحسين في عمليه الطباعه من حيث الصفحات و المسافات

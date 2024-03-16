@@ -3,19 +3,19 @@
     <div class="header">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <div class="d-flex align-items-center  mb-2">
-          <image-component class="position-relative top-3" v-if="data['image'] != null" :src="data['image']['name']"></image-component>
-          <span class="fw-bold normal ms-2">{{ data['name'] }}</span>
+          <image-component class="position-relative top-3" v-if="data?.image != null" :src="data?.image?.name"></image-component>
+          <span class="fw-bold normal ms-2">{{ data?.name }}</span>
         </div>
         <p>
           <span  class="gray cursor-pointer"><i @click="toggleSlide" class="bi bi-chevron-up"></i></span>
           <span  class="gray cursor-pointer" @click="delete_sec(data)"><i class="bi bi-x-lg red"></i></span>
         </p>
       </div>
-      <p class="gray small">{{ data['info'] }}</p>
+      <p class="gray small">{{ data?.info }}</p>
     </div>
     <div class="body">
       <div class="attributes">
-        <div class="attribute" v-for="(i,key) in data['attributes']" :key="key">
+        <div class="attribute" v-for="(i,key) in data?.attributes" :key="key">
           <div class="form-group mb-2">
             <label>{{ i['label'] }}</label>
             <input v-if="i['type'] === 'file'"
@@ -50,6 +50,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -92,8 +93,17 @@ export default {
           if(this.from_db == true){
 
           }else{
-            this.$store.commit('cvs/sections/removeSessionFromSelectedSessions',section)
-            com.$parent.styles.splice(com.$parent.sec_num,1);
+
+            this.$store.commit('cvs/sections/removeSessionFromSelectedSessions',com.sec_num)
+
+            com.$parent.styles.splice(com.sec_num,1);
+            if(this.$store.state.cvs.templates.item != null){
+              this.$store.commit("cvs/templates/deleteSectionFromItem",com.sec_num)
+            }
+            $('[sec_id="' + com.data.id + '"][number="' + com.sec_num + '"]').filter('div, p, span').remove();
+            /*$('.dynamic-content > div').eq(this.sec_num).remove();
+            */
+
           }
         }
       })
@@ -133,13 +143,16 @@ export default {
           var has_file = false;
           var html_content = '<div style="'+old_style+'">'+(attribute['image'] != null && attribute['image']['name'].length > 0 ? attribute['image']['name']:'')+(attribute['before_answer'].length > 0 ? '<p class="mb-0 fw-bold d-inline-block">'+attribute['before_answer']+'</p><br>':'')+' '+'<span class="'+(attribute['before_answer'].length > 0 ? '':'')+'" >'+user_value_input+'</span>'+'</div>';
         }
-        if(!(user_value_input == null || user_value_input == '')) {
+
+
+        if(!(user_value_input == null)) {
 
           this.auto_writing(section_index, input_number, attribute, html_content, has_file)
         }
       }
     },
     auto_writing(section_index,input_number,attribute,html_content , getting_file_false = false){
+
       var item = $('.dynamic-content > div').eq(section_index).find('.body > *').eq(input_number)
       var currentStyle = this.save_old_style(item)
 

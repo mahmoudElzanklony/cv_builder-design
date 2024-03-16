@@ -48,6 +48,9 @@ export default{
   },
   methods:{
     applyStyle(query,section_index,find,section_item,input_number,type,css_property,ele_type,attribute_info = null){
+
+
+
       // search for this section in style
       var value = (event.target.value == undefined ? event.target.getAttribute('value'):event.target.value);
       if(value > 100 && event.target.getAttribute('reset_val') == '%'){
@@ -64,8 +67,7 @@ export default{
       if(ele_type === 'template'){
          this.template_style[type] = value
          setTimeout(()=>{
-           console.log(value)
-           $('.page').css(css_property, css_property === 'background-image' ? `url(${value})` : value )
+           $('.page').css(css_property, css_property === 'background-image' ? `url(${value})` :  (isNaN(value) ? value:value+'px'))
          })
         return false;
       }else if(check_exist_section >= 0){
@@ -141,8 +143,8 @@ export default{
         obj['properties'][0][type] =  value
         this.styles.push(obj)
       }
-
       if(value !== 'auto') {
+
         if (input_number == -1) {
           $(query).eq(section_index).find(find).css(css_property, value + (event.target.hasAttribute('reset_val') ? event.target.getAttribute('reset_val') : ''))
         } else {
@@ -154,13 +156,12 @@ export default{
 
     detectStyle(sec_style,sec_html){
       for(let key_item of Object.keys(sec_style)){
-
-        if(key_item === 'general') {
+        console.log(sec_style)
+        if(key_item === 'general' || sec_style['properties'].find((ob) => {return ob.hasOwnProperty('width')})) {
           for (let property_width of sec_style['properties']) {
 
             if (property_width.hasOwnProperty('width')) {
-              console.log(sec_html)
-              console.log(sec_html.find('div[name="width"]'))
+
               sec_html.find('div[name="width"]').find('input[item_id="' + property_width['id'] + '"]').val(property_width['width']);
             }
           }

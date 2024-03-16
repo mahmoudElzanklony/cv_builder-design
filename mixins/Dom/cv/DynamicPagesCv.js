@@ -8,6 +8,7 @@ export default {
       page_height:1040 ,//940,
       currentHeight:0,
       cv_pages:[],
+      pages_elements:1,
     }
   },
   methods:{
@@ -42,9 +43,10 @@ export default {
       }
 
     },
-    cloneElement(element){
+    cloneElement(element,sec_name){
       let el = document.createElement(element.tagName.toLocaleLowerCase());
-      el.className = element.className
+      el.className = element.className;
+      el.setAttribute('sec_id',sec_name != undefined ? sec_name:'')
       el.style = element.style.cssText
       el.innerHTML = element.innerHTML
       return el;
@@ -71,8 +73,13 @@ export default {
       for(let sec of section_contents){
         for(let header_body of sec.children){
           for(let inside_head_body of header_body.children){
+            let num = inside_head_body.getAttribute('number')
+            if(num == null){
+              num = header_body.getAttribute('number')
+            }
             if(this.page_height - page_height >= Number(inside_head_body.clientHeight)){
-              let el = this.cloneElement(inside_head_body);
+              let el = this.cloneElement(inside_head_body,sec.className.replace('sec_id_',''));
+              el.setAttribute('number',num ?? null);
               page.firstChild.append(el)
             }else{
               // make new page
@@ -81,7 +88,8 @@ export default {
               page.style = page_style
               page.innerHTML = '<div class="body"></div>';
               page_height = 0
-              let el = this.cloneElement(inside_head_body);
+              let el = this.cloneElement(inside_head_body,sec.className.replace('sec_id_',''));
+              el.setAttribute('number',num ?? null);
               page.firstChild.append(el);
 
             }
@@ -96,14 +104,33 @@ export default {
     get_template_style(){
       let page_style = '';
       for(let key of Object.keys(this.template_style)){
-        page_style += (key+':'+(key === 'background-image' ? 'url("'+this.template_style[key]+'");':this.template_style[key]+';'))
+        page_style += (key+':'+(key === 'background-image' ? 'url("'+this.template_style[key]+'");':(isNaN(this.template_style[key])?this.template_style[key]:this.template_style[key]+'px')+';'))
       }
       return page_style;
+    },
+    // control page active
+    getPages(){
+      // get pages
+      let com = this;
+      const observer = new MutationObserver(mutationsList => {
+        for(const mutation of mutationsList) {
+          let pages = document.querySelectorAll('.simulation > div').length;
+          if(pages !== com.pages_elements){
+            com.pages_elements = pages;
+          }
+          $('.simulation .page').hide();
+          $('.simulation .page').eq($('.pages.controls > span.active').index()).show()
+        }
+      });
+      observer.observe(document.querySelector('.simulation'),{childList:true});
+
+
     }
   },
   mounted(){
 
     setTimeout(()=>{
+      this.getPages();
       this.make_pages(this.get_template_style())
     },1000)
     this.currentHeight = this.$refs.dynamicContentWatch.clientHeight;

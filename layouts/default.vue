@@ -61,6 +61,11 @@ export default {
   .navbar,footer,.up{
     display: none;
   }
+  .simulation{
+    >div{
+      display: block !important;
+    }
+  }
 }
 </style>
 

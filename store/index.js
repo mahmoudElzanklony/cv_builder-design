@@ -25,6 +25,7 @@ export default {
     nuxtServerInit ({ commit }, { req }) {
 
       var lang = cookie.parse(req.headers.cookie || '').lang;
+
       if(lang == undefined){
         lang = 'en';
 

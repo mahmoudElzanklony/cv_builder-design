@@ -7,7 +7,7 @@
 @import "variables";
 @import "tooplit";
 
-*{
+*:not(textarea):not(input){
   word-break: auto-phrase;
   text-transform: capitalize;
 }
@@ -18,6 +18,12 @@
   &:hover{
     background-color: $main_color;
     color:white;
+  }
+}
+a.btn-primary{
+  color:white !important;
+  span{
+    color:white !important;
   }
 }
 .sky{
@@ -95,6 +101,9 @@ label{
 }
 .gray{
   color:$gray ;
+}
+.dark_gray{
+  color:$dark_gray
 }
 .blue{
   color:$main_color;

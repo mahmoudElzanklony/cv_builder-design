@@ -3,7 +3,7 @@
     <div class="container" >
       <form method="post" @submit.prevent="save_template">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-12">
+          <div class="col-lg-4 col-12 reset-width-of-a4">
             <!-- ownThisTemplate is true so this is will be for owner only -->
 
             <div class="sections">
@@ -64,7 +64,7 @@
                 </a>
               </div>
               <div class="content">
-                <div v-for="(i,index) in selected_sessions_from_popup" :key="index">
+                <div v-for="(i,index) in selected_sessions_from_popup" :key="selected_sessions_from_popup_keys[index]">
                   <section-component :words="$parent.$attrs.words.general" :data="i"
                                      :attr_answers="getTemplateInfo != null ? getTemplateInfo['sections'][index]?.attr_answers:[]"></section-component>
                 </div>
@@ -126,6 +126,12 @@
 
                     </BackgroundPositionStyle>
 
+                    <PaddingStyleCvComponent
+                      :words="$parent.$attrs.words"
+                      :input_name="'layout_padding'"
+                      @callPaddingStyle="(direction)=>{applyStyle('.simulation',0,'.page','',-1 ,'padding-'+direction,'padding-'+direction,'template')}"
+                    ></PaddingStyleCvComponent>
+
 
 
                   </div>
@@ -135,7 +141,7 @@
 
               <div class="style-data">
 
-                <div v-for="(i,index) in selected_sessions_from_popup" :key="index" :class="'section sec_id_'+i['id']" >
+                <div v-for="(i,index) in selected_sessions_from_popup" :key="selected_sessions_from_popup_keys[index]" :class="'section sec_id_'+i['id']" >
                 <div class="header mb-2">
                   <div class="d-flex align-items-center justify-content-between mb-2">
                     <div class="d-flex align-items-center">
@@ -151,13 +157,13 @@
                       <span class="gray"><i class="bi bi-chevron-down cursor-pointer toggle_up_down" parents="2" find=".properties"></i></span>
                     </p>
                     <div class="properties hidden">
-                      <AppearanceElementsStyleCvComponent
+                      <AppearanceElementsStyleCvComponent v-if="false"
                         :words="$parent.$attrs.words"
                         :input_name="'appearance_style_content[general]['+i['id']+']'"
                         @callAppearanceStyle="applyStyle('.dynamic-content > div',index,'.body',i,-1,'flex-direction','flex-direction','general')">
                       </AppearanceElementsStyleCvComponent>
 
-                      <DisplayElementsStyleCvComponent
+                      <DisplayElementsStyleCvComponent v-if="false"
                         :words="$parent.$attrs.words"
                         :input_name="'display_style_content[general]['+i['id']+']'"
                         @callAlignmentStyle="applyStyle('.dynamic-content > div',index,'.body',i,-1,'justify-content','justify-content','general')"
@@ -207,13 +213,13 @@
                         @callFontColorStyle="applyStyle('.dynamic-content > div',index,'.body > div > div > span:last-of-type ,.body ul , .header p',i,-1 ,'color','color','general')"
                       ></FontColorCvComponent>
 
-                      <MarginStyleCvComponent
+                      <MarginStyleCvComponent v-if="false"
                         :words="$parent.$attrs.words"
                         :input_name="'margin[general]['+i['id']+']'"
                         @callMarginStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'.body',i,-1 ,'margin-'+direction,'margin-'+direction,'general')}"
                       ></MarginStyleCvComponent>
 
-                      <PaddingStyleCvComponent
+                      <PaddingStyleCvComponent v-if="false"
                         :words="$parent.$attrs.words"
                         :input_name="'padding[general]['+i['id']+']'"
                         @callPaddingStyle="(direction)=>{applyStyle('.dynamic-content > div',index,'.body',i,-1 ,'padding-'+direction,'padding-'+direction,'general')}"
@@ -396,17 +402,23 @@
 
 
           </div>
-          <div class="col-lg-5 col-md-6 col-12 cv-data">
+          <div class="col-lg-5 col-12 cv-data paper-a4">
+            <div class="pages controls mb-2 text-center" v-if="pages_elements > 1">
+              <span :class="'cursor-pointer mx-2 '+(key === 0 ?'active':'')"
+                    @click="showActivePage"
+                    v-for="(i,key) in pages_elements"
+                    :key="key">{{ i }}</span>
+            </div>
             <div class="simulation">
 
             </div>
-            <div class="dynamic-content"  ref="dynamicContentWatch">
-              <div v-for="(i,index) in selected_sessions_from_popup" :key="index" :class="'sec_id_'+i['id']" >
+            <div class="dynamic-content"  ref="dynamicContentWatch" >
+              <div v-for="(i,index) in selected_sessions_from_popup" :key="selected_sessions_from_popup_keys[index]" :class="'sec_id_'+i['id']" >
                 <div class="header">
-                  <p class="gray fw-bold">{{ i['name'] }}</p>
+                  <p class="gray fw-bold" :number="index">{{ i['name'] }}</p>
                 </div>
                 <div class="body">
-                  <div v-for="(n,key) in i['attributes'].length" :key="key" class="mb-0" :property_id="i['attributes'][n]?.id"></div>
+                  <div v-for="(n,key) in i['attributes'].length" :key="key" class="mb-0" :number="index" :sec_id="i['id']" :property_id="i['attributes'][n]?.id"></div>
                 </div>
               </div>
             </div>
@@ -451,6 +463,7 @@ import BackgroundImageStyleCvComponent from "../../components/cv/BackgroundImage
 import BackgroundSizeStyle from "../../components/cv/BackgroundImageOptionsStyleCv/BackgroundSizeStyle.vue";
 import BackgroundPositionStyle from "../../components/cv/BackgroundImageOptionsStyleCv/BackgroundPositionStyle.vue";
 import BackgroundRepeatStyle from "../../components/cv/BackgroundImageOptionsStyleCv/BackgroundRepeatStyle.vue";
+import ControlActivePage from "../../mixins/Dom/cv/ControlActivePage";
 export default {
   name: "create-template",
   components: {
@@ -470,7 +483,7 @@ export default {
     BackgroundColorCvComponent,
     FontColorCvComponent, FontStyleCvComponent, SectionComponent, ImageComponent,SectionsPopUpComponent
   },
-  mixins:[ApplyStyle,take_layout_image,PercentageStore,filterInputNumber,urlSplit,dynamicPagesCv],
+  mixins:[ApplyStyle,take_layout_image,PercentageStore,filterInputNumber,urlSplit,dynamicPagesCv,ControlActivePage],
   data(){
     return {
       visible:false,
@@ -496,6 +509,10 @@ export default {
       'first_section_action':'cvs/sections/firstSectionAction',
       'all_sections_action':'cvs/sections/allSectionsAction',
     }),
+    generate_key(object){
+      console.log(object)
+      return JSON.stringify(object);
+    },
     print(){
 
       window.print()
@@ -584,6 +601,7 @@ export default {
       'sections':'cvs/sections/getSections',
       'getTemplateInfo':'cvs/templates/getItem',
       'selected_sessions_from_popup':'cvs/sections/getSelectedSessionsFromPopUp',
+      'selected_sessions_from_popup_keys':'cvs/sections/getSelectedSessionsFromPopUpKeys',
     }),
   },
   mounted() {
@@ -617,8 +635,31 @@ export default {
 
 <style lang="scss" scoped>
 @import "~style/variables";
-
+.pages{
+  >span{
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+    transition: 0.3s all;
+    margin-bottom: 10px;
+    &:hover{
+      @extend .active;
+    }
+  }
+  .active{
+    background-color: $blue !important;
+    color:white;
+  }
+}
 @media print {
+  .pages{
+    display: none;
+  }
   body{
     background-image:unset;
     margin: 0;
@@ -630,6 +671,7 @@ export default {
   .create-template form > .row > div:first-of-type{
     display: none;
   }
+
 }
 
 
@@ -694,7 +736,19 @@ export default {
   display: block;
   opacity: 0;
 }
-
+@media (min-width:1200px) {
+  .paper-a4{
+    width:210mm;
+  }
+  .reset-width-of-a4{
+    width: calc(100% - 220mm);
+  }
+}
+@media (min-width:992px) and (max-width:1200px) {
+  .paper-a4{
+    width:65%;
+  }
+}
 .dynamic-content,.simulation{
   overflow:hidden;
 

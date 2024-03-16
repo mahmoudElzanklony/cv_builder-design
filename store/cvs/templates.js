@@ -36,6 +36,11 @@ export const mutations = {
   EmptyData(state){
     state.data = [];
   },
+  deleteSectionFromItem(state,num){
+    if(state.item != null){
+      state.item?.sections.splice(num,1)
+    }
+  },
   ChangeStatus(state,payload){
     state.status = payload;
   },

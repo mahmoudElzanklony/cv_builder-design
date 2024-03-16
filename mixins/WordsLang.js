@@ -1,9 +1,9 @@
 export default {
   name:'WordsLang',
   async fetch() {
-    const lang = 'en';
+   /* const lang = 'en';
     const words = require(`~/lang/${lang}/words`).default;
-    this.$store.commit('words_data_lang/InitializeData',words)
+    this.$store.commit('words_data_lang/InitializeData',words)*/
 
 
   },
