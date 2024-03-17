@@ -41,6 +41,12 @@
               {{ another_lang }}
             </button>
           </li>
+          <li @click="logout" v-if="$auth.loggedIn">
+            <nuxt-link to="#" >
+              <span><i class="bi bi-box-arrow-in-left"></i></span>
+              <span class="gray">{{ $attrs.words.navbar.logout }}</span>
+            </nuxt-link>
+          </li>
           <li class="user_profile " v-if="false">
             <ul class="dots-action cursor-pointer d-inline-block">
               <li class="dots">
@@ -129,6 +135,14 @@ export default {
       }
       window.location = document.URL;
     },
+    // logout user
+    logout(){
+      return this.$axios.post('logout').then((e)=>{
+        document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
+        localStorage.clear();
+        window.location = '/auth/login';
+      })
+    }
   },
   mounted() {
     this.updateRegisterLinkVisibility()

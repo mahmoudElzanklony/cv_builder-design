@@ -141,7 +141,7 @@ export default {
           }
 
           var has_file = false;
-          var html_content = '<div style="'+old_style+'">'+(attribute['image'] != null && attribute['image']['name'].length > 0 ? attribute['image']['name']:'')+(attribute['before_answer'].length > 0 ? '<p class="mb-0 fw-bold d-inline-block">'+attribute['before_answer']+'</p><br>':'')+' '+'<span class="'+(attribute['before_answer'].length > 0 ? '':'')+'" >'+user_value_input+'</span>'+'</div>';
+          var html_content = (user_value_input.length > 0) ?  '<div style="'+old_style+'">'+(attribute['image'] != null && attribute['image']['name'].length > 0 ? attribute['image']['name']:'')+(attribute['before_answer'].length > 0 ? '<p class="mb-0 fw-bold d-inline-block">'+attribute['before_answer']+'</p><br>':'')+' '+'<span class="'+(attribute['before_answer'].length > 0 ? '':'')+'" >'+user_value_input+'</span>'+'</div>':'<div></div>';
         }
 
 

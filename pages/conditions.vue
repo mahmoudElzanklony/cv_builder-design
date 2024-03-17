@@ -4,7 +4,7 @@
       <div v-if="lang == 'en'">
         <h2 class="mb-4">User Conditions:</h2>
         <p>
-          When using Job Definitions, you agree to the following user conditions:
+          When using CV builder, you agree to the following user conditions:
         </p>
         <ol>
           <li>You will use the website solely for personal and non-commercial purposes.</li>
@@ -18,7 +18,7 @@
       <div v-else>
         <h2 class="mb-4">سياسة المستخدم</h2>
         <p>
-          عند استخدام تعريفات الوظيفة، فإنك توافق على شروط المستخدم التالية:
+          عند استخدام بناء السيرة الذاتية، فإنك توافق على شروط المستخدم التالية:
         </p>
         <ol>
           <li>سوف تستخدم الموقع فقط للأغراض الشخصية وغير التجارية.</li>
@@ -42,7 +42,7 @@ export default {
   mixins:[WordsLang],
   data(){
     return {
-      lang:'ar',
+      lang:'en',
     }
   },
   head() {
@@ -65,8 +65,8 @@ export default {
   },
 
   mounted() {
-    if(localStorage.hasOwnProperty('lang') && localStorage.lang == 'en'){
-      this.lang = 'en';
+    if(document.cookie.split('lang=')[1] !== undefined){
+      this.lang = document.cookie.split('lang=')[1];
     }
   }
 }

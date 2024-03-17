@@ -30,6 +30,10 @@ export default {
     })
   },
   mounted() {
+    if(document.cookie.split('lang=')[1] === undefined){
+      document.cookie = "lang=en;  path=/;";
+      localStorage.setItem('lang','en');
+    }
     /*if(this.auth_check_getter == null){
        this.validate_user();
     }*/

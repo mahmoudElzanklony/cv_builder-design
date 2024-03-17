@@ -557,7 +557,6 @@ export default {
       }
       // check for parent_id
       if(this.getTemplateInfo != null){
-        formData.append('parent_id', this.getTemplateInfo?.parent_id);
         if(this.getTemplateInfo?.user_id !== this.$auth?.user?.id){
           // client user want to use this template
           formData.append('parent_id', this.id);

@@ -4,38 +4,30 @@
       <div v-if="lang == 'en'">
         <h2 class="mb-4">About Us</h2>
         <p>
-          Welcome to Job Definitions, a comprehensive platform dedicated to providing detailed job descriptions, tasks, and essential information about various occupations. Our mission is to empower individuals by offering valuable insights into different job roles, helping them make informed career decisions.<br><br>
+          Welcome to our platform, where creativity meets career advancement! We are dedicated to providing you with the tools and resources you need to craft professional CVs that stand out in today's competitive job market.
 
+          At our website, we offer a user-friendly CV builder with a vast collection of templates designed to suit various industries and career levels. Whether you're a recent graduate, seasoned professional, or career changer, we have the perfect template to showcase your skills and experience.
 
-          At Job Definitions, we understand the importance of having a clear understanding of job requirements, responsibilities, and work environments before pursuing a particular career path. We aim to bridge the gap between job seekers and job information by compiling accurate and comprehensive descriptions of numerous professions across diverse industries.<br><br>
+          What sets us apart is our community-driven approach. Not only can you choose from a wide range of pre-designed templates, but you can also unleash your creativity by designing your own templates and selling them on our marketplace. This empowers individuals to express their unique style and cater to the diverse needs of job seekers worldwide.
 
+          Our mission is to democratize the process of creating professional CVs, making it accessible to everyone. Whether you're an aspiring designer looking to showcase your talent or a job seeker in need of a standout CV, our platform has something for you.
 
-          <strong>Our Commitment:</strong><br>
-          At Job Definitions, we are committed to providing accurate, up-to-date, and comprehensive job information. We strive for excellence in every aspect of our platform, ensuring that our users have access to the most relevant and reliable information available.<br><br>
-
-          We understand that choosing a career path is a significant decision, and we want to make that process as informed and smooth as possible. Whether you are a student exploring different career options or a professional considering a career change, we aim to be your go-to resource for detailed job descriptions and essential insights.<br><br>
-
-          Our team of dedicated professionals works tirelessly to curate and verify the information we provide on our platform. We continuously update our database to reflect the evolving nature of job roles, ensuring that our users have access to the most accurate and relevant information.<br><br>
-
-          Join our community of job seekers, students, and professionals who rely on Job Definitions to gain valuable knowledge about different occupations. Explore our platform, discover new career paths, and make informed decisions about your professional journey.<br><br>
+          Join us today and take the first step towards building your professional brand!
         </p>
       </div>
       <div v-else>
         <h2 class="mb-4">من نحن</h2>
         <p>
-          مرحبًا بك في Job Definitions، وهي منصة شاملة مخصصة لتقديم الأوصاف الوظيفية التفصيلية والمهام والمعلومات الأساسية حول المهن المختلفة. مهمتنا هي تمكين الأفراد من خلال تقديم رؤى قيمة حول الأدوار الوظيفية المختلفة، ومساعدتهم على اتخاذ قرارات مهنية مستنيرة.<br><br>
 
-          في تعريفات الوظيفة، نحن ندرك أهمية وجود فهم واضح لمتطلبات الوظيفة والمسؤوليات وبيئات العمل قبل متابعة مسار وظيفي معين. نحن نهدف إلى سد الفجوة بين الباحثين عن عمل ومعلومات الوظائف من خلال تجميع أوصاف دقيقة وشاملة للعديد من المهن في مختلف الصناعات.
-          <br><br>
+          مرحبًا بكم في منصتنا، حيث يلتقي الإبداع مع التقدم المهني! نحن ملتزمون بتوفير الأدوات والموارد التي تحتاجونها لصياغة سير ذاتية احترافية تبرز في سوق العمل التنافسي اليوم.
 
+          على موقعنا الإلكتروني، نقدم لكم منشئ سير ذاتية سهل الاستخدام مع مجموعة واسعة من القوالب المصممة لتناسب مختلف الصناعات ومستويات الحياة المهنية. سواء كنت خريجًا حديثًا، أو محترفًا ذو خبرة، أو شخصًا يرغب في تغيير مسار حياته المهنية، لدينا القالب المثالي لعرض مهاراتك وخبراتك.
 
-          <strong>التزامنا:</strong><br>
-          في تعريفات الوظيفة، نحن ملتزمون بتوفير معلومات وظيفية دقيقة وحديثة وشاملة. نحن نسعى جاهدين لتحقيق التميز في كل جانب من جوانب منصتنا، مما يضمن حصول مستخدمينا على الوصول إلى المعلومات المتاحة الأكثر صلة وموثوقية.<br><br>
+          ما يميزنا هو نهجنا القائم على المجتمع. لا يمكنك فقط اختيار القوالب المصممة مسبقًا من مجموعة واسعة، ولكن يمكنك أيضًا إظهار إبداعك من خلال تصميم قوالبك الخاصة وبيعها في سوقنا. يتيح هذا للأفراد التعبير عن أنماطهم الفريدة وتلبية احتياجات الباحثين عن عمل في جميع أنحاء العالم.
 
-          نحن ندرك أن اختيار المسار الوظيفي هو قرار مهم، ونريد أن نجعل هذه العملية مدروسة وسلسة قدر الإمكان. سواء كنت طالبًا يستكشف خيارات وظيفية مختلفة أو محترفًا يفكر في تغيير مهنتك، فإننا نهدف إلى أن نكون مصدرك المفضل للحصول على الأوصاف الوظيفية التفصيلية والرؤى الأساسية.<br><br>
-          يعمل فريقنا من المحترفين المتفانين بلا كلل لتنظيم المعلومات التي نقدمها على منصتنا والتحقق منها. نقوم باستمرار بتحديث قاعدة بياناتنا لتعكس الطبيعة المتطورة للأدوار الوظيفية، مما يضمن حصول مستخدمينا على الوصول إلى المعلومات الأكثر دقة وذات صلة.<br><br>
+          مهمتنا هي تحقيق عملية إنشاء السير الذاتية المهنية للجميع، مما يجعلها متاحة للجميع. سواء كنت مصممًا طموحًا تبحث عن عرض موهبتك، أو باحث عن عمل في حاجة إلى سيرة ذاتية متميزة، فإن منصتنا تقدم لكم كل ما تحتاجون إليه.
 
-          انضم إلى مجتمعنا من الباحثين عن عمل والطلاب والمهنيين الذين يعتمدون على تعريفات الوظيفة لاكتساب معرفة قيمة حول المهن المختلفة. استكشف منصتنا، واكتشف مسارات وظيفية جديدة، واتخذ قرارات مستنيرة بشأن رحلتك المهنية.<br><br>
+          انضموا إلينا اليوم وخطوة الأولى نحو بناء علامتكم المهنية
         </p>
       </div>
 

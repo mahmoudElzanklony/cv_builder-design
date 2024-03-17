@@ -5,7 +5,7 @@
          <div class="row h-100">
            <div class="col-md-5 mb-2 mt-4 h-100 d-flex align-items-center">
               <div class="form-data w-100">
-                <div class="social_media_apps_auth">
+                <div class="social_media_apps_auth" v-if="false">
                   <p class="text-center mb-2 mt-3">{{ $parent.$attrs.words.login.register_with }}</p>
                   <div class="text-center mb-2">
                     <a href="#" class="facebook mrl-1">
@@ -22,6 +22,7 @@
                   </p>
                 </div>
                 <form class="p-3" method="post" @submit.prevent="login">
+                  <h2 class="mb-4">{{ $parent.$attrs.words.login.login }}</h2>
                   <div class="form-group mb-2 input-icon flex-wrap">
                     <label>{{ $parent.$attrs.words.login.email }}</label>
                     <input class="form-control" name="email" required>
@@ -35,6 +36,7 @@
                     <input class="form-control" name="password" type="password" required>
                     <span><i class="bi bi-key"></i></span>
                   </div>
+                  <recaptcha-component></recaptcha-component>
                   <div class="form-group mb-4">
                     <input class="form-control btn btn-primary" type="submit" :value="$parent.$attrs.words.login.login">
                   </div>
@@ -62,8 +64,10 @@
 
 <script>
 import {mapActions} from 'vuex';
+import RecaptchaComponent from "../../components/RecaptchaComponent.vue";
 export default {
   name: "login",
+  components: {RecaptchaComponent},
   methods:{
     ...mapActions({
       'login':'auth/login/loginAction'

@@ -9,7 +9,8 @@
               <form class="p-3"
                     method="post"
                     @submit.prevent="register">
-                <div class="social_media_apps_auth">
+                <h2 class="mb-4">{{ $parent.$attrs.words.login.register }}</h2>
+                <div class="social_media_apps_auth" v-if="false">
                   <p class="text-center mb-2 mt-3">{{ $parent.$attrs.words.register.register_with }}</p>
                   <div class="text-center mb-2">
                     <a href="#" class="facebook mrl-1">

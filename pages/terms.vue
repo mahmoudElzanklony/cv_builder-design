@@ -5,7 +5,7 @@
         <h2 class="mb-4">Terms of Service</h2>
         <p>
 
-          By using Job Definitions, you agree to comply with and be bound by the following Terms of Service. If you disagree with any part of these terms, please refrain from using our website.<br><br>
+          By using CV builder, you agree to comply with and be bound by the following Terms of Service. If you disagree with any part of these terms, please refrain from using our website.<br><br>
 
           <strong>Access to the Website:</strong><br>
           Access to Job Definitions is provided on a temporary basis, and we reserve the right to withdraw or amend the services we provide without prior notice. We will not be liable if, for any reason, our website is unavailable at any time or for any period.<br><br>
@@ -28,7 +28,7 @@
       <div v-else>
         <h2 class="mb-4">شروط الخدمة:</h2>
         <p>
-          باستخدام تعريفات الوظيفة، فإنك توافق على الالتزام بشروط الخدمة التالية والالتزام بها. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى الامتناع عن استخدام موقعنا.<br><br>
+          باستخدام بناء السيرة الذاتية، فإنك توافق على الالتزام بشروط الخدمة التالية والالتزام بها. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى الامتناع عن استخدام موقعنا.<br><br>
 
           <strong>الوصول إلى الموقع:</strong><br>
           يتم توفير الوصول إلى تعريفات الوظيفة على أساس مؤقت، ونحن نحتفظ بالحق في سحب أو تعديل الخدمات التي نقدمها دون إشعار مسبق. لن نكون مسؤولين إذا كان موقعنا غير متاح لأي سبب من الأسباب في أي وقت أو لأي فترة.<br><br>

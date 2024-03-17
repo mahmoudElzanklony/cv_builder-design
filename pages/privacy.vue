@@ -4,7 +4,7 @@
        <div v-if="lang == 'en'">
          <h2 class="mb-4">Privacy</h2>
          <p>
-           At Job Definitions, the privacy of our visitors is of utmost importance to us. This Privacy Policy document outlines the types of personal information that is received and collected by Job Definitions and how it is used.<br><br>
+           At CV builder, the privacy of our visitors is of utmost importance to us. This Privacy Policy document outlines the types of personal information that is received and collected by Job Definitions and how it is used.<br><br>
 
            <strong>Information Collection and Use:</strong><br>
            When you visit Job Definitions, we automatically receive and record certain information from your computer and browser, including your IP address, cookie information, and the pages you visit. We use this information to analyze trends, administer the site, track user movements, and gather demographic information for aggregate use. This information is not linked to any personally identifiable information.<br><br>
@@ -22,7 +22,7 @@
        <div v-else>
          <h2 class="mb-4">سياسة الخصوصية</h2>
          <p>
-           في تعريفات الوظيفة، نحن ملتزمون بحماية خصوصيتك. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك الشخصية واستخدامها والكشف عنها وحمايتها عند زيارتك لموقعنا الإلكتروني واستخدام خدماتنا. من خلال الوصول إلى تعريفات الوظيفة أو استخدامها، فإنك توافق على الممارسات الموضحة في سياسة الخصوصية هذه.<br><br>
+           في بناء السيرة الذاتية، نحن ملتزمون بحماية خصوصيتك. توضح سياسة الخصوصية هذه كيفية جمع معلوماتك الشخصية واستخدامها والكشف عنها وحمايتها عند زيارتك لموقعنا الإلكتروني واستخدام خدماتنا. من خلال الوصول إلى تعريفات الوظيفة أو استخدامها، فإنك توافق على الممارسات الموضحة في سياسة الخصوصية هذه.<br><br>
 
            <strong>المعلومات التي نجمعها:</strong><br>
            قد نقوم بجمع معلومات شخصية، مثل اسمك وعنوان بريدك الإلكتروني والتفاصيل الأخرى ذات الصلة عند تسجيل حساب أو إرسال معلومات عبر موقعنا الإلكتروني. نقوم أيضًا بجمع معلومات غير شخصية، مثل عنوان IP الخاص بك وسلوك التصفح، لتحسين خدماتنا وتحسين تجربة المستخدم الخاصة بك.<br><br>

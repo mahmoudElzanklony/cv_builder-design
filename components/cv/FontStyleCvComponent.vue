@@ -3,10 +3,10 @@
   <div  class="mb-3">
     <label class="blue">{{ words.cvs.font_style }}</label>
     <div class="row justify-content-between">
-      <div class="col-6" name="font-style">
+      <div class="col-6" name="font-family">
         <div class="position-relative input-icon">
           <span><i class="bi bi-caret-down-fill"></i></span>
-          <select class="form-control"
+          <select class="form-control" select_name="font-family"
                   :name="font_style_name"
                   @change="$emit('callFontStyle')"
                   >
@@ -15,10 +15,10 @@
           </select>
         </div>
       </div>
-      <div class="col-6" name="font-family">
+      <div class="col-6" name="font-size">
         <div class="position-relative input-icon">
           <span><i class="bi bi-caret-down-fill"></i></span>
-          <select class="form-control"
+          <select class="form-control" select_name="font-size"
                   :name="font_size_name"
                   @change="$emit('callFontSizeStyle')">
             <option value="">{{ words.cvs.select_font_size }}</option>

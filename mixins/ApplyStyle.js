@@ -156,7 +156,7 @@ export default{
 
     detectStyle(sec_style,sec_html){
       for(let key_item of Object.keys(sec_style)){
-        console.log(sec_style)
+
         if(key_item === 'general' || sec_style['properties'].find((ob) => {return ob.hasOwnProperty('width')})) {
           for (let property_width of sec_style['properties']) {
 
@@ -167,21 +167,25 @@ export default{
           }
         }
           for (let property of Object.keys(sec_style[key_item])) {
+
             if (isNaN(property)) {
 
               let item = sec_html.find('>div.' + key_item).find('div[name="'+property +'"]')
+
               if(item.length > 0){
                 this.applyStyleLayout(property,item,sec_style,key_item)
               }
 
             } else {
               // properties
+
               let property_id = sec_style[key_item][property]['id'];
               let item = sec_html.find('>div.' + key_item).find('.properties').find('div[property_id="'+property_id+'"]').find('.style-attribute')
+              //console.log(sec_style , property , item)
               if(Object.keys(sec_style[key_item][property]).length > 1){
                 for(let pro_key in sec_style[key_item][property]){
-                  var input_attr = item.find('div[name="'+pro_key+'"]');
 
+                  var input_attr = item.find('div[name="'+pro_key+'"]');
                   if(input_attr.length > 0){
                     this.applyStyleLayout(pro_key,input_attr,sec_style,key_item , true , sec_style[key_item][property][pro_key])
                   }
@@ -198,7 +202,7 @@ export default{
         for(let item of sec_html.find('input[type="radio"].checked,select')){
           item.click()
         }
-        for(let num_input of sec_html.find('input[type="number"],input[type="radio"].checked')){
+        for(let num_input of sec_html.find('input[type="number"],select,input[type="radio"].checked')){
           if(num_input.value !== ''){
             num_input.dispatchEvent(new Event("change"));
           }
@@ -213,8 +217,10 @@ export default{
         property_val = property_attr_val
         //console.log(property);
       }
-
-      if(property.indexOf('color') >= 0){
+      if(property.indexOf('font') >= 0){
+        let select = (property_val.indexOf('px') >= 0) ? item.find('select[select_name="font-size"]') : item.find('select[select_name="font-family"]');
+        select.val(property_val)
+      }else if(property.indexOf('color') >= 0){
         //item.find('input,select').attr('value', sec_style[key_item][property])
         // Add an event listener to handle changes
         var input = item.find('input').eq(0)
