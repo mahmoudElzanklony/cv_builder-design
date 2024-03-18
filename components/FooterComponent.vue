@@ -9,7 +9,7 @@
           <div class="links">
             <p>{{ $attrs.words.footer.quick_links }}</p>
             <ul>
-              <li><nuxt-link to="/jobs" class="line-hover position-relative">{{ $attrs.words.footer.jobs }}</nuxt-link></li>
+              <li><nuxt-link to="/cvs" class="line-hover position-relative">{{ $attrs.words.footer.cvs }}</nuxt-link></li>
             </ul>
           </div>
         </div>

@@ -33,6 +33,7 @@ export default {
   footer:{
     quick_links:'روابط سريعة',
     jobs:'الوظائف',
+    cvs:'سير ذاتية',
     companies:'الشركات',
     posts:'الاخبار',
     plans:'الخطط التسعيرية',
@@ -90,6 +91,7 @@ export default {
       main_title:'أهلا بك أخي في مسيرتك المهنية',
       create:'أنشاء',
       cv:'سيرة ذاتية',
+      ready_to:'مستعد لانشاء سيرة ذاتية',
       with_ease:' بكل سهولة ويكون على علم تام',
       job_descriptions :' الوصف الوظيفي',
       facilitate :'لتسهيل عليك مع سكلير',

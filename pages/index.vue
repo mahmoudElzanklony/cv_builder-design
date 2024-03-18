@@ -90,7 +90,7 @@
           <div class="row align-items-center">
             <div class="col-lg-4 col-12 mb-2">
               <div class="image">
-                <img src="/images/home/why_use_skillar.png">
+                <img class="w-100" src="/images/home/why_use_skillar.png">
               </div>
             </div>
             <div class="col-lg-8 col-12 mb-2">
@@ -142,7 +142,7 @@
             </div>
             <div class="col-lg-6 mb-2">
               <div class="image">
-                <img src="/images/home/jd.png">
+                <img  src="/images/home/jd.png">
               </div>
             </div>
           </div>

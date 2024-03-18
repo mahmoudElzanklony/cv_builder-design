@@ -47,6 +47,12 @@
               <span class="gray">{{ $attrs.words.navbar.logout }}</span>
             </nuxt-link>
           </li>
+          <li @click="logout" v-else>
+            <nuxt-link to="/auth/login" >
+              <span><i class="bi bi-box-arrow-in-left"></i></span>
+              <span class="gray">{{ $attrs.words.login.login }}</span>
+            </nuxt-link>
+          </li>
           <li class="user_profile " v-if="false">
             <ul class="dots-action cursor-pointer d-inline-block">
               <li class="dots">

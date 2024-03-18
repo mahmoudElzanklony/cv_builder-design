@@ -41,6 +41,7 @@ export default {
     terms_of_service:'Terms of service',
     user_condition:'User condition',
     contact:'Contact',
+    cvs:'Cvs',
   },
   /*===============================start of auth pages==========================================*/
   login:{

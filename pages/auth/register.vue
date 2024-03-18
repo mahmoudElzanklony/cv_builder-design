@@ -74,9 +74,9 @@
                   <input class="mrl-half" type="checkbox">
                   <p class="mb-0">
                     <span>{{ $parent.$attrs.words.register.agree_conditions }}</span>
-                    <nuxt-link to="#">{{ $parent.$attrs.words.register.privacy_policy }}</nuxt-link>
+                    <nuxt-link to="/privacy">{{ $parent.$attrs.words.register.privacy_policy }}</nuxt-link>
                     <span>&</span>
-                    <nuxt-link to="#">{{ $parent.$attrs.words.register.terms_of_conditions }}</nuxt-link>
+                    <nuxt-link to="/terms">{{ $parent.$attrs.words.register.terms_of_conditions }}</nuxt-link>
                   </p>
                 </div>
                 <div class="g-recaptcha mb-2"
@@ -176,6 +176,8 @@ export default {
   height: 900px;
   .alert-danger{
     display: none;
+    width: 100%;
+    margin-top: 10px;
   }
   input[type="checkbox"]{
     width: 18px;
