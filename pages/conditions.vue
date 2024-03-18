@@ -52,7 +52,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: ' الشروط المتعلقة بموقع الوصف الوظيفي',
+          content: ' الشروط المتعلقة بموقع cv builder',
         },
         {
           hid: 'keywords',

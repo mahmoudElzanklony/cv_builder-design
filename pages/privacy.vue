@@ -68,12 +68,12 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'سياسة الخصوصية المتلعقة بالوصف الوظيفي ',
+          content: 'سياسة الخصوصية المتلعقة ب Cv builder ',
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: 'privacy ,  jd , JD , jd definitions',
+          content: 'privacy ,  cv builder , templates',
         }
       ],
 

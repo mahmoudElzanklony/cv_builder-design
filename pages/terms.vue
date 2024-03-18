@@ -71,12 +71,12 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'الاحكام المتلعقة بالوصف الوظيفي ',
+          content: 'الاحكام المتلعقة ب cv builder ',
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: 'privacy ,  jd , JD , jd definitions',
+          content: 'privacy , cv builder , skillar',
         }
       ],
 

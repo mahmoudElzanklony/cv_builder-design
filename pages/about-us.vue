@@ -53,7 +53,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'تعريف بموقع الوصف الوظيفي ومن صاحب الفكرة ومن مؤسسة ومزيد من المعلومات الاخري',
+          content: 'تعريف بموقع cv builder وبعض المعلومات الاخري',
         },
         {
           hid: 'keywords',
