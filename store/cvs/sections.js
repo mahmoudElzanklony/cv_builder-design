@@ -68,7 +68,7 @@ export const mutations = {
 export const actions = {
 
   async firstSectionAction({commit},payload = "first"){
-    return this.$axios.get('sections/' + payload).then((e) => {
+    return this.$axios.get('sections' + payload).then((e) => {
       commit('setFirstSection',e.data.data)
     });
   },
@@ -76,7 +76,7 @@ export const actions = {
   async allSectionsAction({commit,state}){
     if(state.sections.length == 0) {
       commit('loader/updateLoaderMutation', true, {root: true});
-      return this.$axios.get('sections/').then((e) => {
+      return this.$axios.get('sections').then((e) => {
         commit('getSections', e.data.data);
         if(state.selected_sessions_from_popup.length == 0){
           commit('pushInfoSelectedSessionsFromPopup',e.data.data[0]);

@@ -74,9 +74,11 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/proxy'
     /*'@nuxtjs/recaptcha'*/
   ],
+
 
   sitemap: {
     hostname: 'https://jd.skillar.com',
@@ -111,8 +113,11 @@ export default {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
      //baseURL: 'http://localhost:8000/api/',
      baseURL: 'https://cvapi.skillar.com/api/',
-    // proxy: true,
+     //proxy: true,
   },
+
+
+
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
