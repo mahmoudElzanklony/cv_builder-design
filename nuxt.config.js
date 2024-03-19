@@ -65,7 +65,7 @@ export default {
   buildModules: [
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseUrl: process.env.BASE_URL || 'https://cvapi.skillar.com/',
    // RECAPTCHA_SITE_KEY:'6LfvFEclAAAAAFBdk7D9g0MePCnSpil7pyumkMjA'
   },
 
