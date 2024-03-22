@@ -35,6 +35,11 @@ export const actions = {
         data: new FormData(target)
       }).then((e)=>{
         if(e.data.status === 200 || e.data.hasOwnProperty('id')) {
+           let data = {
+             user:e.data,
+             website:'skillar'
+           }
+           localStorage.setItem('loginExternalSite',JSON.stringify(data))
            router.push('/');
         }else{
           console.log('error');
@@ -92,6 +97,17 @@ export const actions = {
     })
   },
 
+  async loginBySerial({state,commit,dispatch},serial_number){
+    let data = new FormData();
+    data.append('serial_number',serial_number);
+    await this.$auth.loginWith('local', {
+      data: data
+    }).then((e)=>{
+      if(e.data.status === 200 || e.data.hasOwnProperty('id')) {
+        window.location = document.URL;
+      }
+    })
+  },
 
   async logoutAction({state,commit,dispatch}){
     return this.$axios.post('logout').then((e)=>{

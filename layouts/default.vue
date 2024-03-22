@@ -27,13 +27,29 @@ export default {
   methods:{
     ...mapActions({
       'validate_user':'auth/login/validateAuthAction',
-    })
+      'loginBySerial':'auth/login/loginBySerial'
+    }),
+    loginSerial(){
+      if(!(this.$auth.loggedIn) && localStorage.hasOwnProperty('loginExternalSite')){
+        let data = JSON.parse(localStorage.loginExternalSite);
+        if(data.website === 'skillar' && data.user.hasOwnProperty('serial_number')){
+          this.loginBySerial(data.user.serial_number)
+        }
+      }
+    }
+  },
+  watch: {
+    $route() {
+      this.loginSerial();
+    }
   },
   mounted() {
     if(document.cookie.split('lang=')[1] === undefined){
       document.cookie = "lang=en;  path=/;";
       localStorage.setItem('lang','en');
     }
+    // check if login from external website
+
     /*if(this.auth_check_getter == null){
        this.validate_user();
     }*/

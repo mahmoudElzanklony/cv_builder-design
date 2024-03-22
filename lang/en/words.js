@@ -54,6 +54,7 @@ export default {
     register:'Register',
     forget_password:'Forget password',
     reset_password:'Reset password now',
+    new_password:'Make new password',
     register_with:'Login with',
     or:'Or',
     welcome_friend:'Welcome aboard my friend',
@@ -595,5 +596,6 @@ export default {
     edit:'Edit',
     select_month:'Select Month',
     select_year:'Select Year',
+    send:'Send',
   }
 }

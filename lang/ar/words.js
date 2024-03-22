@@ -54,6 +54,7 @@ export default {
     register:'تسجيل مستخدم جديد',
     forget_password:'نسيت كلمه المرور',
     reset_password:'استعاده كلمة المرور',
+    new_password:'انشاء كلمة مرور جديدة',
     or:'او',
     register_with:'سجل عن طريق',
     welcome_friend:'مرحبا بك ي صديقي',
@@ -613,5 +614,6 @@ export default {
     control:'التحكم',
     select_month:'اختر الشهر',
     select_year:'اختر السنة',
+    send:'ارسال',
   },
 }
