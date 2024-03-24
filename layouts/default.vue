@@ -56,7 +56,7 @@ export default {
       document.cookie = "lang=en;  path=/;";
       localStorage.setItem('lang','en');
     }
-    this.loginBySerial()
+    this.loginSerial()
     // check if login from external website
 
     /*if(this.auth_check_getter == null){
