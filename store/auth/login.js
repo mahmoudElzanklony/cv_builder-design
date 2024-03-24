@@ -34,12 +34,13 @@ export const actions = {
       await this.$auth.loginWith('local', {
         data: new FormData(target)
       }).then((e)=>{
-        if(e.data.status === 200 || e.data.hasOwnProperty('id')) {
+        if(e.status === 200 || e.data.user.hasOwnProperty('id')) {
            let data = {
-             user:e.data,
+             user:e.data.user,
              website:'skillar'
            }
-           localStorage.setItem('loginExternalSite',JSON.stringify(data))
+          document.cookie = "loginExternalSite="+JSON.stringify(data)+";domain=.skillar.com; path=/"
+
            router.push('/');
         }else{
           console.log('error');

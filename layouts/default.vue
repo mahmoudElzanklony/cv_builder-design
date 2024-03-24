@@ -29,12 +29,20 @@ export default {
       'validate_user':'auth/login/validateAuthAction',
       'loginBySerial':'auth/login/loginBySerial'
     }),
-    loginSerial(){
-      if(!(this.$auth.loggedIn) && localStorage.hasOwnProperty('loginExternalSite')){
-        let data = JSON.parse(localStorage.loginExternalSite);
-        if(data.website === 'skillar' && data.user.hasOwnProperty('serial_number')){
-          this.loginBySerial(data.user.serial_number)
+    async loginSerial(){
+      if(!(this.$auth.loggedIn)){
+        let cookies =document.cookie.split(';')[0]
+        for(let cookie of cookies){
+          if(cookie.indexOf('loginExternalSite') >= 0){
+            let data = JSON.parse(cookie.split('=')[1]);
+            if(data.website === 'skillar' && data.user.hasOwnProperty('serial_number')){
+              await this.loginBySerial(data.user.serial_number)
+            }
+            break;
+          }
         }
+
+
       }
     }
   },
@@ -48,6 +56,7 @@ export default {
       document.cookie = "lang=en;  path=/;";
       localStorage.setItem('lang','en');
     }
+    this.loginBySerial()
     // check if login from external website
 
     /*if(this.auth_check_getter == null){
