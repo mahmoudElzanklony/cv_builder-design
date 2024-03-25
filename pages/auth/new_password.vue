@@ -6,6 +6,7 @@
           <div class="col-md-5 mb-2 mt-3 d-flex align-items-center">
             <div class="form-data w-100">
               <form class="p-3" method="post" @submit.prevent="reset_password">
+                <input type="hidden" name="serial_number" :value="$route.query.serial_number">
                 <h2 class="mb-4">{{ $parent.$attrs.words.login.new_password }}</h2>
                 <div class="form-group mb-3 input-icon flex-wrap">
                   <label>{{ $parent.$attrs.words.register.password }}</label>
