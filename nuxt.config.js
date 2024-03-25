@@ -131,9 +131,7 @@ export default {
     middleware: ['auth_check','checkStyle'],
   },
   auth: {
-    redirect: {
-      login: '/auth/login',
-    },
+    redirect: false,
     strategies: {
       local: {
         token: {
