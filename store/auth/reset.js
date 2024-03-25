@@ -9,8 +9,8 @@ export const actions = {
     let data = new FormData(event.target)
     return this.$axios.post('/check-email',data).then((e)=>{
       Toast.fire({
-        'icon':e.data.data.status === 200 ? 'success':'error',
-        'title':e.data.data.message
+        'icon':e.data.status === 200 ? 'success':'error',
+        'title':e.data.message
       })
     })
   },
