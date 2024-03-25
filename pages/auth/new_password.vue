@@ -52,7 +52,7 @@ export default {
   },
   async asyncData({route,store,redirect,$axios}){
     if(Object.keys(route.query).length > 0){
-      var output = await  $axios.post('user-by-activation-code',{serial_number:route.query.activation_code,id:route.query.id})
+      var output = await  $axios.post('user-by-activation-code',{serial_number:route.query.serial_number,id:route.query.id})
       if(output.data.status != 200){
         return redirect('/auth/login');
       }
