@@ -5,12 +5,13 @@
         <div class="row h-100">
           <div class="col-md-5 mb-2 mt-3 d-flex align-items-center">
             <div class="form-data w-100">
-              <form class="p-3" @submit.prevent="reset_pass">
+              <form class="p-3" method="post" @submit.prevent="reset_password">
                 <h2 class="mb-4">{{ $parent.$attrs.words.login.new_password }}</h2>
                 <div class="form-group mb-3 input-icon flex-wrap">
                   <label>{{ $parent.$attrs.words.register.password }}</label>
-                  <input class="form-control" name="password" type="password" required>
                   <span><i class="bi bi-key"></i></span>
+                  <input class="form-control" name="password" type="password" required>
+                  <p class="alert alert-danger w-100 mt-2"></p>
                 </div>
                 <div class="form-group mb-3 input-icon flex-wrap">
                   <label>{{ $parent.$attrs.words.register.password_confirmation }}</label>
@@ -60,19 +61,16 @@ export default {
     }
   },
   methods:{
-    methods:{
-      ...mapActions({
-        'reset_pass':'auth/reset/reset_password'
-      })
-    },
+    ...mapActions({
+      'reset_password':'auth/reset/reset_password'
+    })
   },
-  created() {
-    console.log(this.$route);
-  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "~/assets/scss/variables";
-
+.alert-danger{
+  display: none;
+}
 </style>
