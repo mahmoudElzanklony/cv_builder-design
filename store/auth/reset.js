@@ -22,7 +22,7 @@ export const actions = {
     commit('loader/updateLoaderMutation',true,{root:true});
     return this.$axios.post('newpass',data).then((e)=>{
 
-      formValidation(e.data,target,'/login','',router)
+      formValidation(e.data,target,'/auth/login','',router)
     }).finally(() => {
       commit('loader/updateLoaderMutation',false,{root:true});
     }).catch(function (e){
