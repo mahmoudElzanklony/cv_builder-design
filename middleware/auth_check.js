@@ -2,7 +2,7 @@ import cookie from "cookie";
 
 export default function ({ store, redirect, route , req , $auth}) {
   var auth = ['login','register','forget'];
-  let unauth = ['privacy','terms','conditions','reset'];
+  let unauth = ['privacy','terms','conditions','reset','new_password'];
   console.log(route.path);
   if($auth.loggedIn != true){
     let check_unauth_page = false;
