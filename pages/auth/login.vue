@@ -68,6 +68,11 @@ import RecaptchaComponent from "../../components/RecaptchaComponent.vue";
 export default {
   name: "login",
   components: {RecaptchaComponent},
+  mounted() {
+    if(this.$auth.loggedIn){
+      this.$router.push('/')
+    }
+  },
   methods:{
     ...mapActions({
       'login':'auth/login/loginAction'
