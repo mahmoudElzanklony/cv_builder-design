@@ -114,6 +114,7 @@ export const actions = {
   async logoutAction({state,commit,dispatch}){
     return this.$axios.post('logout').then((e)=>{
       console.log('logout.......................');
+      document.cookie = "loginExternalSite=; domain=.skillar.com; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
       if(e.data.status == 200){
         dispatch('deleteUserData')
       }
