@@ -30,8 +30,10 @@ export default {
       'loginBySerial':'auth/login/loginBySerial'
     }),
     async loginSerial(){
+
       if(!(this.$auth.loggedIn)){
-        let cookies =document.cookie.split(';')[0]
+        let cookies =document.cookie.split(';')
+        console.log('hhhhhhhhhhh')
         for(let cookie of cookies){
           if(cookie.indexOf('loginExternalSite') >= 0){
             let data = JSON.parse(cookie.split('=')[1]);
@@ -56,6 +58,7 @@ export default {
       document.cookie = "lang=en;  path=/;";
       localStorage.setItem('lang','en');
     }
+
     this.loginSerial()
     // check if login from external website
 

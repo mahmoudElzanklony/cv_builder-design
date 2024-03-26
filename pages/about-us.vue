@@ -37,10 +37,8 @@
 </template>
 
 <script>
-import WordsLang from "../mixins/WordsLang";
 export default {
   name: 'about-us',
-  mixins:[WordsLang],
   data(){
     return {
       lang:'ar',
