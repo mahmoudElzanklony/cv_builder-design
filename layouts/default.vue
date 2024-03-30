@@ -30,8 +30,8 @@ export default {
       'loginBySerial':'auth/login/loginBySerial'
     }),
     async loginSerial(){
-      if(!(localStorage.hasOwnProperty('skillar_name'))){
-        localStorage.setItem('skillar_name',window.location.origin)
+      if(document.cookie.indexOf('skillar_name') == -1){
+        document.cookie = 'skillar_name='+window.location.origin;
       }
       if(!(this.$auth.loggedIn)){
         let cookies =document.cookie.split(';')
