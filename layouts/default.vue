@@ -30,10 +30,11 @@ export default {
       'loginBySerial':'auth/login/loginBySerial'
     }),
     async loginSerial(){
-
+      if(!(localStorage.hasOwnProperty('skillar_name'))){
+        localStorage.setItem('skillar_name',window.location.origin)
+      }
       if(!(this.$auth.loggedIn)){
         let cookies =document.cookie.split(';')
-        console.log('hhhhhhhhhhh')
         for(let cookie of cookies){
           if(cookie.indexOf('loginExternalSite') >= 0){
             let data = JSON.parse(cookie.split('=')[1]);
