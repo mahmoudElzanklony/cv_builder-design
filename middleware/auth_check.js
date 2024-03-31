@@ -3,14 +3,21 @@ import cookie from "cookie";
 export default function ({ store, redirect, route , req , $auth}) {
   var auth = ['login','register','forget'];
   let unauth = ['privacy','terms','conditions','reset','new_password','about'];
-  console.log(route.name);
-  console.log(route.name === 'index');
+
 
   if(route.name === 'index') {
+    console.log(route.name);
+    console.log(route.name === 'index');
     return false;
+  }else if (route.path.indexOf('dashboard') >= 0) {
+    if ($auth.loggedIn != true) {
+      return redirect('/')
+    } else if ($auth.$state.user.hasOwnProperty('role') && $auth.$state.user.role.name != 'admin') {
+      return redirect('/')
+    }
   }else if ($auth.loggedIn != true) {
     console.log('goooooooooooooooooooooooooooooooo')
-    return false;
+
     let check_unauth_page = false;
     for (let page of unauth) {
       if (route.path.indexOf(page) >= 0) {
@@ -26,13 +33,7 @@ export default function ({ store, redirect, route , req , $auth}) {
 
   }
 
-  if (route.path.indexOf('dashboard') >= 0) {
-    if ($auth.loggedIn != true) {
-      return redirect('/')
-    } else if ($auth.$state.user.hasOwnProperty('role') && $auth.$state.user.role.name != 'admin') {
-      return redirect('/')
-    }
-  }
+
 
 
 
