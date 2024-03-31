@@ -4,10 +4,13 @@ export default function ({ store, redirect, route , req , $auth}) {
   var auth = ['login','register','forget'];
   let unauth = ['privacy','terms','conditions','reset','new_password','about'];
   console.log(route.name);
+  console.log(route.name === 'index');
 
   if(route.name === 'index') {
     return false;
   }else if ($auth.loggedIn != true) {
+    console.log('goooooooooooooooooooooooooooooooo')
+    return false;
     let check_unauth_page = false;
     for (let page of unauth) {
       if (route.path.indexOf(page) >= 0) {
