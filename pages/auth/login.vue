@@ -69,6 +69,7 @@ export default {
   name: "login",
   components: {RecaptchaComponent},
   async asyncData({redirect}) {
+    document.cookie = 'skillar_name=https://demo.skillar.com;domain=.skillar.com; path=/';
     return redirect('https://skillar.com/auth/login');
   },
   mounted() {
