@@ -31,7 +31,7 @@ export default {
     }),
     async loginSerial(){
       if(document.cookie.indexOf('skillar_name') == -1){
-        document.cookie = 'skillar_name='+window.location.origin+";domain=skillar.com; path=/";
+        document.cookie = 'skillar_name='+window.location.origin+";domain=.skillar.com; path=/";
 
 
       }

@@ -39,8 +39,9 @@ export const actions = {
              user:e.data.user,
              website:'skillar'
            }
-          document.cookie = "loginExternalSite="+JSON.stringify(data)+";domain=skillar.com; path=/"
-
+          document.cookie = "loginExternalSite="+JSON.stringify(data)+";domain=.skillar.com; path=/"
+          console.log(document.cookie)
+          console.log(JSON.stringify(data))
            router.push('/');
         }else{
           console.log('error');
