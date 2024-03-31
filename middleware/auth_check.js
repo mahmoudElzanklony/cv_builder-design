@@ -10,6 +10,7 @@ export default function ({ store, redirect, route , req , $auth}) {
     console.log(route.name === 'index');
     return false;
   }else if (route.path.indexOf('dashboard') >= 0) {
+    console.log('dashboard');
     if ($auth.loggedIn != true) {
       return redirect('/')
     } else if ($auth.$state.user.hasOwnProperty('role') && $auth.$state.user.role.name != 'admin') {
@@ -25,8 +26,9 @@ export default function ({ store, redirect, route , req , $auth}) {
         break;
       }
     }
-    console.log(route.path)
+    console.log('prepend to go')
     if (check_unauth_page == false && (!(route.path.indexOf('login') >= 0 || route.path.indexOf('register') >= 0) )) {
+      console.log('gooooooo to login'); return  false;
       return redirect('/auth/login')
     }
 
