@@ -28,7 +28,7 @@ export default function ({ store, redirect, route , req , $auth}) {
     }
     console.log('prepend to go')
     if (check_unauth_page == false && (!(route.path.indexOf('login') >= 0 || route.path.indexOf('register') >= 0) )) {
-      console.log('gooooooo to login'); return  false;
+      console.log('gooooooo to login');
       return redirect('/auth/login')
     }
 
