@@ -68,6 +68,9 @@ import RecaptchaComponent from "../../components/RecaptchaComponent.vue";
 export default {
   name: "login",
   components: {RecaptchaComponent},
+  async asyncData({redirect}) {
+    return redirect('https://skillar.com/auth/login');
+  },
   mounted() {
     if(this.$auth.loggedIn){
       this.$router.push('/')
