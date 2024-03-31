@@ -212,7 +212,7 @@ export default {
   },
   head() {
     return {
-      title: 'التوصيف الوظيفي لجميع الوظائف | jobs definition',
+      title: 'بناء سيرة ذاتية احترافية | skillar cv builder',
       meta: [
         {
           hid: 'description',
