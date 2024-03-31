@@ -2,7 +2,7 @@ import cookie from "cookie";
 
 export default function ({ store, redirect, route , req , $auth}) {
   var auth = ['login','register','forget'];
-  let unauth = ['privacy','terms','conditions','reset','new_password','/'];
+  let unauth = ['privacy','terms','conditions','reset','new_password','about'];
   console.log(route.path);
   if($auth.loggedIn != true){
     let check_unauth_page = false;
@@ -12,6 +12,7 @@ export default function ({ store, redirect, route , req , $auth}) {
         break;
       }
     }
+    console.log(route.path)
     if(check_unauth_page == false && (!(route.path.indexOf('login') >= 0 || route.path.indexOf('register') >= 0) && route.path !== '/')){
       return redirect('/auth/login')
     }
