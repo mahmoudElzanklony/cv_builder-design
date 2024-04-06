@@ -19,6 +19,7 @@
                   <input class="form-control" name="password_confirmation" type="password" required>
                   <span><i class="bi bi-key"></i></span>
                 </div>
+                <recaptcha-component></recaptcha-component>
                 <div class="form-group mb-4">
                   <input class="form-control btn btn-primary" type="submit" :value="$parent.$attrs.words.general.send">
                 </div>
@@ -40,9 +41,11 @@
 </template>
 <script>
 import {mapActions} from "vuex";
+import RecaptchaComponent from "../../components/RecaptchaComponent.vue";
 
 export default {
   name: "new_password",
+  components: {RecaptchaComponent},
 
   data(){
     return {

@@ -12,6 +12,7 @@
                   <input class="form-control" name="email" required>
                   <span><i class="bi bi-envelope"></i></span>
                 </div>
+                <recaptcha-component></recaptcha-component>
                 <div class="form-group mb-4">
                   <input class="form-control btn btn-primary" type="submit" :value="$parent.$attrs.words.general.send">
                 </div>
@@ -35,9 +36,11 @@
 <script>
 import WordsLang from "../../mixins/WordsLang";
 import {mapActions} from "vuex";
+import RecaptchaComponent from "../../components/RecaptchaComponent.vue";
 
 export default {
   name: "reset",
+  components: {RecaptchaComponent},
   mixins:[WordsLang],
   methods:{
     ...mapActions({
