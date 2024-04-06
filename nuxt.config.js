@@ -17,7 +17,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/logo.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/images/logo.png' },
       { rel: 'stylesheet',  href: 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css' },
     //  { rel: 'stylesheet',class:'ar_external_style',  href: '/css/arabic.css' },
     ],
