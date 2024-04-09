@@ -81,12 +81,12 @@ export default {
 
 
   sitemap: {
-    hostname: 'https://jd.skillar.com',
+    hostname: 'https://cv.skillar.com',
     gzip: true,
     exclude: [
       '/dashboard/**'
     ],
-    routes: async () => {
+    /*routes: async () => {
       var data = [];
       await Axios.get('https://jd-api.skillar.com/api/jobs-ids').then((e)=>{
         data = e.data
@@ -96,7 +96,7 @@ export default {
       }else{
         return [];
       }
-    }
+    }*/
 
 
   },
