@@ -105,6 +105,24 @@ export default {
       return redirect('/cvs/templates');
     }
   },
+  head() {
+    return {
+      title: 'الدفع | checkout',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'write your payment info to buy this template',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'cv , templates ,payment, build your cv ,الدفع, سيرة ذاتية , انشاء سيرة ذاتية',
+        }
+      ],
+
+    }
+  },
   mounted() {
     var id_check = document.URL.split('?id=')[document.URL.split('?id=').length - 1];
     if(id_check){

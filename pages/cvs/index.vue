@@ -49,6 +49,24 @@ export default {
       username:'',
     }
   },
+  head() {
+    return {
+      title: 'أنشي سيرة ذاتية خاصة بك | Make your cv',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'make your best cv by selecting from other templates and edit on it or build from zero your own cv',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'cv , templates , build your cv , سيرة ذاتية , انشاء سيرة ذاتية',
+        }
+      ],
+
+    }
+  },
   mounted() {
 
   }

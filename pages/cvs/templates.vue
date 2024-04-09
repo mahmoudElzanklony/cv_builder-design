@@ -82,6 +82,24 @@ export default {
       this.observer.observe(tem)
     })
   },
+  head() {
+    return {
+      title: 'تصاميم جاهزه | templates',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Select your best design template to make your own cv',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'cv , templates , build your cv , سيرة ذاتية  ,اختر تصميم المناسب لك, انشاء سيرة ذاتية',
+        }
+      ],
+
+    }
+  },
   methods:{
 
   },

@@ -490,6 +490,24 @@ export default {
       styles:[],
     }
   },
+  head() {
+    return {
+      title: 'أنشي سيرة ذاتية خاصة بك من الصفر | Make your cv from scratch',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'make your best cv by building from zero and make your own design',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'cv , templates , build your cv , سيرة ذاتية , انشاء سيرة ذاتية',
+        }
+      ],
+
+    }
+  },
   async asyncData({store,route}){
     if(Object.keys(route.query).length > 0){
        if(route.query.hasOwnProperty('id')){
