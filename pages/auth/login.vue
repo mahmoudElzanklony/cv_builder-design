@@ -71,7 +71,7 @@ export default {
   async asyncData({redirect}) {
 
 
-    return redirect('https://skillar.com/auth/login');
+    return redirect('https://skillar.com/auth/login?type=cv.skillar.com');
   },
   mounted() {
     if(this.$auth.loggedIn){
