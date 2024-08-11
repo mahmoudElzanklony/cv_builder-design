@@ -143,6 +143,7 @@ export default {
          }
        ]
      },
+
      why_use_skillar:[
        {
          name:'Professional Templates',

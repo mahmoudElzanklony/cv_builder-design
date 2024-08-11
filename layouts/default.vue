@@ -57,8 +57,9 @@ export default {
     }
   },
   mounted() {
+    document.cookie = "skillar_name=https://"+window.location.host+"; path=/;";
     if(document.cookie.split('lang=')[1] === undefined){
-      document.cookie = "lang=en;  path=/;";
+      document.cookie = "lang=en; path=/;";
       localStorage.setItem('lang','en');
     }
 

@@ -6,10 +6,10 @@
         <div class="row">
           <div class="col-lg-3 col-md-4 col-6">
             <div class="box">
-               <nuxt-link to="/cvs/save-template">
+               <a href="/cvs/save-template">
                  <img src="/images/cvs/template.png">
                  <p>{{ $parent.$attrs.words.cvs.make_new_template }}</p>
-               </nuxt-link>
+               </a>
             </div>
           </div>
           <div class="col-lg-3 col-md-4 col-6">

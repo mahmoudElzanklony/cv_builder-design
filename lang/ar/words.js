@@ -144,6 +144,7 @@ export default {
         }
       ]
     },
+
     why_use_skillar:[
       {
         name:'قوالب احترافية',
