@@ -57,6 +57,7 @@ export default {
     }
   },
   mounted() {
+    document.cookie = `skillar_name=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
     document.cookie = "skillar_name=https://"+window.location.host+"; path=/;";
     if(document.cookie.split('lang=')[1] === undefined){
       document.cookie = "lang=en; path=/;";
